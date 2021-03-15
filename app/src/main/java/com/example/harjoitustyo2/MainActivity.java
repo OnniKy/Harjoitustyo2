@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("MORJESTAAA");
 
-        System.out.println("TERSE ONNI");
+        System.out.println("TERSE ONNIO");
     }
 }
