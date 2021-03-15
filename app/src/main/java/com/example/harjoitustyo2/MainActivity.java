@@ -19,5 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("Olio");
 
+        System.out.println("Ampumahiihto");
     }
 }
