@@ -15,5 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("TERSE TONI");
 
+        System.out.println("Linus on pelimies");
+
     }
 }
