@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void register(View v){
-        Intent intent = new Intent(MainActivity.this, Register);
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
 
-        startActivity();
+        startActivity(intent);
 
     }
 
