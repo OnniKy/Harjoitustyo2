@@ -16,7 +16,6 @@ public class RegisterActivity extends AppCompatActivity{
 
         userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
-        userManager.checkUsername();
 
     }
 }
