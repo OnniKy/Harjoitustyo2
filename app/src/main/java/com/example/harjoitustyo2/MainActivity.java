@@ -2,6 +2,7 @@ package com.example.harjoitustyo2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void register(View v){
-        userManager.createUser();
+        Intent intent = new Intent(MainActivity.this, Register);
+
+        startActivity();
+
     }
 
 }
