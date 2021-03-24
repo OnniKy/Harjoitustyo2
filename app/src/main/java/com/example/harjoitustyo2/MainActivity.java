@@ -19,15 +19,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        password = (TextView) findViewById(R.id.password);
         address = (TextView) findViewById(R.id.address);
+        password = (TextView) findViewById(R.id.password);
 
         userManager = UserManager.getInstance();
 
     }
 
     public void signIn(View v){
-        userManager.checkUsername();
+        userManager.checkUsername(address.getText().toString());
         userManager.checkPassword();
     }
 

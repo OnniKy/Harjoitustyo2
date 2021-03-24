@@ -7,13 +7,13 @@ import java.util.Date;
 public class User {
     int height;
     double weight;
-    Date birthYear;
+    int birthYear;
     String municipality;
     double bmi;
     String username;
     String gender;
 
-    public User(int height, double weight, Date birthYear, String municipality, String username, String gender){
+    public User(int height, double weight, int birthYear, String municipality, String username, String gender){
         this.height = height;
         this.weight = weight;
         this.birthYear = birthYear;
@@ -36,5 +36,11 @@ public class User {
     public String getUsername(){
         return username;
     }
+
+    public int getBirthYear() { return birthYear; }
+
+    public double getWeight() { return weight; }
+
+    public double getBmi() { return weight; }
 
 }

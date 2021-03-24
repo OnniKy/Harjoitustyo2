@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,8 +17,9 @@ public class RegisterActivity extends AppCompatActivity{
     Context context;
     ArrayList<String> genderList;
     UserManager userManager = null;
-    EditText name, email, password, municipality, height, weight;
+    EditText name, email, password, municipality, height, weight, birthyear;
     Spinner spinner;
+    String gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +33,21 @@ public class RegisterActivity extends AppCompatActivity{
         municipality = findViewById(R.id.editMunicipality);
         height = findViewById(R.id.editHeight);
         weight = findViewById(R.id.editWeight);
+        birthyear = findViewById(R.id.editBirthyear);
         spinner = findViewById(R.id.spinnerGender);
 
         userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
-        System.out.println("MOIKKU");
         initializeSpinner();
+
+        Button button = (Button) findViewById(R.id.registerButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeRegisteration();
+            }
+        });
+
 
     }
 
@@ -52,5 +63,11 @@ public class RegisterActivity extends AppCompatActivity{
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, genderList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    public void makeRegisteration(){
+        gender = spinner.getSelectedItem().toString();
+        System.out.println(gender);
+        userManager.createUser(height.getText().toString(), weight.getText().toString(), birthyear.getText().toString(), municipality.getText().toString(), email.getText().toString(), name.getText().toString(), gender);
     }
 }
