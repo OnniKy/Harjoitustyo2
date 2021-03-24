@@ -11,7 +11,6 @@ public class User {
     Image photo;
     String municipality;
     double bmi;
-    String password;
     String username;
     String gender;
 
@@ -30,7 +29,4 @@ public class User {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
 }

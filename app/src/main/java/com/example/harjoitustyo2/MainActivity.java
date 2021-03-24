@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void signIn(){
-        userManager.checkUsername();
-        userManager.checkPassword();
+    public void signIn(View v){
+        userManager.checkUsername(address);
+        userManager.checkPassword(password);
     }
 
-    public void register(){
+    public void register(View v){
         userManager.createUser();
     }
 

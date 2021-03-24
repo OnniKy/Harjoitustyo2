@@ -1,5 +1,6 @@
 package com.example.harjoitustyo2;
 
+import java.net.PasswordAuthentication;
 import java.util.ArrayList;
 
 public class UserManager {
@@ -21,10 +22,10 @@ public class UserManager {
     }
 
     public void createUser(){
-
+        PasswordAuthentication
     }
 
-    public void checkUsername(){
+    public void checkUsername(String ad){
 
     }
 
