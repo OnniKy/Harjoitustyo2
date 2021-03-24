@@ -22,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void set(View v){
-        System.out.println(password);
+    public void signIn(){
+
+    }
+
+    public void register(){
 
     }
 
