@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D8D2D2"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
         android:onClick="signIn"
         android:text="Sign in"
+        app:backgroundTint="#8BE1BF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
@@ -44,13 +47,16 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="110dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:onClick="register"
-        android:text="Register"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.813"
+        android:text="Not registered? Register now!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#070707"
+        android:textSize="12sp"
+        app:backgroundTint="#FAF9F9"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
