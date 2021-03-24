@@ -22,10 +22,10 @@ public class UserManager {
     }
 
     public void createUser(){
-        PasswordAuthentication
+
     }
 
-    public void checkUsername(String ad){
+    public void checkUsername(){
 
     }
 
