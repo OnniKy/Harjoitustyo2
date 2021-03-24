@@ -22,10 +22,10 @@ public class UserManager implements Serializable {
         return instance;
     }
 
-    public void createUser(){
+    public void createUser() {
 
 
-        User myUser = new User(height, weight, birthyear, municipality, bmi, username, gender){
+        User myUser = new User(height, weight, birthyear, municipality, bmi, username, gender);
     }
 
     public void checkUsername(){
