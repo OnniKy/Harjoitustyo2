@@ -1,9 +1,10 @@
 package com.example.harjoitustyo2;
 
+import java.io.Serializable;
 import java.net.PasswordAuthentication;
 import java.util.ArrayList;
 
-public class UserManager {
+public class UserManager implements Serializable {
     private static UserManager instance = null;
     ArrayList<User> userList;
 

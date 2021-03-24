@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void register(View v){
         Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-        startActivity(intent);
+        intent.putExtra("UserManager", userManager);
+        startActivityForResult(intent, 1);
 
     }
 

@@ -8,13 +8,19 @@ public class User {
     int height;
     double weight;
     Date birthYear;
-    Image photo;
     String municipality;
     double bmi;
     String username;
     String gender;
 
-    public User(){
+    public User(int height, double weight, Date birthYear, String municipality, double bmi, String username, String gender){
+        this.height = height;
+        this.weight = weight;
+        this.birthYear = birthYear;
+        this.municipality = municipality;
+        this.bmi = bmi;
+        this.username = username;
+        this.gender = gender;
 
     }
 
