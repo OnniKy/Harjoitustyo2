@@ -26,10 +26,14 @@ public class UserManager {
     }
 
     public void checkUsername(){
-
+        System.out.println("OLEN OMENA");
     }
 
     public void checkPassword(){
+
+    }
+
+    public void logOut(){
 
     }
 }
