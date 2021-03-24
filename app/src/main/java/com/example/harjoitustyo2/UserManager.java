@@ -33,7 +33,8 @@ public class UserManager implements Serializable {
 
         //Creating new user
         User myUser = new User(height, weight, birthyear, municipality, username, gender);
-        userList.add(myUser);
+
+        //userList.add(myUser);
 
     }
 
