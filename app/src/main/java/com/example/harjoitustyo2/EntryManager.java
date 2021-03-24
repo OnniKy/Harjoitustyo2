@@ -7,15 +7,15 @@ public class EntryManager {
 
     }
 
-    public boolean SaveEntries(Entry e){
+    public void SaveEntries(Entry e){
 
     }
 
-    public Entry getEntry(int s) {
-        return entry;
+    public void getEntry(int s) {
+
     }
 
-    public boolean readEntries(){
+    public void readEntries(){
 
     }
 }

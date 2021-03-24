@@ -19,7 +19,7 @@ public class User {
 
     }
 
-    private double calulateBmi(int height, double weight){
+    private void calulateBmi(int height, double weight){
 
     }
 

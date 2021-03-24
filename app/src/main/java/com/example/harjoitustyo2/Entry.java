@@ -9,17 +9,17 @@ public class Entry {
 
     }
 
-    public class ClimateDietEntry(){
+    public class ClimateDietEntry{
         float dairyConsumption;
         float meatConsumption;
 
-        public float useFoodcalculatorApi(){
+        public void useFoodcalculatorApi(){
 
         }
 
     }
 
-    public class WeightEntry(){
+    public class WeightEntry{
         int weight;
 
         public void setWeight(int weight) {
