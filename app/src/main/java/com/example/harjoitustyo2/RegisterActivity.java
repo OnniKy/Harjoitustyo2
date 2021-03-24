@@ -35,15 +35,21 @@ public class RegisterActivity extends AppCompatActivity{
 
         userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
+        System.out.println("MOIKKU");
+        initializeSpinner();
 
     }
 
-    public void initializeUI(){
+    public void initializeSpinner(){
+        System.out.println("MOI");
+
+        genderList = new ArrayList<String>();
         genderList.add("Choose gender");
         genderList.add("Male");
         genderList.add("Female");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, genderList);
+        System.out.println("MOI");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, genderList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
