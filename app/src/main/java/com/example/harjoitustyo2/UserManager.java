@@ -24,26 +24,21 @@ public class UserManager implements Serializable {
         return instance;
     }
 
-    public void createUser(String h, String w, String by, String municipality, String username,String name, String gender) {
+    public void createUser(String h, String w, String by, String municipality, String username, String name, String gender) {
 
+        // Changing values to the right type
         int height = Integer.valueOf(h);
         double weight = Double.parseDouble(w);
         int birthyear = Integer.valueOf(by);
 
-
-        //System.out.println(name +  + weight + birthyear + municipality + username + gender);
+        //Creating new user
         User myUser = new User(height, weight, birthyear, municipality, username, gender);
         userList.add(myUser);
 
-        for (int i = 0; i < userList.size() ; i++) {
-            System.out.println(userList.get(i).getUsername() + " Weight: " + userList.get(i).getWeight());
-        }
-        System.out.println(userList.size());
     }
 
     public void checkUsername(String user){
 
-        System.out.println("TSEKKAILLAA" + userList.size());
         for (int i = 0; i < userList.size() ; i++) {
             System.out.println(userList.get(i).getUsername());
             if (user.equals(userList.get(i).getUsername())){

@@ -24,12 +24,11 @@
         android:id="@+id/password"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="356dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,10 +60,17 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="478dp"
-        android:layout_height="306dp"
-        app:srcCompat="@drawable/olio_harkkaty__apinlogo"
-        tools:layout_editor_absoluteX="-15dp"
-        tools:layout_editor_absoluteY="-88dp" />
+        android:layout_width="360dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/olio_harkkaty__apinlogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
