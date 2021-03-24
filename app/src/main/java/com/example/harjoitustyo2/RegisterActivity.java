@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity{
         spinner = findViewById(R.id.spinnerGender);
 
 
+
         userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
 
