@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView password;
     TextView address;
+    UserManager userManager;
 
 
     @Override
@@ -20,14 +21,17 @@ public class MainActivity extends AppCompatActivity {
         password = (TextView) findViewById(R.id.password);
         address = (TextView) findViewById(R.id.address);
 
+        userManager = UserManager.getInstance();
+
     }
 
     public void signIn(){
-
+        userManager.checkUsername();
+        userManager.checkPassword();
     }
 
     public void register(){
-
+        userManager.createUser();
     }
 
 }
