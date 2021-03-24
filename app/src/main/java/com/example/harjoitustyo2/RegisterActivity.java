@@ -22,6 +22,7 @@ public class RegisterActivity extends AppCompatActivity{
         height=findViewById(R.id.editHeight);
         weight=findViewById(R.id.editWeight);
 
+
         userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
         userManager.checkUsername();
