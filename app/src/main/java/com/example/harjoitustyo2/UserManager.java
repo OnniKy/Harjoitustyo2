@@ -24,10 +24,12 @@ public class UserManager implements Serializable {
 
     public void createUser(){
 
+
+        User myUser = new User(); //TODO
     }
 
     public void checkUsername(){
-        System.out.println("OLEN OMENA");
+
     }
 
     public void checkPassword(){
