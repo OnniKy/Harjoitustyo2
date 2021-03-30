@@ -2,6 +2,7 @@ package com.example.harjoitustyo2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -61,6 +62,23 @@ public class RegisterActivity extends AppCompatActivity{
                 RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
                 String genderValue = checkedBtn.getText().toString();
                 int birthyearValue = Integer.parseInt(birthyear.getText().toString());
+
+                if (usernameValue.length() > 1) {
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("username", usernameValue);
+                    contentValues.put("name", nameValue);
+                    contentValues.put("password", passwordValue);
+                    contentValues.put("municipality", municipalityValue);
+                    contentValues.put("height", heightValue);
+                    contentValues.put("weight", weightValue);
+                    contentValues.put("gender", genderValue);
+                    contentValues.put("birthyear", birthyearValue);
+
+                }
+
+
+
+
 
             }
         });

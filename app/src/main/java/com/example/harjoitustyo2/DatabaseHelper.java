@@ -37,7 +37,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         statement.close();
 
         if (l == 1){
-
+            return true;
+        } else {
+            return false;
         }
     }
 

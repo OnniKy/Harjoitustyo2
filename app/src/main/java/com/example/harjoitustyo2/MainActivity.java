@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Context context;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView username;
     UserManager userManager;
     Button register, login;
+    DatabaseHelper databaseHelper;
 
 
     @Override
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         password = (TextView) findViewById(R.id.password);
         register = (Button) findViewById(R.id.register);
         login  = (Button) findViewById(R.id.login);
+        databaseHelper = new DatabaseHelper(this);
 
         userManager = UserManager.getInstance(context);
 
@@ -35,10 +38,15 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userManager.checkUsername(username.getText().toString());
-                userManager.checkPassword();
-                Intent intent2 = new Intent(MainActivity.this, MainPage.class);
-                startActivity(intent2);
+                String usernameValue = username.getText().toString();
+                String passwordValue = password.getText().toString();
+
+                if (databaseHelper.isLoginValid(usernameValue, passwordValue)){
+                    Intent intent2 = new Intent(MainActivity.this, MainPage.class);
+                    startActivity(intent2);
+                    Toast.makeText(MainActivity.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
