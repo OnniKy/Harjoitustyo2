@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -15,11 +17,10 @@ import java.util.ArrayList;
 public class RegisterActivity extends AppCompatActivity{
 
     Context context;
-    ArrayList<String> genderList;
     UserManager userManager = null;
     EditText name, email, password, municipality, height, weight, birthyear;
-    Spinner spinner;
-    String gender;
+    Button register, cancel;
+    RadioGroup gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,40 +35,44 @@ public class RegisterActivity extends AppCompatActivity{
         height = findViewById(R.id.editHeight);
         weight = findViewById(R.id.editWeight);
         birthyear = findViewById(R.id.editBirthyear);
+        gender = findViewById(R.id.gender);
+        register = findViewById(R.id.register);
+        cancel = findViewById(R.id.cancel);
+
 
         userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
-        initializeSpinner();
-
-        Button button = (Button) findViewById(R.id.cancel);
-        button.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeRegisteration();
+
+            }
+
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nameValue = name.getText().toString();
+                String usernameValue = email.getText().toString();
+                String passwordValue = password.getText().toString();
+                String municipalityValue = municipality.getText().toString();
+                int heightValue = Integer.parseInt(height.getText().toString());
+                int weightValue = Integer.parseInt(weight.getText().toString());
+                RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
+                String genderValue = checkedBtn.getText().toString();
+                int birthyearValue = Integer.parseInt(birthyear.getText().toString());
+
             }
         });
 
 
+
+
+
     }
 
-    public void initializeSpinner(){
-        System.out.println("MOI");
 
-        genderList = new ArrayList<String>();
-        genderList.add("Choose gender");
-        genderList.add("Male");
-        genderList.add("Female");
-
-        System.out.println("MOI");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, genderList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-    }
-
-    public void makeRegisteration(){
-        gender = spinner.getSelectedItem().toString();
-        userManager.createUser(height.getText().toString(), weight.getText().toString(), birthyear.getText().toString(), municipality.getText().toString(), email.getText().toString(), name.getText().toString(), gender);
-    }
 
 
 }

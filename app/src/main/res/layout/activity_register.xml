@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editPassword" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/gender"
         android:layout_width="117dp"
         android:layout_height="99dp"
         android:layout_marginTop="12dp"
