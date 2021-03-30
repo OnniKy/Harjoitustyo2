@@ -40,7 +40,6 @@ public class RegisterActivity extends AppCompatActivity{
         cancel = findViewById(R.id.cancel);
 
 
-        userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
