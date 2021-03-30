@@ -70,16 +70,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editBirthyear" />
 
-    <Spinner
-        android:id="@+id/spinnerGender"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editWeight" />
-
     <EditText
         android:id="@+id/editHeight"
         android:layout_width="240dp"
@@ -106,28 +96,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editHeight" />
 
+
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/register"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="120dp"
         android:text="Register"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#8BE1BF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerGender" />
+        app:layout_constraintTop_toBottomOf="@+id/editWeight" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:backgroundTint="#707A76"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register"
+        app:layout_constraintVertical_bias="0.07999998" />
+
 
     <EditText
         android:id="@+id/editBirthyear"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Birth year"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="117dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editWeight">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:text="Gender"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

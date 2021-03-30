@@ -34,13 +34,12 @@ public class RegisterActivity extends AppCompatActivity{
         height = findViewById(R.id.editHeight);
         weight = findViewById(R.id.editWeight);
         birthyear = findViewById(R.id.editBirthyear);
-        spinner = findViewById(R.id.spinnerGender);
 
         userManager = (UserManager) getIntent().getSerializableExtra("UserManager");
 
         initializeSpinner();
 
-        Button button = (Button) findViewById(R.id.registerButton);
+        Button button = (Button) findViewById(R.id.cancel);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
