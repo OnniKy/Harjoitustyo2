@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class RegisterActivity extends AppCompatActivity{
     EditText name, email, password, municipality, height, weight, birthyear;
     Button register, cancel;
     RadioGroup gender;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,11 @@ public class RegisterActivity extends AppCompatActivity{
         register = findViewById(R.id.register);
         cancel = findViewById(R.id.cancel);
 
+        databaseHelper = new DatabaseHelper(this);
 
 
-        register.setOnClickListener(new View.OnClickListener() {
+
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -49,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity{
 
         });
 
-        cancel.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nameValue = name.getText().toString();
@@ -73,6 +77,11 @@ public class RegisterActivity extends AppCompatActivity{
                     contentValues.put("gender", genderValue);
                     contentValues.put("birthyear", birthyearValue);
 
+                    databaseHelper.insertUser(contentValues);
+                    Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Enter the values!", Toast.LENGTH_SHORT).show();
                 }
 
 
