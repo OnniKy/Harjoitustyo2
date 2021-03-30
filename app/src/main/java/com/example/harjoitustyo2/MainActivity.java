@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 userManager.checkUsername(username.getText().toString());
                 userManager.checkPassword();
+                Intent intent2 = new Intent(MainActivity.this, MainPage.class);
+                startActivity(intent2);
             }
         });
 
