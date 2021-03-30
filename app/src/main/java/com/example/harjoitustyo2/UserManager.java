@@ -1,5 +1,14 @@
 package com.example.harjoitustyo2;
 
+
+import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
+
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.net.PasswordAuthentication;
 import java.util.ArrayList;
@@ -7,17 +16,28 @@ import java.util.Date;
 
 public class UserManager implements Serializable {
     private static UserManager instance = null;
-    ArrayList<User> userList;
+    private final String logName = "Accounts.csv";
+    Context context;
 
-    protected UserManager(){
-        userList = new ArrayList<User>();
+    protected UserManager(Context context){
+        try{
+            OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput(logName, Context.MODE_PRIVATE));
+
+        } catch (IOException e) {
+            Log.e("IOException", "Virhe syötteessä");
+        }  finally {
+            System.out.println("Kirjoitettu");
+        }
+
+        System.out.println("KKK");
+
+
     }
 
     // Use singleton principal in creating UserManager
-    public static UserManager getInstance(){
-
+    public static UserManager getInstance(Context context){
         if (instance == null){
-            instance = new UserManager();
+            instance = new UserManager(context);
         } else {
             System.out.println("Instance already exists.");
         }
@@ -39,7 +59,7 @@ public class UserManager implements Serializable {
     }
 
     public void checkUsername(String user){
-
+/*
         for (int i = 0; i < userList.size() ; i++) {
             System.out.println(userList.get(i).getUsername());
             if (user.equals(userList.get(i).getUsername())){
@@ -48,7 +68,11 @@ public class UserManager implements Serializable {
                 System.out.println("*NO MATCH*");
             }
         }
+
+ */
     }
+
+
 
     public void checkPassword(){
 
