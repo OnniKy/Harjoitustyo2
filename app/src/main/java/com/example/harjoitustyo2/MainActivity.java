@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         username = (TextView) findViewById(R.id.address);
         password = (TextView) findViewById(R.id.password);
+        register = (Button) findViewById(R.id.register);
+        login  = (Button) findViewById(R.id.login);
 
         userManager = UserManager.getInstance(context);
 
