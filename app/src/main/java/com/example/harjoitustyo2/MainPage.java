@@ -16,5 +16,11 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         dailyWeight = findViewById(R.id.dailyWeight);
         dailyClimate = findViewById(R.id.dailyClimate);
+
     }
+
+    public void weight(){
+        dailyWeight.setText("Päivän painosi on 1000 Kg");
+    }
+
 }
