@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -48,7 +49,8 @@ public class RegisterActivity extends AppCompatActivity{
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
         });
@@ -56,17 +58,18 @@ public class RegisterActivity extends AppCompatActivity{
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nameValue = name.getText().toString();
-                String usernameValue = email.getText().toString();
-                String passwordValue = password.getText().toString();
-                String municipalityValue = municipality.getText().toString();
-                int heightValue = Integer.parseInt(height.getText().toString());
-                int weightValue = Integer.parseInt(weight.getText().toString());
-                RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
-                String genderValue = checkedBtn.getText().toString();
-                int birthyearValue = Integer.parseInt(birthyear.getText().toString());
 
-                if (usernameValue.length() > 1) {
+                if (email.getText().toString().length() > 1) {
+                    String nameValue = name.getText().toString();
+                    String usernameValue = email.getText().toString();
+                    String passwordValue = password.getText().toString();
+                    String municipalityValue = municipality.getText().toString();
+                    int heightValue = Integer.parseInt(height.getText().toString());
+                    int weightValue = Integer.parseInt(weight.getText().toString());
+                    RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
+                    String genderValue = checkedBtn.getText().toString();
+                    int birthyearValue = Integer.parseInt(birthyear.getText().toString());
+
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("username", usernameValue);
                     contentValues.put("name", nameValue);
@@ -79,6 +82,9 @@ public class RegisterActivity extends AppCompatActivity{
 
                     databaseHelper.insertUser(contentValues);
                     Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(RegisterActivity.this, MainPage.class);
+                    startActivity(intent);
 
                 } else {
                     Toast.makeText(RegisterActivity.this, "Enter the values!", Toast.LENGTH_SHORT).show();
