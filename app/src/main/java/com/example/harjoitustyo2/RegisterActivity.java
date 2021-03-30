@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class RegisterActivity extends AppCompatActivity{
 
     Context context;
-    UserManager userManager = null;
     EditText name, email, password, municipality, height, weight, birthyear;
     Button register, cancel;
     RadioGroup gender;

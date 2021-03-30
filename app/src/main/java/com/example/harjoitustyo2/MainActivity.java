@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     TextView password;
     TextView username;
-    UserManager userManager;
     Button register, login;
     DatabaseHelper databaseHelper;
 
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         login  = (Button) findViewById(R.id.login);
         databaseHelper = new DatabaseHelper(this);
 
-        userManager = UserManager.getInstance(context);
 
         System.out.println("Sijainti kirjastossa: " + context.getFilesDir());
 
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                intent.putExtra("UserManager", userManager);
                 startActivityForResult(intent, 1);
             }
         });
