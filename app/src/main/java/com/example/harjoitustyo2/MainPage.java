@@ -3,6 +3,7 @@ package com.example.harjoitustyo2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class MainPage extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         dailyWeight = findViewById(R.id.dailyWeight);
         dailyClimate = findViewById(R.id.dailyClimate);
+        weight();
 
     }
 
