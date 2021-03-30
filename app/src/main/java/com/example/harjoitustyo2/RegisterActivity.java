@@ -69,4 +69,6 @@ public class RegisterActivity extends AppCompatActivity{
         gender = spinner.getSelectedItem().toString();
         userManager.createUser(height.getText().toString(), weight.getText().toString(), birthyear.getText().toString(), municipality.getText().toString(), email.getText().toString(), name.getText().toString(), gender);
     }
+
+
 }
