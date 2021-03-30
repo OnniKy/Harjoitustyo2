@@ -84,20 +84,9 @@ public class RegisterActivity extends AppCompatActivity{
                     Toast.makeText(RegisterActivity.this, "Enter the values!", Toast.LENGTH_SHORT).show();
                 }
 
-
-
-
-
             }
         });
 
-
-
-
-
     }
-
-
-
 
 }
