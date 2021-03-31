@@ -18,7 +18,7 @@ public class JSONRequest {
 
     public void readJSON(String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
-        System.out.println("TÄHÄN TOIMII");
+
         if (json != null){
             try {
                 JSONArray jsonArray = new JSONArray(json);
