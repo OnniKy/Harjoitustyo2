@@ -24,6 +24,8 @@ public class JSONRequest {
         if (json != null){
             try {
                 JSONArray jsonArray = new JSONArray(json);
+                //JSONObject jsonObject = new JSONObject(json);
+                //System.out.println(jsonObject.getString("Dairy"));
                 for (int i = 0; i < jsonArray.length() ; i++){
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     System.out.println("********" + (i+1) + "*********");
