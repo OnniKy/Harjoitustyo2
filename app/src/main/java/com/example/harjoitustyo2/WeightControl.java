@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -20,6 +23,15 @@ public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
     private Context context;
+    File file = new File(this.getFilesDir(), FILE_NAME);
+    FileReader fileReader = null;
+    FileWriter fileWriter = null;
+    BufferedReader bufferedReader = null;
+    BufferedWriter bufferedWriter = null;
+    String response = null;
+    private JSONObject messageDetails;
+    private Boolean isUserExisting;
+
 
 
     @Override
@@ -30,23 +42,47 @@ public class WeightControl extends AppCompatActivity {
         context = WeightControl.this;
 
     }
+    private static final String FILE_NAME = "WeightData";
+
 
     public void writeFile(View v){
         String weight = addWeight.getText().toString();
-        try{JSONObject jsonObject = new JSONObject();
-            jsonObject.put("Weight", weight);
-            String userString = jsonObject.toString();
 
-            File file = new File(context.getFilesDir(),"WeightData.jsor");
-            FileWriter fileWriter = new FileWriter(file);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(userString);
-            bufferedWriter.close();
-        } catch (IOException e){
-            e.printStackTrace();
+        if(!file.exists()){
+            try{
+                file.createNewFile();
+                fileWriter = new FileWriter(file.getAbsoluteFile());
+                bufferedWriter = new BufferedWriter(fileWriter);
+                bufferedWriter.write("{}");
+                bufferedWriter.close();
+
+
+            }catch (IOException e){
+                e.printStackTrace();
+
+            }
+        }
+        //StringBuffer output = new StringBuffer();
+        try{
+            messageDetails = new JSONObject(response);
+            isUserExisting = messageDetails.has("Username");
+            if(!isUserExisting){
+                JSONArray newUserMessages = new JSONArray();
+                newUserMessages.put(weight);
+                messageDetails.put("Username", newUserMessages);
+            }
+            else{
+                JSONArray userMessages = (JSONArray) messageDetails.get("Username");
+                userMessages.put(weight);
+            }
         } catch (JSONException e){
             throw new RuntimeException(e);
         }
+
+
+
+
+
 
     }
 }
