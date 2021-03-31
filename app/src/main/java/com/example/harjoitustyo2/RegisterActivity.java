@@ -74,14 +74,15 @@ public class RegisterActivity extends AppCompatActivity{
 
     private void onClick(View v) {
 
-        if (email.getText().toString().length() > 1) {
+        RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
+
+        if (email.length() > 0 && name.length() > 0 && password.length() > 0 && municipality.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
             String nameValue = name.getText().toString();
             String usernameValue = email.getText().toString();
             String passwordValue = password.getText().toString();
             String municipalityValue = municipality.getText().toString();
             int heightValue = Integer.parseInt(height.getText().toString());
             int weightValue = Integer.parseInt(weight.getText().toString());
-            RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
             String genderValue = checkedBtn.getText().toString();
             int birthyearValue = Integer.parseInt(birthyear.getText().toString());
 
@@ -116,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity{
             }
 
         } else {
-            Toast.makeText(RegisterActivity.this, "Enter the values!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Fill all the fields!", Toast.LENGTH_SHORT).show();
         }
 
     }
