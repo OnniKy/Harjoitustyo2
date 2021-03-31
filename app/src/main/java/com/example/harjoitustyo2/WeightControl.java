@@ -23,7 +23,8 @@ public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
     private Context context;
-    private static final String FILE_NAME = "WeightData";
+    private static final String FILE_NAME = "WeightTiedosto";
+
     File file = new File(FILE_NAME);
     FileReader fileReader = null;
     FileWriter fileWriter = null;
@@ -73,33 +74,29 @@ public class WeightControl extends AppCompatActivity {
             }
             response = output.toString();
             bufferedReader.close();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
 
-        try{
+
             messageDetails = new JSONObject(response);
             isUserExisting = messageDetails.has("Username");
-            if(!isUserExisting){
+            if (!isUserExisting) {
                 JSONArray newUserMessages = new JSONArray();
                 newUserMessages.put(weight);
                 messageDetails.put("Username", newUserMessages);
-            }
-            else{
+            } else {
                 JSONArray userMessages = (JSONArray) messageDetails.get("Username");
                 userMessages.put(weight);
             }
-        } catch (JSONException e){
-            throw new RuntimeException(e);
-        }
-        try {
+
             fileWriter = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fileWriter);
             bw.write(messageDetails.toString());
             bw.close();
         } catch (IOException e){
             e.printStackTrace();
+        }catch (JSONException e) {
+            throw new RuntimeException(e);
         }
+
 
 
 
