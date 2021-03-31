@@ -39,11 +39,9 @@ public class MainActivity extends AppCompatActivity {
                 String usernameValue = username.getText().toString();
                 String passwordValue = password.getText().toString();
 
-
                 if (databaseHelper.isLoginValid(usernameValue, passwordValue)){
                     Intent intent = new Intent(MainActivity.this, MainPage.class);
                     startActivity(intent);
-
                     Toast.makeText(MainActivity.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
