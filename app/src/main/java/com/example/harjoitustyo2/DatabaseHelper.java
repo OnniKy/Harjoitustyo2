@@ -2,6 +2,7 @@ package com.example.harjoitustyo2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
@@ -22,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\t\"weight\"\tINTEGER,\n" +
             "\t\"gender\"\tTEXT,\n" +
             "\t\"birthyear\"\tINTEGER,\n" +
-            "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+            "\tPRIMARY KEY(\"id\")\n" +
             ")";
 
     public DatabaseHelper(Context context) {
@@ -36,11 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long l = statement.simpleQueryForLong();
         statement.close();
 
-        if (l == 1){
-            return true;
-        } else {
-            return false;
-        }
+        return l == 1;
     }
 
     public void insertUser(ContentValues contentValues){
@@ -56,4 +53,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    public boolean checkUsername(String username){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        try (Cursor cursor = myDB.rawQuery("Select * from user where username = ?", new String[]{username})) {
+
+            return cursor.getCount() > 0;
+        }
+
+    }
+
 }

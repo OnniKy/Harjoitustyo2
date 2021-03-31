@@ -46,63 +46,18 @@ public class RegisterActivity extends AppCompatActivity{
 
 
         // Get back to login page
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-
+        cancel.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
 
         // Registeration
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (email.getText().toString().length() > 1) {
-                    String nameValue = name.getText().toString();
-                    String usernameValue = email.getText().toString();
-                    String passwordValue = password.getText().toString();
-                    String municipalityValue = municipality.getText().toString();
-                    int heightValue = Integer.parseInt(height.getText().toString());
-                    int weightValue = Integer.parseInt(weight.getText().toString());
-                    RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
-                    String genderValue = checkedBtn.getText().toString();
-                    int birthyearValue = Integer.parseInt(birthyear.getText().toString());
-
-
-                    if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
-
-                        ContentValues contentValues = new ContentValues();
-                        contentValues.put("username", usernameValue);
-                        contentValues.put("name", nameValue);
-                        contentValues.put("password", passwordValue);
-                        contentValues.put("municipality", municipalityValue);
-                        contentValues.put("height", heightValue);
-                        contentValues.put("weight", weightValue);
-                        contentValues.put("gender", genderValue);
-                        contentValues.put("birthyear", birthyearValue);
-
-                        databaseHelper.insertUser(contentValues);
-                        Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(RegisterActivity.this, MainPage.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(RegisterActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Enter the values!", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+        register.setOnClickListener(this::onClick);
 
     }
 
+    // Required strong login password
     public boolean isValidPassword(final String password) {
 
         Pattern pattern;
@@ -117,4 +72,53 @@ public class RegisterActivity extends AppCompatActivity{
 
     }
 
+    private void onClick(View v) {
+
+        if (email.getText().toString().length() > 1) {
+            String nameValue = name.getText().toString();
+            String usernameValue = email.getText().toString();
+            String passwordValue = password.getText().toString();
+            String municipalityValue = municipality.getText().toString();
+            int heightValue = Integer.parseInt(height.getText().toString());
+            int weightValue = Integer.parseInt(weight.getText().toString());
+            RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
+            String genderValue = checkedBtn.getText().toString();
+            int birthyearValue = Integer.parseInt(birthyear.getText().toString());
+
+
+            if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
+
+                boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
+                if (!usercheckResult) {
+
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("username", usernameValue);
+                    contentValues.put("name", nameValue);
+                    contentValues.put("password", passwordValue);
+                    contentValues.put("municipality", municipalityValue);
+                    contentValues.put("height", heightValue);
+                    contentValues.put("weight", weightValue);
+                    contentValues.put("gender", genderValue);
+                    contentValues.put("birthyear", birthyearValue);
+
+                    databaseHelper.insertUser(contentValues);
+                    Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(RegisterActivity.this, MainPage.class);
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Username already exists. \nPlease sign in.", Toast.LENGTH_SHORT).show();
+                }
+
+
+            } else {
+                Toast.makeText(RegisterActivity.this, "Invalid password. Password must contain at least 12 letters including big letter, small letter and special character.", Toast.LENGTH_SHORT).show();
+            }
+
+        } else {
+            Toast.makeText(RegisterActivity.this, "Enter the values!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
