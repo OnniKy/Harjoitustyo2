@@ -42,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity{
         register = findViewById(R.id.register);
         cancel = findViewById(R.id.cancel);
 
+
         databaseHelper = new DatabaseHelper(this);
 
 
