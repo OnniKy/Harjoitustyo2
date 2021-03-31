@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Harjoitustyo2">
-        <activity android:name=".WeightControl"></activity>
+        <activity android:name=".ClimateControl"></activity>
+        <activity android:name=".WeightControl" />
         <activity android:name=".MainPage" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
