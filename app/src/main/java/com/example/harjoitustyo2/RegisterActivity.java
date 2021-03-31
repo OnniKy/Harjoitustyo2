@@ -86,6 +86,7 @@ public class RegisterActivity extends AppCompatActivity{
             String genderValue = checkedBtn.getText().toString();
             int birthyearValue = Integer.parseInt(birthyear.getText().toString());
 
+
             if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
 
                 boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
