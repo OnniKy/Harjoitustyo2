@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class ClimateControl extends AppCompatActivity {
     JSONRequest jsonRequest;
     Button submit;
     Context context;
     SeekBar beefBar, porkBar, fishBar, cheeseBar, dairyBar, riceBar, vegetablesBar, eggBar;
+    TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +25,23 @@ public class ClimateControl extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        beefBar = findViewById(R.id.seekBar1);
-        porkBar = findViewById(R.id.seekBar2);
-        fishBar = findViewById(R.id.seekBar3);
-        cheeseBar = findViewById(R.id.seekBar4);
-        dairyBar = findViewById(R.id.seekBar5);
-        riceBar = findViewById(R.id.seekBar6);
-        vegetablesBar = findViewById(R.id.seekBar7);
-        eggBar = findViewById(R.id.seekBar8);
+        beefBar = (SeekBar) findViewById(R.id.seekBar1);
+        porkBar = (SeekBar) findViewById(R.id.seekBar2);
+        fishBar = (SeekBar) findViewById(R.id.seekBar3);
+        cheeseBar = (SeekBar) findViewById(R.id.seekBar4);
+        dairyBar = (SeekBar) findViewById(R.id.seekBar5);
+        riceBar = (SeekBar) findViewById(R.id.seekBar6);
+        vegetablesBar = (SeekBar) findViewById(R.id.seekBar7);
+        eggBar = (SeekBar) findViewById(R.id.seekBar8);
+
+        beefView = (TextView) findViewById(R.id.beefView);
+        porkView = (TextView) findViewById(R.id.porkView);
+        fishView = (TextView) findViewById(R.id.fishView);
+        cheeseView = (TextView) findViewById(R.id.cheeseView);
+        dairyView = (TextView) findViewById(R.id.dairyView);
+        riceView = (TextView) findViewById(R.id.riceView);
+        vegetableView = (TextView) findViewById(R.id.vegetableView);
+        eggView = (TextView) findViewById(R.id.eggView);
 
         jsonRequest = new JSONRequest();
         submit = findViewById(R.id.button2);
@@ -50,4 +61,6 @@ public class ClimateControl extends AppCompatActivity {
         });
 
     }
+
+
 }

@@ -228,7 +228,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar7" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/beefView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -240,7 +240,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/porkView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -248,10 +248,10 @@
         android:layout_marginTop="20dp"
         android:text="X.XX kg/viikko"
         app:layout_constraintStart_toEndOf="@+id/seekBar2"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/beefView" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/fishView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -259,10 +259,10 @@
         android:layout_marginTop="20dp"
         android:text="X.XX kg/viikko"
         app:layout_constraintStart_toEndOf="@+id/seekBar3"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/porkView" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/cheeseView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -270,10 +270,10 @@
         android:layout_marginTop="20dp"
         android:text="X.XX kg/viikko"
         app:layout_constraintStart_toEndOf="@+id/seekBar4"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/fishView" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/dairyView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -282,10 +282,10 @@
         android:text="X.XX kg/viikko"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar5"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/cheeseView" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/riceView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -294,10 +294,10 @@
         android:text="X.XX kg/viikko"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar6"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/dairyView" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/eggView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -306,10 +306,10 @@
         android:text="X.XX kg/viikko"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar8"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/vegetableView" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/vegetableView"
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
@@ -318,7 +318,7 @@
         android:text="X.XX kg/viikko"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar7"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/riceView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
