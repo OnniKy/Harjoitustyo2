@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import java.io.IOException;
@@ -23,12 +24,15 @@ public class WeightControl extends AppCompatActivity {
         context = WeightControl.this;
     }
 
-    public void writeFile(){
-        OutputStreamWriter osw = null;
-        String weight = addWeight.getText().toString();
+    public void writeFile(View v){
+        OutputStreamWriter osw;
+        String s = "<credentials>\n" +
+                "<user>testusr</user>\n" +
+                "<password>testpwd</password>\n" +
+                "<credentials>";
         try{
             osw = new OutputStreamWriter(context.openFileOutput("WeightData.txt", Context.MODE_PRIVATE));
-            osw.write(weight);
+            osw.write(s);
             osw.close();
         } catch (IOException e){
             e.printStackTrace();
