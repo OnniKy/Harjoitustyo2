@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class MainPage extends AppCompatActivity {
 
-    EditText dailyWeight, dailyClimate;
+    EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
 
 
     @Override
@@ -18,13 +18,20 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         dailyWeight = findViewById(R.id.dailyWeight);
         dailyClimate = findViewById(R.id.dailyClimate);
+        bmiTextbox = findViewById(R.id.bmiTextbox);
+        changeInWeight = findViewById(R.id.changeInWeight);
+        changeInClimate = findViewById(R.id.changeInClimate);
         setTexts();
 
     }
 
     public void setTexts(){
-        dailyWeight.setText("Päivän painosi on 1000 Kg");
-        dailyClimate.setText("Nykyinen hiilikuormasi on 1 kuorma");
+        dailyWeight.setText("Your weight is 1000 Kg");
+        dailyClimate.setText("You produce 2 coals");
+        bmiTextbox.setText("Your bodymassindex is 2 ");
+        changeInWeight.setText("+2kg");
+        changeInClimate.setText("+5t");
+
 
     }
 
