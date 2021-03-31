@@ -15,25 +15,24 @@ import java.net.URL;
 
 
 public class JSONRequest {
+    JSONArray jsonArray;
+
+    public void JSONRequest(){
+
+        jsonArray = new JSONArray();
+    }
 
 
     public void readJSON(String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
-        System.out.println("JSON: " + json);
 
         if (json != null){
             try {
-                JSONArray jsonArray = new JSONArray(json);
-                //JSONObject jsonObject = new JSONObject(json);
-                //System.out.println(jsonObject.getString("Dairy"));
-                for (int i = 0; i < jsonArray.length() ; i++){
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    System.out.println("********" + (i+1) + "*********");
-                    System.out.println(jsonObject.getString("Dairy"));
-                    System.out.println(jsonObject.getString("Meat"));
-                    System.out.println(jsonObject.getString("Plant"));
-                    System.out.println(jsonObject.getString("Total"));
-                }
+                JSONObject jsonObject = new JSONObject(json);
+                System.out.println(jsonObject.getString("Dairy"));
+                System.out.println(jsonObject.getString("Meat"));
+                System.out.println(jsonObject.getString("Plant"));
+                System.out.println(jsonObject.getString("Total"));
 
             } catch (JSONException e) {
                 e.printStackTrace();
