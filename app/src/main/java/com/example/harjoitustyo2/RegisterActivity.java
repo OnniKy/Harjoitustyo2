@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity{
         databaseHelper = new DatabaseHelper(this);
 
 
-
+        // Get back to login page
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +55,8 @@ public class RegisterActivity extends AppCompatActivity{
 
         });
 
+
+        // Registeration
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity{
 
             }
         });
-
 
     }
 
