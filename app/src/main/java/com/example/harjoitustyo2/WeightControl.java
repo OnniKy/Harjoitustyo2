@@ -62,8 +62,20 @@ public class WeightControl extends AppCompatActivity {
 
             }
         }
-        StringBuffer output = new StringBuffer();
-        fileReader = new FileReader(file.getAbsoluteFile());
+        try {
+            StringBuffer output = new StringBuffer();
+
+            fileReader = new FileReader(file.getAbsoluteFile());
+            bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                output.append(line + "\n");
+            }
+            response = output.toString();
+            bufferedReader.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
 
         try{
             messageDetails = new JSONObject(response);
