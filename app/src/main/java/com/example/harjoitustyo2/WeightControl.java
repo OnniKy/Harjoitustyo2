@@ -23,9 +23,8 @@ public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
     private Context context;
-    private static final String FILE_NAME = "WeightTiedosto";
+    private static final String FILE_NAME = "WeightDailyData.jsor";
 
-    File file = new File(FILE_NAME);
     FileReader fileReader = null;
     FileWriter fileWriter = null;
     BufferedReader bufferedReader = null;
@@ -48,6 +47,7 @@ public class WeightControl extends AppCompatActivity {
 
     public void writeFile(View v){
         String weight = addWeight.getText().toString();
+        File file = new File(context.getFilesDir(), FILE_NAME);
 
         if(!file.exists()){
             try{
@@ -77,13 +77,13 @@ public class WeightControl extends AppCompatActivity {
 
 
             messageDetails = new JSONObject(response);
-            isUserExisting = messageDetails.has("Username");
+            isUserExisting = messageDetails.has("Weight");
             if (!isUserExisting) {
                 JSONArray newUserMessages = new JSONArray();
                 newUserMessages.put(weight);
-                messageDetails.put("Username", newUserMessages);
+                messageDetails.put("Weight", newUserMessages);
             } else {
-                JSONArray userMessages = (JSONArray) messageDetails.get("Username");
+                JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
                 userMessages.put(weight);
             }
 
