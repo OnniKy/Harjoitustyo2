@@ -13,6 +13,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class RegisterActivity extends AppCompatActivity{
 
@@ -67,23 +70,27 @@ public class RegisterActivity extends AppCompatActivity{
                     String genderValue = checkedBtn.getText().toString();
                     int birthyearValue = Integer.parseInt(birthyear.getText().toString());
 
-                    if (passwordValue.contains())
 
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put("username", usernameValue);
-                    contentValues.put("name", nameValue);
-                    contentValues.put("password", passwordValue);
-                    contentValues.put("municipality", municipalityValue);
-                    contentValues.put("height", heightValue);
-                    contentValues.put("weight", weightValue);
-                    contentValues.put("gender", genderValue);
-                    contentValues.put("birthyear", birthyearValue);
+                    if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
 
-                    databaseHelper.insertUser(contentValues);
-                    Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put("username", usernameValue);
+                        contentValues.put("name", nameValue);
+                        contentValues.put("password", passwordValue);
+                        contentValues.put("municipality", municipalityValue);
+                        contentValues.put("height", heightValue);
+                        contentValues.put("weight", weightValue);
+                        contentValues.put("gender", genderValue);
+                        contentValues.put("birthyear", birthyearValue);
 
-                    Intent intent = new Intent(RegisterActivity.this, MainPage.class);
-                    startActivity(intent);
+                        databaseHelper.insertUser(contentValues);
+                        Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(RegisterActivity.this, MainPage.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                    }
 
                 } else {
                     Toast.makeText(RegisterActivity.this, "Enter the values!", Toast.LENGTH_SHORT).show();
@@ -91,6 +98,21 @@ public class RegisterActivity extends AppCompatActivity{
 
             }
         });
+
+
+    }
+
+    public boolean isValidPassword(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$";
+
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
 
     }
 
