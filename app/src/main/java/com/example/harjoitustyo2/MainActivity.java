@@ -41,9 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
                 if (databaseHelper.isLoginValid(usernameValue, passwordValue)){
                     Intent intent = new Intent(MainActivity.this, MainPage.class);
                     startActivity(intent);
+
 
 
 
