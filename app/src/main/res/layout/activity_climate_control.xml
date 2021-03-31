@@ -236,7 +236,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="158dp"
-        android:text="X.XX kg/viikko"
+        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -248,7 +248,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="X.XX kg/viikko"
+        android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar2"
         app:layout_constraintTop_toBottomOf="@+id/beefView" />
 
@@ -259,7 +259,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="X.XX kg/viikko"
+        android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar3"
         app:layout_constraintTop_toBottomOf="@+id/porkView" />
 
@@ -270,7 +270,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="X.XX kg/viikko"
+        android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar4"
         app:layout_constraintTop_toBottomOf="@+id/fishView" />
 
@@ -281,7 +281,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="X.XX kg/viikko"
+        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar5"
         app:layout_constraintTop_toBottomOf="@+id/cheeseView" />
@@ -293,7 +293,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="X.XX kg/viikko"
+        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar6"
         app:layout_constraintTop_toBottomOf="@+id/dairyView" />
@@ -305,7 +305,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="X.XX kg/viikko"
+        android:text="pcs/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar8"
         app:layout_constraintTop_toBottomOf="@+id/vegetableView" />
@@ -317,7 +317,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="X.XX kg/viikko"
+        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar7"
         app:layout_constraintTop_toBottomOf="@+id/riceView" />

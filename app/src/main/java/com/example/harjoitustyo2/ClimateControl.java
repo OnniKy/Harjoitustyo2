@@ -35,6 +35,7 @@ public class ClimateControl extends AppCompatActivity {
     int vegetableAVG = 1;
     int eggAVG = 3;
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,17 +84,17 @@ public class ClimateControl extends AppCompatActivity {
         this.spinnerUtilize();
 
         submit.setOnClickListener(v -> {
-            String diet = "omnivore";
-            String beef = "2";
-            String fish = "1";
-            String pork = "5";
-            String dairy = "3";
-            String cheese = "5";
-            String rice = "2";
-            String egg = "0";
-            String salad = "4";
+            String diet = spinner.getSelectedItem().toString();
+            String beef = cutString(beefView.getText().toString());
+            String fish = cutString(fishView.getText().toString());
+            String pork = cutString(porkView.getText().toString());
+            String dairy = cutString(dairyView.getText().toString());
+            String cheese = cutString(cheeseView.getText().toString());
+            String rice = cutString(riceView.getText().toString());
+            String egg = cutString(eggView.getText().toString());
+            String salad = cutString(vegetableView.getText().toString());
 
-            
+            //System.out.println(diet + beef + fish + pork +  dairy + cheese + rice + egg + salad);
 
             jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         });
@@ -113,13 +114,16 @@ public class ClimateControl extends AppCompatActivity {
         seekbar.setMax(MAX);
         seekbar.setMin(MIN);
         seekbar.setProgress(AVG);
+        System.out.println("BEFORE: " + seekbar.getId());
         view.setText("" + AVG + " kg/week");
+
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                System.out.println(seekbar);
                 view.setText("" + progress + " kg/week");
-                
+
             }
 
             @Override
@@ -145,6 +149,11 @@ public class ClimateControl extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+    }
+
+    public String cutString(String value){
+        String [] strings = value.split(" ");
+        return strings[0];
     }
 
 
