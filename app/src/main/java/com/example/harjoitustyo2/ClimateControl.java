@@ -24,15 +24,15 @@ public class ClimateControl extends AppCompatActivity {
     TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
     Spinner spinner;
 
-    static int MAX = 15;
+    static int MAX = 500;
     static int MIN = 0;
-    int beefAVG = 4;
-    int porkAVG = 1;
-    int fishAVG = 6;
-    int cheeseAVG = 3;
-    int dairyAVG = 3;
-    int riceAVG = 1;
-    int vegetableAVG = 1;
+    int beefAVG = 40;
+    int porkAVG = 100;
+    int fishAVG = 60;
+    int cheeseAVG = 30;
+    int dairyAVG = 380;
+    int riceAVG = 9;
+    int vegetableAVG = 140;
     int eggAVG = 3;
 
 
@@ -94,8 +94,7 @@ public class ClimateControl extends AppCompatActivity {
             String egg = cutString(eggView.getText().toString());
             String salad = cutString(vegetableView.getText().toString());
 
-
-            System.out.println(diet + beef + fish + pork +  dairy + cheese + rice + egg + salad);
+            //TODO TEE NÄISTÄ KOKONAISLUKUJA
 
             jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         });
@@ -112,18 +111,27 @@ public class ClimateControl extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void seekbarUtilize(SeekBar seekbar, int AVG, TextView view){
-        seekbar.setMax(MAX);
-        seekbar.setMin(MIN);
-        seekbar.setProgress(AVG);
-        System.out.println("BEFORE: " + seekbar.getId());
-        view.setText("" + AVG + " kg/week");
-
+        if (eggBar.getId() == seekbar.getId()){
+            seekbar.setMax(10);
+            seekbar.setMin(0);
+            seekbar.setProgress(AVG);
+            view.setText("" + AVG + " pcs/week");
+        } else {
+            seekbar.setMax(MAX);
+            seekbar.setMin(MIN);
+            seekbar.setProgress(AVG);
+            view.setText("" + AVG/100.0 + " kg/week");
+        }
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                System.out.println(seekbar);
-                view.setText("" + progress + " kg/week");
+                if (eggBar.getId() == seekBar.getId()){
+                    view.setText("" + progress + " pcs/week");
+                }else {
+                    float value = (float) ((float)progress / 100.00);
+                    view.setText("" + value + " kg/week");
+                }
 
             }
 
