@@ -39,6 +39,10 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(MainPage.this, MainActivity.class);
         startActivity(intent);
     }
+    public void weigthControl(View v){
+        Intent intent = new Intent(MainPage.this, WeightControl.class);
+        startActivity(intent);
+    }
 
 
 }
