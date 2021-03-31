@@ -7,15 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity{
 
@@ -69,6 +66,8 @@ public class RegisterActivity extends AppCompatActivity{
                     RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
                     String genderValue = checkedBtn.getText().toString();
                     int birthyearValue = Integer.parseInt(birthyear.getText().toString());
+
+                    if (passwordValue.contains())
 
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("username", usernameValue);
