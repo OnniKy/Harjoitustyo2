@@ -115,7 +115,7 @@ public class ClimateControl extends AppCompatActivity {
             seekbar.setMax(10);
             seekbar.setMin(0);
             seekbar.setProgress(AVG);
-            view.setText("" + AVG + " pcs/week");
+            view.setText( AVG + " pcs/week");
         } else {
             seekbar.setMax(MAX);
             seekbar.setMin(MIN);
