@@ -9,7 +9,6 @@ public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
