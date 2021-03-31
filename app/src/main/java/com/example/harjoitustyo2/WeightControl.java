@@ -26,10 +26,13 @@ public class WeightControl extends AppCompatActivity {
 
     public void writeFile(View v){
         OutputStreamWriter osw;
-        String weight = addWeight.getText().toString();
+        String s = "<credentials>\n" +
+                "<user>testusr</user>\n" +
+                "<password>testpwd</password>\n" +
+                "<credentials>";
         try{
             osw = new OutputStreamWriter(context.openFileOutput("WeightData.txt", Context.MODE_PRIVATE));
-            osw.write(weight);
+            osw.write(s);
             osw.close();
         } catch (IOException e){
             e.printStackTrace();
