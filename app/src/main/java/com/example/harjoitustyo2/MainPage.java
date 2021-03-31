@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class MainPage extends AppCompatActivity {
 
     EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
+    Button button;
 
 
     @Override
@@ -21,7 +23,20 @@ public class MainPage extends AppCompatActivity {
         bmiTextbox = findViewById(R.id.bmiTextbox);
         changeInWeight = findViewById(R.id.changeInWeight);
         changeInClimate = findViewById(R.id.changeInClimate);
+        button = findViewById(R.id.toClimateControl);
+
+
         setTexts();
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainPage.this, ClimateControl.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
@@ -43,6 +58,7 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(MainPage.this, WeightControl.class);
         startActivity(intent);
     }
+
 
 
 }
