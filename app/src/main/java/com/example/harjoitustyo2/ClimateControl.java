@@ -1,39 +1,62 @@
 package com.example.harjoitustyo2;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class ClimateControl extends AppCompatActivity {
     JSONRequest jsonRequest;
-    Button submit;
+    Button submit, cancel;
     Context context;
-    SeekBar beefBar, porkBar, fishBar, cheeseBar, dairyBar, riceBar, vegetablesBar, eggBar;
+    SeekBar beefBar, porkBar, fishBar, cheeseBar, dairyBar, riceBar, vegetableBar, eggBar;
     TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
+    Spinner spinner;
 
+    static int MAX = 15;
+    static int MIN = 0;
+    int beefAVG = 4;
+    int porkAVG = 1;
+    int fishAVG = 6;
+    int cheeseAVG = 3;
+    int dairyAVG = 3;
+    int riceAVG = 1;
+    int vegetableAVG = 1;
+    int eggAVG = 3;
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_control);
         context = ClimateControl.this;
 
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        // Utilizing seekbars
         beefBar = (SeekBar) findViewById(R.id.seekBar1);
         porkBar = (SeekBar) findViewById(R.id.seekBar2);
         fishBar = (SeekBar) findViewById(R.id.seekBar3);
         cheeseBar = (SeekBar) findViewById(R.id.seekBar4);
         dairyBar = (SeekBar) findViewById(R.id.seekBar5);
         riceBar = (SeekBar) findViewById(R.id.seekBar6);
-        vegetablesBar = (SeekBar) findViewById(R.id.seekBar7);
+        vegetableBar = (SeekBar) findViewById(R.id.seekBar7);
         eggBar = (SeekBar) findViewById(R.id.seekBar8);
 
+        // Utilizing textviews
         beefView = (TextView) findViewById(R.id.beefView);
         porkView = (TextView) findViewById(R.id.porkView);
         fishView = (TextView) findViewById(R.id.fishView);
@@ -44,7 +67,20 @@ public class ClimateControl extends AppCompatActivity {
         eggView = (TextView) findViewById(R.id.eggView);
 
         jsonRequest = new JSONRequest();
-        submit = findViewById(R.id.button2);
+        submit = findViewById(R.id.submit);
+        cancel = findViewById(R.id.cancel1);
+        spinner = (Spinner) findViewById(R.id.spinner1);
+
+        this.seekbarUtilize(beefBar, beefAVG, beefView);
+        this.seekbarUtilize(porkBar, porkAVG, porkView);
+        this.seekbarUtilize(fishBar, fishAVG, fishView);
+        this.seekbarUtilize(cheeseBar, cheeseAVG, cheeseView);
+        this.seekbarUtilize(dairyBar, dairyAVG, dairyView);
+        this.seekbarUtilize(riceBar, riceAVG, riceView);
+        this.seekbarUtilize(vegetableBar, vegetableAVG, vegetableView);
+        this.seekbarUtilize(eggBar, eggAVG, eggView);
+
+        this.spinnerUtilize();
 
         submit.setOnClickListener(v -> {
             String diet = "omnivore";
@@ -57,10 +93,65 @@ public class ClimateControl extends AppCompatActivity {
             String egg = "0";
             String salad = "4";
 
+            
+
             jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         });
 
+
+        cancel.setOnClickListener(v -> {
+            Intent intent = new Intent(ClimateControl.this, MainPage.class);
+            startActivity(intent);
+
+        });             
+
+
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void seekbarUtilize(SeekBar seekbar, int AVG, TextView view){
+        seekbar.setMax(MAX);
+        seekbar.setMin(MIN);
+        seekbar.setProgress(AVG);
+        view.setText("" + AVG + " kg/week");
+
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                view.setText("" + progress + " kg/week");
+                
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+    }
+
+    public void spinnerUtilize(){
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("omnivore");
+        list.add("vegan");
+        list.add("vegetarian");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+    }
+
+
+
+
+
+
 
 
 }

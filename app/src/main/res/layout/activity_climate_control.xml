@@ -8,7 +8,7 @@
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="127dp"
+        android:layout_width="150dp"
         android:layout_height="32dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
@@ -137,15 +137,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/submit"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="32dp"
+        android:text="Submit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:backgroundTint="#8BE1BF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.923" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <SeekBar
         android:id="@+id/seekBar1"
@@ -319,6 +321,19 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar7"
         app:layout_constraintTop_toBottomOf="@+id/riceView" />
+
+    <Button
+        android:id="@+id/cancel1"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="32dp"
+        android:text="Cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:backgroundTint="#707A76"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
