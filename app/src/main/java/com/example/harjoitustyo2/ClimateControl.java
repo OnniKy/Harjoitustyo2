@@ -107,10 +107,10 @@ public class ClimateControl extends AppCompatActivity {
             JSONObject jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
 
             try {
-                dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg CO2/year");
-                meatEmissionView.setText("Meat: " + modifyJSON(jsonObject.getString("Meat")) + "kg CO2/year");
-                plantEmissionView.setText("Plant: " + modifyJSON(jsonObject.getString("Plant")) + "kg CO2/year");
-                totalEmissionView.setText("Total: " + modifyJSON(jsonObject.getString("Total")) + "kg CO2/year");
+                dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg");
+                meatEmissionView.setText("Meat: " + modifyJSON(jsonObject.getString("Meat")) + "kg");
+                plantEmissionView.setText("Plant: " + modifyJSON(jsonObject.getString("Plant")) + "kg");
+                totalEmissionView.setText("Total: " + modifyJSON(jsonObject.getString("Total")) + "kg");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -128,12 +128,27 @@ public class ClimateControl extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void seekbarUtilize(SeekBar seekbar, int AVG, TextView view){
-        if (eggBar.getId() == seekbar.getId()){
+        if (eggBar.getId() == seekbar.getId()){ //TODO Teeppäs tämä
             seekbar.setMax(10);
             seekbar.setMin(0);
             seekbar.setProgress(AVG);
             view.setText( AVG + " pcs/week");
-        } else {
+        } else if (beefBar.getId() == seekbar.getId()) {
+            seekbar.setMax(10);
+            seekbar.setMin(0);
+            seekbar.setProgress(AVG);
+            view.setText(AVG/100.0 + " kg/week");
+        }else if(eggBar.getId() == seekbar.getId()){
+            seekbar.setMax(MAX);
+            seekbar.setMin(MIN);
+            seekbar.setProgress(AVG);
+            view.setText("" + AVG/100.0 + " kg/week");
+        }else if(eggBar.getId() == seekbar.getId()){
+            seekbar.setMax(MAX);
+            seekbar.setMin(MIN);
+            seekbar.setProgress(AVG);
+            view.setText("" + AVG/100.0 + " kg/week");
+        }else if(eggBar.getId() == seekbar.getId()){
             seekbar.setMax(MAX);
             seekbar.setMin(MIN);
             seekbar.setProgress(AVG);
@@ -183,8 +198,6 @@ public class ClimateControl extends AppCompatActivity {
         int v = round(d);
 
         return String.valueOf(v);
-
-
     }
 
     private int round(double d){
@@ -204,12 +217,6 @@ public class ClimateControl extends AppCompatActivity {
 
         return String.valueOf(v);
     }
-
-
-
-
-
-
 
 
 }
