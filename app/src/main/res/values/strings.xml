@@ -9,4 +9,21 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="total">Total:</string>
+    <string name="the_selected_starting_value_refers_to_the_average_of_finns">The selected starting value refers to the average of Finns.</string>
+    <string name="pork_and_poultry">Pork and poultry</string>
+    <string name="beef">Beef</string>
+    <string name="fish_and_seafood">Fish and seafood</string>
+    <string name="cheese">Cheese</string>
+    <string name="dairy">Dairy</string>
+    <string name="rice">Rice</string>
+    <string name="vegetables_at_winter">Vegetables at winter</string>
+    <string name="eggs">Eggs</string>
+    <string name="diet">Diet</string>
+    <string name="submit">Submit</string>
+    <string name="meat">Meat:</string>
+    <string name="plant">Plant:</string>
+    <string name="dairy_2">Dairy:</string>
+    <string name="food_consumption_habits_calculates_estimated_co2_emission_per_year">Food consumption habits - calculates estimated CO2 emission per year</string>
+    <string name="back">Back</string>
 </resources>

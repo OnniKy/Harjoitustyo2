@@ -13,7 +13,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"
-        android:text="Total:"
+        android:text="@string/total"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         android:layout_width="371dp"
         android:layout_height="28dp"
         android:layout_marginTop="16dp"
-        android:text="The selected starting value refers to the average of Finns."
+        android:text="@string/the_selected_starting_value_refers_to_the_average_of_finns"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Beef"
+        android:text="@string/beef"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -61,7 +61,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Pork and poultry"
+        android:text="@string/pork_and_poultry"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -73,7 +73,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Fish and seafood"
+        android:text="@string/fish_and_seafood"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -85,7 +85,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Cheese"
+        android:text="@string/cheese"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -97,7 +97,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Dairy"
+        android:text="@string/dairy"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -109,7 +109,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Rice"
+        android:text="@string/rice"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -121,7 +121,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Vegetables at winter"
+        android:text="@string/vegetables_at_winter"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -133,7 +133,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Eggs"
+        android:text="@string/eggs"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -145,7 +145,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
-        android:text="Diet"
+        android:text="@string/diet"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -157,11 +157,12 @@
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="8dp"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#8BE1BF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancel1" />
 
     <SeekBar
         android:id="@+id/seekBar1"
@@ -242,7 +243,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar1"
         app:layout_constraintTop_toBottomOf="@+id/spinner1" />
@@ -254,7 +254,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar2"
         app:layout_constraintTop_toBottomOf="@+id/beefView" />
 
@@ -265,7 +264,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar3"
         app:layout_constraintTop_toBottomOf="@+id/porkView" />
 
@@ -276,7 +274,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar4"
         app:layout_constraintTop_toBottomOf="@+id/fishView" />
 
@@ -287,7 +284,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar5"
         app:layout_constraintTop_toBottomOf="@+id/cheeseView" />
@@ -299,7 +295,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar6"
         app:layout_constraintTop_toBottomOf="@+id/dairyView" />
@@ -311,7 +306,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="pcs/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar8"
         app:layout_constraintTop_toBottomOf="@+id/vegetableView" />
@@ -323,7 +317,6 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
-        android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar7"
         app:layout_constraintTop_toBottomOf="@+id/riceView" />
@@ -335,7 +328,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="8dp"
-        android:text="Back"
+        android:text="@string/back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#707A76"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -347,7 +340,7 @@
         android:layout_height="51dp"
         android:background="#8BE1BF"
         android:gravity="center"
-        android:text="Food consumption habits - calculates estimated CO2 emission per year"
+        android:text="@string/food_consumption_habits_calculates_estimated_co2_emission_per_year"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FAF7F7"
         android:textIsSelectable="false"
@@ -362,7 +355,7 @@
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
-        android:text="Dairy: "
+        android:text="@string/dairy_2"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/meatEmission"
@@ -374,7 +367,7 @@
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
-        android:text="Meat:"
+        android:text="@string/meat"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -386,7 +379,7 @@
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
-        android:text="Plant:"
+        android:text="@string/plant"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/meatEmission"
