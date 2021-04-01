@@ -129,31 +129,17 @@ public class ClimateControl extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void seekbarUtilize(SeekBar seekbar, int AVG, TextView view){
         if (eggBar.getId() == seekbar.getId()){ //TODO Teeppäs tämä
-            seekbar.setMax(10);
-            seekbar.setMin(0);
+            seekbar.setMax(30);
+            seekbar.setMin(MIN);
             seekbar.setProgress(AVG);
             view.setText( AVG + " pcs/week");
-        } else if (beefBar.getId() == seekbar.getId()) {
-            seekbar.setMax(10);
-            seekbar.setMin(0);
+        } else {
+            seekbar.setMax(AVG*2);
+            seekbar.setMin(MIN);
             seekbar.setProgress(AVG);
             view.setText(AVG/100.0 + " kg/week");
-        }else if(eggBar.getId() == seekbar.getId()){
-            seekbar.setMax(MAX);
-            seekbar.setMin(MIN);
-            seekbar.setProgress(AVG);
-            view.setText("" + AVG/100.0 + " kg/week");
-        }else if(eggBar.getId() == seekbar.getId()){
-            seekbar.setMax(MAX);
-            seekbar.setMin(MIN);
-            seekbar.setProgress(AVG);
-            view.setText("" + AVG/100.0 + " kg/week");
-        }else if(eggBar.getId() == seekbar.getId()){
-            seekbar.setMax(MAX);
-            seekbar.setMin(MIN);
-            seekbar.setProgress(AVG);
-            view.setText("" + AVG/100.0 + " kg/week");
         }
+
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -181,12 +167,12 @@ public class ClimateControl extends AppCompatActivity {
     }
 
     public void spinnerUtilize(){
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         list.add("omnivore");
         list.add("vegan");
         list.add("vegetarian");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -194,7 +180,7 @@ public class ClimateControl extends AppCompatActivity {
 
     private String cutString(String value){
         String [] strings = value.split(" ");
-        Double d = Double.parseDouble(strings[0]);
+        double d = Double.parseDouble(strings[0]);
         int v = round(d);
 
         return String.valueOf(v);
@@ -212,7 +198,7 @@ public class ClimateControl extends AppCompatActivity {
     }
 
     private String modifyJSON(String value){
-        Double d = Double.parseDouble(value);
+        double d = Double.parseDouble(value);
         int v = round(d);
 
         return String.valueOf(v);
