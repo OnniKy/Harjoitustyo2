@@ -14,6 +14,9 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class ClimateControl extends AppCompatActivity {
@@ -22,6 +25,7 @@ public class ClimateControl extends AppCompatActivity {
     Context context;
     SeekBar beefBar, porkBar, fishBar, cheeseBar, dairyBar, riceBar, vegetableBar, eggBar;
     TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
+    TextView dairyEmissionView, meatEmissionView, plantEmissionView, totalEmissionView;
     Spinner spinner;
 
     static int MAX = 500;
@@ -66,6 +70,10 @@ public class ClimateControl extends AppCompatActivity {
         riceView = (TextView) findViewById(R.id.riceView);
         vegetableView = (TextView) findViewById(R.id.vegetableView);
         eggView = (TextView) findViewById(R.id.eggView);
+        dairyEmissionView = (TextView) findViewById(R.id.dairyEmission);
+        meatEmissionView = (TextView) findViewById(R.id.meatEmission);
+        plantEmissionView = (TextView) findViewById(R.id.plantEmission);
+        totalEmissionView = (TextView) findViewById(R.id.totalEmission);
 
         jsonRequest = new JSONRequest();
         submit = findViewById(R.id.submit);
@@ -96,7 +104,16 @@ public class ClimateControl extends AppCompatActivity {
 
             //TODO TEE NÄISTÄ KOKONAISLUKUJA
 
-            jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
+            JSONObject jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
+
+            try {
+                dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg CO2/year");
+                meatEmissionView.setText("Meat: " + modifyJSON(jsonObject.getString("Meat")) + "kg CO2/year");
+                plantEmissionView.setText("Plant: " + modifyJSON(jsonObject.getString("Plant")) + "kg CO2/year");
+                totalEmissionView.setText("Total: " + modifyJSON(jsonObject.getString("Total")) + "kg CO2/year");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         });
 
 
@@ -160,9 +177,32 @@ public class ClimateControl extends AppCompatActivity {
 
     }
 
-    public String cutString(String value){
+    private String cutString(String value){
         String [] strings = value.split(" ");
-        return strings[0];
+        Double d = Double.parseDouble(strings[0]);
+        int v = round(d);
+
+        return String.valueOf(v);
+
+
+    }
+
+    private int round(double d){
+        double dAbs = Math.abs(d);
+        int i = (int) dAbs;
+        double result = dAbs - (double) i;
+        if(result<0.5){
+            return d<0 ? -i : i;
+        }else{
+            return d<0 ? -(i+1) : i+1;
+        }
+    }
+
+    private String modifyJSON(String value){
+        Double d = Double.parseDouble(value);
+        int v = round(d);
+
+        return String.valueOf(v);
     }
 
 

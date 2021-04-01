@@ -7,14 +7,28 @@
     android:background="#D8D2D2"
     tools:context=".ClimateControl">
 
+    <TextView
+        android:id="@+id/totalEmission"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:text="Total:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meatEmission" />
+
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="150dp"
         android:layout_height="32dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
@@ -34,7 +48,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Beef"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +60,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Pork and poultry"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +72,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Fish and seafood"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +84,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Cheese"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +96,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Dairy"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +108,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Rice"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +120,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Vegetables at winter"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +132,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Eggs"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +144,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="Diet"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,7 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Submit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#8BE1BF"
@@ -153,89 +167,81 @@
         android:id="@+id/seekBar1"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     <SeekBar
         android:id="@+id/seekBar2"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar1" />
 
     <SeekBar
         android:id="@+id/seekBar3"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
 
     <SeekBar
         android:id="@+id/seekBar4"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
 
     <SeekBar
         android:id="@+id/seekBar5"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar4" />
 
     <SeekBar
         android:id="@+id/seekBar6"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
 
     <SeekBar
         android:id="@+id/seekBar7"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar6" />
 
     <SeekBar
         android:id="@+id/seekBar8"
         android:layout_width="127dp"
         android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar7" />
 
     <TextView
         android:id="@+id/beefView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar1"
@@ -243,44 +249,44 @@
 
     <TextView
         android:id="@+id/porkView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar2"
         app:layout_constraintTop_toBottomOf="@+id/beefView" />
 
     <TextView
         android:id="@+id/fishView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar3"
         app:layout_constraintTop_toBottomOf="@+id/porkView" />
 
     <TextView
         android:id="@+id/cheeseView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="kg/week"
         app:layout_constraintStart_toEndOf="@+id/seekBar4"
         app:layout_constraintTop_toBottomOf="@+id/fishView" />
 
     <TextView
         android:id="@+id/dairyView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar5"
@@ -288,11 +294,11 @@
 
     <TextView
         android:id="@+id/riceView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar6"
@@ -300,11 +306,11 @@
 
     <TextView
         android:id="@+id/eggView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="pcs/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar8"
@@ -312,11 +318,11 @@
 
     <TextView
         android:id="@+id/vegetableView"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="kg/week"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toEndOf="@+id/seekBar7"
@@ -328,7 +334,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Cancel"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#707A76"
@@ -351,6 +357,41 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dairyEmission"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Dairy: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/meatEmission"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/meatEmission"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Meat:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar8" />
+
+    <TextView
+        android:id="@+id/plantEmission"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Plant:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toEndOf="@+id/meatEmission"
+        app:layout_constraintTop_toBottomOf="@+id/eggView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
