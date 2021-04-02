@@ -13,7 +13,7 @@ public class MainPage extends AppCompatActivity {
 
     EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
     TextView totalEmission;
-    Button button;
+    Button button, button2;
     String emission = "____";
 
 

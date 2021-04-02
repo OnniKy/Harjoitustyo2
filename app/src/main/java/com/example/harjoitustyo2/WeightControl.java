@@ -14,10 +14,12 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.ParseException;
 
 public class WeightControl extends AppCompatActivity {
 
@@ -96,13 +98,28 @@ public class WeightControl extends AppCompatActivity {
         }catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void lue(View v) throws Exception
+    {
+        File file = new File(context.getFilesDir(), FILE_NAME);
+        fileReader = new FileReader(file.getAbsoluteFile());
+        bufferedReader = new BufferedReader(fileReader);
+        String line = "";
+        while ((line = bufferedReader.readLine()) != null) {
+            String line2=line.toString();
+            String last5 = line2.substring(line2.length() - 7);
+            String first2 = last5.substring(0, 4);
+            if (first2.substring((first2.length() - 2)).contains(",")){
+                System.out.println(first2);
+            }
+            else{
+                String first2real = first2.substring((first2.length() - 2));
+                System.out.println(first2real);
+            }
 
-
-
-
-
-
-
+        }
+        bufferedReader.close();
 
     }
+
 }
