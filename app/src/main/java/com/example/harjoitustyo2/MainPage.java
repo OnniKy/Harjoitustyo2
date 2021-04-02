@@ -32,12 +32,9 @@ public class MainPage extends AppCompatActivity {
 
         setTexts();
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainPage.this, ClimateControl.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainPage.this, ClimateControl.class);
+            startActivity(intent);
         });
 
 
