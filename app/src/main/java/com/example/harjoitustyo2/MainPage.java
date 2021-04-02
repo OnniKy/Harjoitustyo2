@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainPage extends AppCompatActivity {
 
     EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
+    TextView totalEmission;
     Button button;
+    String emission = "____";
 
 
     @Override
@@ -24,6 +27,7 @@ public class MainPage extends AppCompatActivity {
         changeInWeight = findViewById(R.id.changeInWeight);
         changeInClimate = findViewById(R.id.changeInClimate);
         button = findViewById(R.id.toClimateControl);
+        totalEmission = findViewById(R.id.textView14);
 
 
         setTexts();
@@ -46,6 +50,11 @@ public class MainPage extends AppCompatActivity {
         bmiTextbox.setText("Your bodymassindex is 2 ");
         changeInWeight.setText("+2kg");
         changeInClimate.setText("+5t");
+        emission = getIntent().getStringExtra("Total");
+        if (emission == null){
+            emission = "___";
+        }
+        totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
 
 
     }

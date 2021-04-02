@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 public class ClimateControl extends AppCompatActivity {
     JSONRequest jsonRequest;
+    JSONObject jsonObject;
     Button submit, cancel;
     Context context;
     SeekBar beefBar, porkBar, fishBar, cheeseBar, dairyBar, riceBar, vegetableBar, eggBar;
@@ -104,7 +105,7 @@ public class ClimateControl extends AppCompatActivity {
 
             //TODO TEE NÄISTÄ KOKONAISLUKUJA
 
-            JSONObject jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
+            jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
 
             try {
                 dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg");
@@ -119,6 +120,11 @@ public class ClimateControl extends AppCompatActivity {
 
         cancel.setOnClickListener(v -> {
             Intent intent = new Intent(ClimateControl.this, MainPage.class);
+            try {
+                intent.putExtra("Total", modifyJSON(jsonObject.getString("Total")));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             startActivity(intent);
 
         });             
