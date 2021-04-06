@@ -106,8 +106,12 @@ public class WeightControl extends AppCompatActivity {
         bufferedReader = new BufferedReader(fileReader);
         String line = "";
         while ((line = bufferedReader.readLine()) != null) {
-            String [] splitline = line.split(",");
-            System.out.println(splitline[1]);
+            String last5 = line.substring(line.length()-(line.length()-11));
+            String first = last5.substring(0, last5.length()-2);
+            String [] splitline = first.split(",");
+            String splitcut1 = splitline[splitline.length - 1].substring(0,splitline[splitline.length - 1].length()-1);
+            String splitcut2 = splitcut1.substring(splitcut1.length()-(splitcut1.length()-1));
+            System.out.println(splitcut2);
 
 
         }
