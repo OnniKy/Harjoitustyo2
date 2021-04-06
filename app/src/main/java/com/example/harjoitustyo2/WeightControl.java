@@ -25,7 +25,7 @@ public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
     private Context context;
-    private static final String FILE_NAME = "WeightDailyData.jsor";
+    private static final String FILE_NAME = "DailyWeightData.jsor";
 
     FileReader fileReader = null;
     FileWriter fileWriter = null;
@@ -106,18 +106,11 @@ public class WeightControl extends AppCompatActivity {
         bufferedReader = new BufferedReader(fileReader);
         String line = "";
         while ((line = bufferedReader.readLine()) != null) {
-            String line2=line.toString();
-            String last5 = line2.substring(line2.length() - 7);
-            String first2 = last5.substring(0, 4);
-            if (first2.substring((first2.length() - 2)).contains(",")){
-                System.out.println(first2);
-            }
-            else{
-                String first2real = first2.substring((first2.length() - 2));
-                System.out.println(first2real);
-            }
+            String [] splitline = line.split(",");
+            System.out.println(splitline[1]);
 
         }
+
         bufferedReader.close();
 
     }
