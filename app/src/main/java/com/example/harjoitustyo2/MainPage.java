@@ -19,7 +19,8 @@ public class MainPage extends AppCompatActivity {
     String emission = "____";
     String weight;
     Context context;
-    String user;
+    String username;
+    User user;
 
 
 
@@ -47,10 +48,18 @@ public class MainPage extends AppCompatActivity {
             startActivity(intent);
         });
 
-        user = getIntent().getStringExtra("Username");
-        System.out.println("FIRST: " + user);
+        // TODO MITÄ VITTUA
+        /*
+        user = new User();
+        if (user.getUsername() == null) {
+            username = getIntent().getStringExtra("Username");
+            user = new User(username);
+        }
+        System.out.println("FIRST: " + user.getUsername());
+
+         */
         try {
-            weight = jsonRequest.readLog(context, user); //TODO
+            weight = jsonRequest.readLog(context, user.getUsername()); //TODO
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,7 +88,7 @@ public class MainPage extends AppCompatActivity {
     }
     public void weigthControl(View v){
         Intent intent = new Intent(MainPage.this, WeightControl.class);
-        intent.putExtra("Username", user);
+        intent.putExtra("Username", user.getUsername());
         startActivity(intent);
     }
 

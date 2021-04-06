@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 String passwordValue = password.getText().toString();
 
                 if (databaseHelper.isLoginValid(usernameValue, passwordValue)){
+                    User user = new User(usernameValue);
                     Intent intent = new Intent(MainActivity.this, MainPage.class);
                     intent.putExtra("Username", usernameValue);
                     startActivity(intent);
