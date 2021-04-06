@@ -29,7 +29,6 @@ public class ClimateControl extends AppCompatActivity {
     TextView dairyEmissionView, meatEmissionView, plantEmissionView, totalEmissionView;
     Spinner spinner;
 
-    static int MAX = 500;
     static int MIN = 0;
     int beefAVG = 40;
     int porkAVG = 100;
@@ -47,7 +46,6 @@ public class ClimateControl extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_control);
         context = ClimateControl.this;
-
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -103,8 +101,6 @@ public class ClimateControl extends AppCompatActivity {
             String egg = cutString(eggView.getText().toString());
             String salad = cutString(vegetableView.getText().toString());
 
-            //TODO TEE NÄISTÄ KOKONAISLUKUJA
-
             jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
 
             try {
@@ -127,14 +123,12 @@ public class ClimateControl extends AppCompatActivity {
             }
             startActivity(intent);
 
-        });             
-
-
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void seekbarUtilize(SeekBar seekbar, int AVG, TextView view){
-        if (eggBar.getId() == seekbar.getId()){ //TODO Teeppäs tämä
+        if (eggBar.getId() == seekbar.getId()){
             seekbar.setMax(30);
             seekbar.setMin(MIN);
             seekbar.setProgress(AVG);
@@ -156,21 +150,17 @@ public class ClimateControl extends AppCompatActivity {
                     float value = (float) ((float)progress / 100.00);
                     view.setText("" + value + " kg/week");
                 }
-
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
     }
+
 
     public void spinnerUtilize(){
         ArrayList<String> list = new ArrayList<>();
@@ -181,8 +171,8 @@ public class ClimateControl extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
     }
+
 
     private String cutString(String value){
         String [] strings = value.split(" ");
@@ -191,6 +181,7 @@ public class ClimateControl extends AppCompatActivity {
 
         return String.valueOf(v);
     }
+
 
     private int round(double d){
         double dAbs = Math.abs(d);
@@ -203,12 +194,11 @@ public class ClimateControl extends AppCompatActivity {
         }
     }
 
-    private String modifyJSON(String value){
+
+    private String modifyJSON(String value) {
         double d = Double.parseDouble(value);
         int v = round(d);
 
         return String.valueOf(v);
     }
-
-
 }

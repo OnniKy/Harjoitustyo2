@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class MainPage extends AppCompatActivity {
 
+    JSONRequest jsonRequest;
     EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
     TextView totalEmission;
     Button button, button2;
@@ -29,6 +30,8 @@ public class MainPage extends AppCompatActivity {
         button = findViewById(R.id.toClimateControl);
         totalEmission = findViewById(R.id.textView14);
 
+        jsonRequest = new JSONRequest();
+
 
 
         setTexts();
@@ -37,6 +40,8 @@ public class MainPage extends AppCompatActivity {
             Intent intent = new Intent(MainPage.this, ClimateControl.class);
             startActivity(intent);
         });
+
+        //jsonRequest.sunmetodi(); //TODO
 
 
 
