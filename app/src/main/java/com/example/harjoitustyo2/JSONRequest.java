@@ -20,13 +20,13 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-
 public class JSONRequest {
     JSONArray jsonArray;
     FileWriter fileWriter;
     BufferedWriter bufferedWriter;
     BufferedReader bufferedReader;
     FileReader fileReader;
+    JSONFileControl jsonFileControl;
 
     String response;
     private JSONObject messageDetails;
@@ -36,16 +36,19 @@ public class JSONRequest {
     public void JSONRequest(){
 
         jsonArray = new JSONArray();
+
     }
 
 
-    public JSONObject readJSON(String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad){
+    public JSONObject readJSON(String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         JSONObject jsonObject = null;
+        jsonFileControl = new JSONFileControl();
 
-        if (json != null){
+        if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
+                jsonFileControl.writeJSONFile(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -54,7 +57,10 @@ public class JSONRequest {
             }
         }
         return jsonObject;
+
     }
+
+
 
 
     // Uses Climate Diet API

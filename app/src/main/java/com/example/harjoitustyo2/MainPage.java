@@ -8,19 +8,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import org.json.JSONObject;
 
 public class MainPage extends AppCompatActivity {
 
     JSONRequest jsonRequest;
+    JSONFileControl jsonFileControl;
     EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
     TextView totalEmission;
-    Button button;
+    Button button, button2;
+    ImageButton logOut;
     String emission = "____";
     String weight;
     Context context;
-    String username;
-    User user;
+    final public static String username = "tomi";
+    JSONObject jsonObjectClimate;
 
 
 
@@ -34,36 +39,46 @@ public class MainPage extends AppCompatActivity {
         changeInWeight = findViewById(R.id.changeInWeight);
         changeInClimate = findViewById(R.id.changeInClimate);
         button = findViewById(R.id.toClimateControl);
+        button2 = findViewById(R.id.button);
+        logOut = findViewById(R.id.imageButton);
+
         totalEmission = findViewById(R.id.textView14);
         context = MainPage.this;
 
         jsonRequest = new JSONRequest();
+        jsonFileControl = new JSONFileControl();
 
 
+        try {
+            weight = jsonRequest.readLog(context, username); //TODO
+            jsonObjectClimate = jsonFileControl.readJSONFile(context, "tomitomi");
+            dailyWeight.setText(weight);
+            emission = jsonFileControl.modifyJSON(jsonObjectClimate.getString("Total"));
+            totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         setTexts();
 
+        // Buttons OnClickListeners
         button.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, ClimateControl.class);
             startActivity(intent);
         });
 
-        // TODO MITÄ VITTUA
-        /*
-        user = new User();
-        if (user.getUsername() == null) {
-            username = getIntent().getStringExtra("Username");
-            user = new User(username);
-        }
-        System.out.println("FIRST: " + user.getUsername());
+        button2.setOnClickListener(v -> {
+            Intent intent = new Intent(MainPage.this, WeightControl.class);
+            intent.putExtra("Username", username);
+            startActivity(intent);
+        });
 
-         */
-        try {
-            weight = jsonRequest.readLog(context, user.getUsername()); //TODO
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        dailyWeight.setText(weight);
+        logOut.setOnClickListener(v -> {
+            Intent intent = new Intent(MainPage.this, MainActivity.class);
+            startActivity(intent);
+        });
+
 
     }
 
@@ -77,21 +92,10 @@ public class MainPage extends AppCompatActivity {
         if (emission == null){
             emission = "___";
         }
-        totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
+        //totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
 
 
     }
-
-    public void logOut(View v){
-        Intent intent = new Intent(MainPage.this, MainActivity.class);
-        startActivity(intent);
-    }
-    public void weigthControl(View v){
-        Intent intent = new Intent(MainPage.this, WeightControl.class);
-        intent.putExtra("Username", user.getUsername());
-        startActivity(intent);
-    }
-
 
 
 }

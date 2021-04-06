@@ -101,7 +101,7 @@ public class ClimateControl extends AppCompatActivity {
             String egg = cutString(eggView.getText().toString());
             String salad = cutString(vegetableView.getText().toString());
 
-            jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
+            jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
 
             try {
                 dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg");
