@@ -113,6 +113,7 @@ public class WeightControl extends AppCompatActivity {
             String splitcut2 = splitcut1.substring(splitcut1.length()-(splitcut1.length()-1));
             System.out.println(splitcut2);
 
+
         }
 
         bufferedReader.close();
