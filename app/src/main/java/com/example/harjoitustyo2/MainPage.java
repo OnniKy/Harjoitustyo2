@@ -30,6 +30,7 @@ public class MainPage extends AppCompatActivity {
         totalEmission = findViewById(R.id.textView14);
 
 
+
         setTexts();
 
         button.setOnClickListener(v -> {
