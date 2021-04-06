@@ -1,7 +1,7 @@
 package com.example.harjoitustyo2;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,9 +32,9 @@ public class JSONFileControl {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
+
+
 
 
     public JSONObject readJSONFile(Context context, String name) throws JSONException {
@@ -65,6 +65,35 @@ public class JSONFileControl {
 
 
 
+    public void writeJSONWeightFile(JSONObject json,EditText addweight, Context context, String name){
+        try {
+            json = saveTOJSON(addweight, json);
+            Writer output = null;
+            File file = new File(context.getFilesDir(), name + "Weight.json");
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(json.toString() + "\n");
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public JSONObject saveTOJSON(EditText addWeight,JSONObject json){
+
+        String weight = addWeight.getText().toString();
+        try {
+            json.put("Weight", weight);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
+
+
+
     public int round(double d){
         double dAbs = Math.abs(d);
         int i = (int) dAbs;
@@ -77,12 +106,12 @@ public class JSONFileControl {
     }
 
 
+
+
     public String modifyJSON(String value) {
         double d = Double.parseDouble(value);
         int v = round(d);
 
         return String.valueOf(v);
     }
-
-
 }

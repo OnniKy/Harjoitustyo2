@@ -178,7 +178,6 @@ public class ClimateControl extends AppCompatActivity {
         String [] strings = value.split(" ");
         double d = Double.parseDouble(strings[0]);
         int v = round(d);
-
         return String.valueOf(v);
     }
 
@@ -198,7 +197,6 @@ public class ClimateControl extends AppCompatActivity {
     private String modifyJSON(String value) {
         double d = Double.parseDouble(value);
         int v = round(d);
-
         return String.valueOf(v);
     }
 }

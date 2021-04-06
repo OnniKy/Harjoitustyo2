@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONObject;
+
 public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
@@ -16,6 +18,7 @@ public class WeightControl extends AppCompatActivity {
     JSONRequest jsonRequest;
     String user;
     Button dailyWeightButton, back;
+    JSONFileControl jsonFileControl;
 
 
 
@@ -33,11 +36,16 @@ public class WeightControl extends AppCompatActivity {
         user = getIntent().getStringExtra("Username");
 
         jsonRequest = new JSONRequest();
+        jsonFileControl = new JSONFileControl();
+        JSONObject json = new JSONObject();
+
 
         dailyWeightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 jsonRequest.writeLog(addWeight, context, user);
+                //jsonFileControl.writeJSONWeightFile(json, addWeight, context, "Timo");
             }
         });
 

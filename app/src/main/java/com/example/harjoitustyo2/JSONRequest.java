@@ -100,7 +100,7 @@ public class JSONRequest {
 
     public void writeLog(EditText addWeight, Context context, String name){
 
-        String FILE_NAME = name + ".jsor";
+        String FILE_NAME = name + ".json";
         String weight = addWeight.getText().toString();
         File file = new File(context.getFilesDir(), FILE_NAME);
 
@@ -157,7 +157,7 @@ public class JSONRequest {
     public String readLog(Context context, String name) throws Exception
     {
         String splitcut2 = null;
-        String FILE_NAME = name + ".jsor";
+        String FILE_NAME = name + ".json";
 
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
@@ -175,6 +175,7 @@ public class JSONRequest {
 
         bufferedReader.close();
 
+        System.out.println(splitcut2);
         return splitcut2;
     }
 
