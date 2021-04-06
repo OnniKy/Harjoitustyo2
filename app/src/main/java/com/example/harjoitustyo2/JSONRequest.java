@@ -152,6 +152,7 @@ public class JSONRequest {
     {
         String splitcut2 = null;
         String FILE_NAME = name + ".jsor";
+
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);

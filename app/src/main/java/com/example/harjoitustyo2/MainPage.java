@@ -22,6 +22,7 @@ public class MainPage extends AppCompatActivity {
     String user;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class MainPage extends AppCompatActivity {
         changeInClimate = findViewById(R.id.changeInClimate);
         button = findViewById(R.id.toClimateControl);
         totalEmission = findViewById(R.id.textView14);
+        context = MainPage.this;
 
         jsonRequest = new JSONRequest();
 
@@ -46,13 +48,12 @@ public class MainPage extends AppCompatActivity {
         });
 
         user = getIntent().getStringExtra("Username");
+        System.out.println("FIRST: " + user);
         try {
             weight = jsonRequest.readLog(context, user); //TODO
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(weight);
-
         dailyWeight.setText(weight);
 
     }
