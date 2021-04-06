@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (databaseHelper.isLoginValid(usernameValue, passwordValue)){
                     Intent intent = new Intent(MainActivity.this, MainPage.class);
+                    intent.putExtra("Username", usernameValue);
                     startActivity(intent);
 
                     Toast.makeText(MainActivity.this, "Login is succesful!", Toast.LENGTH_SHORT).show();

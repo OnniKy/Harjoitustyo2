@@ -2,6 +2,7 @@ package com.example.harjoitustyo2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +15,11 @@ public class MainPage extends AppCompatActivity {
     JSONRequest jsonRequest;
     EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
     TextView totalEmission;
-    Button button, button2;
+    Button button;
     String emission = "____";
+    String weight;
+    Context context;
+    String user;
 
 
     @Override
@@ -41,14 +45,20 @@ public class MainPage extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //jsonRequest.sunmetodi(); //TODO
+        user = getIntent().getStringExtra("Username");
+        try {
+            weight = jsonRequest.readLog(context, user); //TODO
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(weight);
 
-
+        dailyWeight.setText(weight);
 
     }
 
     public void setTexts(){
-        dailyWeight.setText("Your weight is 1000 Kg");
+        //dailyWeight.setText("Your weight is 1000 Kg");
         dailyClimate.setText("You produce 2 coals");
         bmiTextbox.setText("Your bodymassindex is 2 ");
         changeInWeight.setText("+2kg");
@@ -68,6 +78,7 @@ public class MainPage extends AppCompatActivity {
     }
     public void weigthControl(View v){
         Intent intent = new Intent(MainPage.this, WeightControl.class);
+        intent.putExtra("Username", user);
         startActivity(intent);
     }
 

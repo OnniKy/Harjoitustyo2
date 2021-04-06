@@ -1,6 +1,7 @@
 package com.example.harjoitustyo2;
 
-import android.view.View;
+import android.content.Context;
+import android.widget.EditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +23,15 @@ import java.net.URL;
 
 public class JSONRequest {
     JSONArray jsonArray;
+    FileWriter fileWriter;
+    BufferedWriter bufferedWriter;
+    BufferedReader bufferedReader;
+    FileReader fileReader;
+
+    String response;
+    private JSONObject messageDetails;
+    private Boolean isUserExisting;
+
 
     public void JSONRequest(){
 
@@ -82,7 +92,9 @@ public class JSONRequest {
         return response;
     }
 
-    public void writeFile(View v){
+    public void writeLog(EditText addWeight, Context context, String name){
+
+        String FILE_NAME = name + ".jsor";
         String weight = addWeight.getText().toString();
         File file = new File(context.getFilesDir(), FILE_NAME);
 
@@ -134,8 +146,12 @@ public class JSONRequest {
             throw new RuntimeException(e);
         }
     }
-    public void lue(View v) throws Exception
+
+
+    public String readLog(Context context, String name) throws Exception
     {
+        String splitcut2 = null;
+        String FILE_NAME = name + ".jsor";
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);
@@ -145,14 +161,14 @@ public class JSONRequest {
             String first = last5.substring(0, last5.length()-2);
             String [] splitline = first.split(",");
             String splitcut1 = splitline[splitline.length - 1].substring(0,splitline[splitline.length - 1].length()-1);
-            String splitcut2 = splitcut1.substring(splitcut1.length()-(splitcut1.length()-1));
+            splitcut2 = splitcut1.substring(splitcut1.length()-(splitcut1.length()-1));
             System.out.println(splitcut2);
-
 
         }
 
         bufferedReader.close();
 
+        return splitcut2;
     }
 
 

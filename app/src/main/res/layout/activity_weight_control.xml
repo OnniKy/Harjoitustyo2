@@ -7,7 +7,7 @@
     tools:context=".WeightControl">
 
     <EditText
-        android:id="@+id/dailyWeightButton"
+        android:id="@+id/addWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
@@ -20,10 +20,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addWeight"
+        android:id="@+id/dailyWeightButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="writeFile"
         android:text="Submit"
         app:backgroundTint="#8BE1BF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,11 +35,10 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="lue"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/dailyWeightButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
