@@ -44,11 +44,8 @@ public class JSONFileControl {
                 bufferedWriter = new BufferedWriter(fileWriter);
                 bufferedWriter.write("{}");
                 bufferedWriter.close();
-
-
             }catch (IOException e){
                 e.printStackTrace();
-
             }
         }
         try {
@@ -62,7 +59,6 @@ public class JSONFileControl {
             }
             response = output.toString();
             bufferedReader.close();
-
 
             messageDetails = new JSONObject(response);
             isUserExisting = messageDetails.has("Weight");
@@ -87,16 +83,16 @@ public class JSONFileControl {
     }
 
 
-    public String readLogWeight(Context context, String name) throws Exception
-    {
+    public String readLogWeight(Context context, String name) throws Exception {
         StringBuffer output = new StringBuffer();
-        String splitcut2 = null;
+        String result = null;
         String FILE_NAME = name + ".json";
 
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);
         String line = "";
+
         while ((line = bufferedReader.readLine()) != null) {
             output.append(line + "\n");
 
@@ -106,23 +102,18 @@ public class JSONFileControl {
         messageDetails = new JSONObject(response);
         isUserExisting = messageDetails.has("Weight");
         JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
-        System.out.println(userMessages.get(userMessages.length()-1));
-        splitcut2 = userMessages.get(userMessages.length()-1).toString();
-        return splitcut2;
+        result = userMessages.get(userMessages.length()-1).toString();
+
+        return result;
     }
 
 
 
+    /////////////////////////// CLIMATE DIET  ///////////////////////////
 
 
-/*
-    public JSONFileControl(){
-        Map<String, Map<String, String>> map = new HashMap<>();
-        data = new Data(map);
-        gson = new Gson();
-    }
-*/
-    public void writeJSONFile(Context context, String name, JSONObject jsonObject){
+
+    public void writeLogClimate(Context context, String name, JSONObject jsonObject){
        try {
             Writer output = null;
             File file = new File(context.getFilesDir(), name + "Climate.json");
@@ -135,9 +126,7 @@ public class JSONFileControl {
     }
 
 
-
-
-    public JSONObject readJSONFile(Context context, String name) throws JSONException {
+    public JSONObject readLogClimate(Context context, String name) throws JSONException {
         String result = null;
 
         try{
@@ -164,29 +153,6 @@ public class JSONFileControl {
     }
 
 
-
-
-
-
-
-
-/*
-
-
-    public JSONObject saveTOJSON(EditText addWeight,JSONObject json){
-
-        String weight = addWeight.getText().toString();
-        try {
-            json.put("Weight", weight);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return json;
-    }
-
-
-
-*/
     public int round(double d){
         double dAbs = Math.abs(d);
         int i = (int) dAbs;

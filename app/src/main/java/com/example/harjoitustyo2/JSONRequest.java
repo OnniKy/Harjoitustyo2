@@ -45,7 +45,7 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                jsonFileControl.writeJSONFile(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
+                jsonFileControl.writeLogClimate(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
 
             } catch (JSONException e) {
                 e.printStackTrace();
