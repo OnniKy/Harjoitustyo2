@@ -50,7 +50,7 @@ public class MainPage extends AppCompatActivity {
 
 
         try {
-            weight = jsonRequest.readLog(context, username); //TODO
+            weight = jsonFileControl.readLogWeight(context, username); //TODO
             System.out.println(weight);
             dailyWeight.setText(weight);
             jsonObjectClimate = jsonFileControl.readJSONFile(context, "tomitomi");

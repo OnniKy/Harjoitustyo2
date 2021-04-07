@@ -165,53 +165,12 @@ public class JSONFileControl {
 
 
 
-    public void writeJSONWeightFile(EditText addweight, Context context, String name){
-
-        Data data;
-
-        System.out.println(data.getMap());
-        Map<String, String> config = new HashMap<>();
-        config.put("Weight", addweight.getText().toString());
-        data.getMap().put("res", config);
-        System.out.println(data.getMap());
 
 
-        String json = gson.toJson(data);
-
-            try {
-                //json = saveTOJSON(addweight, json);
-                Writer output = null;
-                File file = new File(context.getFilesDir(), name + "Weight.json");
-                output = new BufferedWriter(new FileWriter(file));
-                output.write(json + "\n");
-                output.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
 
-    }
+
 /*
-
-
- */
-/*
-    public void writeGSON(EditText addweight){
-
-        Map<String, String> config1 = new HashMap<>();
-        config1.put("Weight", addweight.getText().toString());
-
-        Map<String, Map<String, String>> map = new HashMap<>();
-        map.put("config1", config1);
-
-        Data data = new Data(map);
-
-        Gson gson = new Gson();
-        String json = gson.toJson(data);
-    }
-
-
-
 
 
     public JSONObject saveTOJSON(EditText addWeight,JSONObject json){
@@ -227,7 +186,7 @@ public class JSONFileControl {
 
 
 
-
+*/
     public int round(double d){
         double dAbs = Math.abs(d);
         int i = (int) dAbs;
@@ -248,7 +207,7 @@ public class JSONFileControl {
 
         return String.valueOf(v);
     }
-    */
+
 
 }
 
