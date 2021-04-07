@@ -30,6 +30,7 @@ public class JSONFileControl {
     private JSONObject messageDetails;
     private Boolean isUserExisting;
     JSONObject jsonObject;
+    JSONObject jsn, jn, jsnObject;
     Map<String, Map<String, String>> map = new HashMap<>();
 
 
@@ -116,7 +117,6 @@ public class JSONFileControl {
     public void writeLogClimate(Context context, String name, JSONObject jsonObject){
 
         String dairy = null, meat = null, plant = null, total = null;
-        JSONObject jsonObject1 = null;
 
         String fileName = name + "Climate.json";
         try {
@@ -137,51 +137,59 @@ public class JSONFileControl {
 
         System.out.println("clMAP: " + clMap);
 
+        map.put("Data1", clMap );
+
 
         try {
-            Writer output = null;
             File file = new File(context.getFilesDir(), fileName);
-
 
             // FILE DOES NOT EXIST
             if (!file.exists()){
                 file.createNewFile();
-                bufferedWriter = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
-                bufferedWriter.write("{}");
-                bufferedWriter.close();
 
             }
-            StringBuffer oput = new StringBuffer();
+
             bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
             String line = "";
-            int i = 0;
+            String data1 = "";
 
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+            int i = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 Map<String, String> map1 = new HashMap<>();
+                i++;
 
-                System.out.println(line);
-                //oput.append(line + "\n");
+                try {
+                    jsn = new JSONObject(line);
+                    jn = new JSONObject(jsn.getString("map"));
+                    jsnObject = new JSONObject(jn.getString("Data"));
+
+                    map1.put("Dairy", jsnObject.getString("Dairy"));
+                    map1.put("Meat", jsnObject.getString("Meat"));
+                    map1.put("Plant", jsnObject.getString("Plant"));
+                    map1.put("Total", jsnObject.getString("Plant"));
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                data1 = String.valueOf(i);
+
+                map.put(data1, map1);
+                System.out.println(map);
             }
-            System.out.println(oput);
-            response = oput.toString();
-            System.out.println("RESPONSE: " + response);
 
-
-
-            try {
-                String jsn = null;
-                jsn = jsonObject1.getString("map");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
             Data data = new Data(map);
 
             Gson gson = new Gson();
             String json = gson.toJson(data);
-            bw.write(json);
+
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+            bw.write(json + "\n");
             bw.close();
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
