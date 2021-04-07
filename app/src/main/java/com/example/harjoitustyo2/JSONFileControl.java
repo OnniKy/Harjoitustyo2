@@ -3,6 +3,8 @@ package com.example.harjoitustyo2;
 import android.content.Context;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -124,6 +126,7 @@ public class JSONFileControl {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
         try {
             Writer output = null;
