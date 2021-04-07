@@ -31,6 +31,7 @@ public class JSONFileControl {
     private Boolean isUserExisting;
     JSONObject jsonObject;
 
+
     public void writeLogWeight(String weight, Context context, String name){
 
         String FILE_NAME = name + ".json";
