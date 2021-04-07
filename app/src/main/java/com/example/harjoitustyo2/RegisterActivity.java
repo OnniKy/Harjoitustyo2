@@ -103,6 +103,8 @@ public class RegisterActivity extends AppCompatActivity{
                     contentValues.put("gender", genderValue);
                     contentValues.put("birthyear", birthyearValue);
 
+                    //TEE SE TÄHÄN
+
                     databaseHelper.insertUser(contentValues);
                     Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
 
