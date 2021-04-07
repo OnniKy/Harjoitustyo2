@@ -54,7 +54,8 @@ public class MainPage extends AppCompatActivity {
             System.out.println(weight);
             dailyWeight.setText("Your weight is: " + weight + "at the moment");
             emission = jsonFileControl.readLog(context, username, "Total");
-            if (emission == null){
+            System.out.println("EMISSION: " + emission);
+            if (emission != null){
                 totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
             } else {
                 totalEmission.setText("Calculate your emission on Climate \nControl page!");
