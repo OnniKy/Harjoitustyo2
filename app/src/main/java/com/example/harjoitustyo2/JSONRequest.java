@@ -1,11 +1,14 @@
 package com.example.harjoitustyo2;
 
 import android.content.Context;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class JSONRequest {
     JSONArray jsonArray;
@@ -156,6 +160,7 @@ public class JSONRequest {
 
     public String readLog(Context context, String name) throws Exception
     {
+        StringBuffer output = new StringBuffer();
         String splitcut2 = null;
         String FILE_NAME = name + ".json";
 
@@ -164,18 +169,16 @@ public class JSONRequest {
         bufferedReader = new BufferedReader(fileReader);
         String line = "";
         while ((line = bufferedReader.readLine()) != null) {
-            String last5 = line.substring(line.length()-(line.length()-11));
-            String first = last5.substring(0, last5.length()-2);
-            String [] splitline = first.split(",");
-            String splitcut1 = splitline[splitline.length - 1].substring(0,splitline[splitline.length - 1].length()-1);
-            splitcut2 = splitcut1.substring(splitcut1.length()-(splitcut1.length()-1));
-            System.out.println(splitcut2);
+            output.append(line + "\n");
 
         }
-
+        response = output.toString();
         bufferedReader.close();
-
-        System.out.println(splitcut2);
+        messageDetails = new JSONObject(response);
+        isUserExisting = messageDetails.has("Weight");
+        JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
+        System.out.println(userMessages.get(userMessages.length()-1));
+        splitcut2 = userMessages.get(userMessages.length()-1);
         return splitcut2;
     }
 
