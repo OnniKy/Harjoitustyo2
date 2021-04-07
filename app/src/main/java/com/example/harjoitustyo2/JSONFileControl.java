@@ -119,6 +119,8 @@ public class JSONFileControl {
         String dairy = null, meat = null, plant = null, total = null;
 
         String fileName = name + "Climate.json";
+
+
         try {
             dairy = modifyJSON(jsonObject.getString("Dairy"));
             meat = modifyJSON(jsonObject.getString("Meat"));
@@ -128,16 +130,7 @@ public class JSONFileControl {
             e.printStackTrace();
         }
 
-        Map<String, String> clMap = new HashMap<>();
 
-        clMap.put("Dairy",dairy);
-        clMap.put("Meat",meat);
-        clMap.put("Plant",plant);
-        clMap.put("Total",total);
-
-        System.out.println("clMAP: " + clMap);
-
-        map.put("Data1", clMap );
 
 
         try {
@@ -146,37 +139,56 @@ public class JSONFileControl {
             // FILE DOES NOT EXIST
             if (!file.exists()){
                 file.createNewFile();
+                bufferedWriter = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+                bufferedWriter.write("{}");
+                bufferedWriter.close();
 
             }
+            StringBuffer output = new StringBuffer();
 
             bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
             String line = "";
-            String data1 = "";
+            System.out.println("MOROROR");
 
             int i = 0;
             while ((line = bufferedReader.readLine()) != null) {
+                System.out.println("LINE: " + line);
                 Map<String, String> map1 = new HashMap<>();
                 i++;
 
                 try {
                     jsn = new JSONObject(line);
+                    System.out.println("JSN: " + jsn);
                     jn = new JSONObject(jsn.getString("map"));
-                    jsnObject = new JSONObject(jn.getString("Data"));
+                    jsnObject = new JSONObject(jn.getString("Data1"));
 
                     map1.put("Dairy", jsnObject.getString("Dairy"));
                     map1.put("Meat", jsnObject.getString("Meat"));
                     map1.put("Plant", jsnObject.getString("Plant"));
                     map1.put("Total", jsnObject.getString("Plant"));
 
+                    System.out.println(map1);
+
+                    map.put("De", map1);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                data1 = String.valueOf(i);
 
-                map.put(data1, map1);
-                System.out.println(map);
+                System.out.println(map1);
+
             }
+
+            Map<String, String> clMap = new HashMap<>();
+
+            clMap.put("Dairy",dairy);
+            clMap.put("Meat",meat);
+            clMap.put("Plant",plant);
+            clMap.put("Total",total);
+
+            System.out.println("clMAP: " + clMap);
+
+            map.put("Data1", clMap );
 
 
             Data data = new Data(map);
