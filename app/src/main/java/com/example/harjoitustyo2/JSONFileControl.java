@@ -51,8 +51,7 @@ public class JSONFileControl {
         try {
             StringBuffer output = new StringBuffer();
 
-            fileReader = new FileReader(file.getAbsoluteFile());
-            bufferedReader = new BufferedReader(fileReader);
+            bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 output.append(line + "\n");
@@ -114,11 +113,54 @@ public class JSONFileControl {
 
 
     public void writeLogClimate(Context context, String name, JSONObject jsonObject){
-       try {
+
+        String dairy = null, meat = null, plant = null, total = null;
+        Map<String, String> ClimateDiet = new HashMap<>();
+
+        String fileName = name + "Climate.json";
+        try {
+            dairy = modifyJSON(jsonObject.getString("Dairy"));
+            meat = modifyJSON(jsonObject.getString("Meat"));
+            plant = modifyJSON(jsonObject.getString("Plant"));
+            total = modifyJSON(jsonObject.getString("Total"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
             Writer output = null;
-            File file = new File(context.getFilesDir(), name + "Climate.json");
-            output = new BufferedWriter(new FileWriter(file));
-            output.write(jsonObject.toString() + "\n");
+            File file = new File(context.getFilesDir(), fileName);
+            output = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+
+            // FILE DOES NOT EXIST
+            if (!file.exists()){
+                file.createNewFile();
+                output.write("{}");
+
+            }
+            StringBuffer oput = new StringBuffer();
+            bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                oput.append(line + "\n");
+            }
+            response = oput.toString();
+
+            ClimateDiet.put("Dairy",dairy);
+            ClimateDiet.put("Meat",meat);
+            ClimateDiet.put("Plant",plant);
+            ClimateDiet.put("Total",total);
+
+            System.out.println(ClimateDiet);
+
+            Data data = new Data(ClimateDiet);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(data);
+
+
+
+            output.write(json + "\n");
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
