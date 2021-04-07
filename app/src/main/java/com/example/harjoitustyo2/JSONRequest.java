@@ -26,15 +26,9 @@ import java.util.ArrayList;
 
 public class JSONRequest {
     JSONArray jsonArray;
-    FileWriter fileWriter;
-    BufferedWriter bufferedWriter;
-    BufferedReader bufferedReader;
-    FileReader fileReader;
     JSONFileControl jsonFileControl;
 
-    String response;
-    private JSONObject messageDetails;
-    private Boolean isUserExisting;
+
 
 
     public void JSONRequest(){
@@ -52,7 +46,7 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                jsonFileControl.writeJSONFile(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
+                jsonFileControl.writeLog(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -101,7 +95,7 @@ public class JSONRequest {
 
         return response;
     }
-
+/*
     public void writeLog(EditText addWeight, Context context, String name){
 
         String FILE_NAME = name + ".json";
@@ -178,11 +172,13 @@ public class JSONRequest {
         isUserExisting = messageDetails.has("Weight");
         JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
         System.out.println(userMessages.get(userMessages.length()-1));
-        splitcut2 = userMessages.get(userMessages.length()-1);
+        splitcut2 = userMessages.get(userMessages.length()-1).toString();
         return splitcut2;
     }
 
 
 
+
+ */
 
 }

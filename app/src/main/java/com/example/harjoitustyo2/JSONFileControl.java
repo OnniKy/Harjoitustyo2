@@ -3,6 +3,9 @@ package com.example.harjoitustyo2;
 import android.content.Context;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,12 +17,104 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JSONFileControl {
-    JSONObject jsonObject;
 
+    FileWriter fileWriter;
+    BufferedWriter bufferedWriter;
+    BufferedReader bufferedReader;
+    FileReader fileReader;
+    String response;
+    private JSONObject messageDetails;
+    private Boolean isUserExisting;
+
+    public void writeLog(EditText addWeight, Context context, String name){
+
+        String FILE_NAME = name + ".json";
+        String weight = addWeight.getText().toString();
+        File file = new File(context.getFilesDir(), FILE_NAME);
+
+        if(!file.exists()){
+            try{
+                file.createNewFile();
+                fileWriter = new FileWriter(file.getAbsoluteFile());
+                bufferedWriter = new BufferedWriter(fileWriter);
+                bufferedWriter.write("{}");
+                bufferedWriter.close();
+
+
+            }catch (IOException e){
+                e.printStackTrace();
+
+            }
+        }
+        try {
+            StringBuffer output = new StringBuffer();
+
+            fileReader = new FileReader(file.getAbsoluteFile());
+            bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                output.append(line + "\n");
+            }
+            response = output.toString();
+            bufferedReader.close();
+
+
+            messageDetails = new JSONObject(response);
+            isUserExisting = messageDetails.has("Weight");
+            if (!isUserExisting) {
+                JSONArray newUserMessages = new JSONArray();
+                newUserMessages.put(weight);
+                messageDetails.put("Weight", newUserMessages);
+            } else {
+                JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
+                userMessages.put(weight);
+            }
+
+            fileWriter = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fileWriter);
+            bw.write(messageDetails.toString());
+            bw.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public String readLog(Context context, String name) throws Exception
+    {
+        StringBuffer output = new StringBuffer();
+        String splitcut2 = null;
+        String FILE_NAME = name + ".json";
+
+        File file = new File(context.getFilesDir(), FILE_NAME);
+        fileReader = new FileReader(file.getAbsoluteFile());
+        bufferedReader = new BufferedReader(fileReader);
+        String line = "";
+        while ((line = bufferedReader.readLine()) != null) {
+            output.append(line + "\n");
+
+        }
+        response = output.toString();
+        bufferedReader.close();
+        messageDetails = new JSONObject(response);
+        isUserExisting = messageDetails.has("Weight");
+        JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
+        System.out.println(userMessages.get(userMessages.length()-1));
+        splitcut2 = userMessages.get(userMessages.length()-1).toString();
+        return splitcut2;
+    }
+
+/*
     public JSONFileControl(){
-
+        Map<String, Map<String, String>> map = new HashMap<>();
+        data = new Data(map);
+        gson = new Gson();
     }
 
     public void writeJSONFile(Context context, String name, JSONObject jsonObject){
@@ -65,18 +160,54 @@ public class JSONFileControl {
 
 
 
-    public void writeJSONWeightFile(JSONObject json,EditText addweight, Context context, String name){
-        try {
-            json = saveTOJSON(addweight, json);
-            Writer output = null;
-            File file = new File(context.getFilesDir(), name + "Weight.json");
-            output = new BufferedWriter(new FileWriter(file));
-            output.write(json.toString() + "\n");
-            output.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void writeJSONWeightFile(EditText addweight, Context context, String name){
+
+        System.out.println(data.getMap());
+        Map<String, String> config = new HashMap<>();
+        config.put("Weight", addweight.getText().toString());
+        data.getMap().put("res", config);
+        System.out.println(data.getMap());
+
+
+        String json = gson.toJson(data);
+
+            try {
+                //json = saveTOJSON(addweight, json);
+                Writer output = null;
+                File file = new File(context.getFilesDir(), name + "Weight.json");
+                output = new BufferedWriter(new FileWriter(file));
+                output.write(json + "\n");
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
     }
+/*
+    public void addNew(EditText addweight, Data data){
+        Map<String, String> config2 = new HashMap<>();
+        config2.put("Weight", addweight.getText().toString());
+        data.getMap().put("config3", config2);
+    }
+
+ */
+/*
+    public void writeGSON(EditText addweight){
+
+        Map<String, String> config1 = new HashMap<>();
+        config1.put("Weight", addweight.getText().toString());
+
+        Map<String, Map<String, String>> map = new HashMap<>();
+        map.put("config1", config1);
+
+        Data data = new Data(map);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(data);
+    }
+
+
 
 
 
@@ -114,4 +245,7 @@ public class JSONFileControl {
 
         return String.valueOf(v);
     }
+    */
+
 }
+

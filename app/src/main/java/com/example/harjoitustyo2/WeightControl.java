@@ -14,9 +14,9 @@ public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
     Context context;
-    JSONRequest jsonRequest;
     String user;
     Button dailyWeightButton, back;
+
     JSONFileControl jsonFileControl;
 
 
@@ -34,15 +34,12 @@ public class WeightControl extends AppCompatActivity {
         context = WeightControl.this;
         user = getIntent().getStringExtra("Username");
 
-        jsonRequest = new JSONRequest();
         jsonFileControl = new JSONFileControl();
-        JSONObject json = new JSONObject();
 
 
         dailyWeightButton.setOnClickListener(v -> {
 
-            jsonRequest.writeLog(addWeight, context, user);
-            //jsonFileControl.writeJSONWeightFile(json, addWeight, context, "Timo");
+            jsonFileControl.writeLog(addWeight, context, user);
         });
 
 
