@@ -52,7 +52,7 @@ public class MainPage extends AppCompatActivity {
         try {
             weight = jsonFileControl.readLogWeight(context, username); //TODO
             System.out.println(weight);
-            dailyWeight.setText(weight);
+            dailyWeight.setText("Your weight is: " + weight + "at the moment");
             jsonObjectClimate = jsonFileControl.readLogClimate(context, "tomitomi");
             emission = jsonFileControl.modifyJSON(jsonObjectClimate.getString("Total"));
             totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
