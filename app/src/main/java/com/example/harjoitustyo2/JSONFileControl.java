@@ -3,8 +3,6 @@ package com.example.harjoitustyo2;
 import android.content.Context;
 import android.widget.EditText;
 
-import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,10 +29,9 @@ public class JSONFileControl {
     private Boolean isUserExisting;
     JSONObject jsonObject;
 
-    public void writeLogWeight(EditText addWeight, Context context, String name){
+    public void writeLogWeight(String weight, Context context, String name){
 
         String FILE_NAME = name + ".json";
-        String weight = addWeight.getText().toString();
         File file = new File(context.getFilesDir(), FILE_NAME);
 
         if(!file.exists()){
