@@ -38,8 +38,10 @@ public class WeightControl extends AppCompatActivity {
 
 
         dailyWeightButton.setOnClickListener(v -> {
+            String addWeight1 = addWeight.getText().toString();
 
-            jsonFileControl.writeLogWeight(addWeight, context, user);
+
+            jsonFileControl.writeLogWeight(addWeight1, context, user);
         });
 
 

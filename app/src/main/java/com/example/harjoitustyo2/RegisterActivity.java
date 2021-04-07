@@ -24,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity{
     Button register, cancel;
     RadioGroup gender;
     DatabaseHelper databaseHelper;
+    JSONFileControl jsonFileControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity{
             int birthyearValue = Integer.parseInt(birthyear.getText().toString());
 
 
+
             if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
 
                 boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
@@ -102,6 +104,10 @@ public class RegisterActivity extends AppCompatActivity{
                     contentValues.put("weight", weightValue);
                     contentValues.put("gender", genderValue);
                     contentValues.put("birthyear", birthyearValue);
+
+                    //Adding first weight to Weight Data File
+                    String weightValue1 = String.valueOf(weightValue);
+                    jsonFileControl.writeLogWeight(weightValue1, context, usernameValue);
 
                     //TEE SE TÄHÄN
 
