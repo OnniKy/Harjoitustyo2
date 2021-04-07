@@ -21,7 +21,7 @@ public class MainPage extends AppCompatActivity {
     TextView totalEmission;
     Button button, button2;
     ImageButton logOut;
-    String emission = "____";
+    String emission = null;
     String weight;
     Context context;
     final public static String username = "tomi";
@@ -50,12 +50,16 @@ public class MainPage extends AppCompatActivity {
 
 
         try {
-            weight = jsonFileControl.readLogWeight(context, username); //TODO
+            weight = jsonFileControl.readLog(context, username, "Weight"); //TODO
             System.out.println(weight);
             dailyWeight.setText("Your weight is: " + weight + "at the moment");
-            jsonObjectClimate = jsonFileControl.readLogClimate(context, "tomitomi");
-            emission = jsonFileControl.modifyJSON(jsonObjectClimate.getString("Total"));
-            totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
+            emission = jsonFileControl.readLog(context, username, "Total");
+            if (emission == null){
+                totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
+            } else {
+                totalEmission.setText("Calculate your emission on Climate \nControl page!");
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,6 +70,7 @@ public class MainPage extends AppCompatActivity {
         // Buttons OnClickListeners
         button.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, ClimateControl.class);
+            intent.putExtra("Username",getIntent().getStringExtra("Username"));
             startActivity(intent);
         });
 
@@ -84,16 +89,12 @@ public class MainPage extends AppCompatActivity {
     }
 
     public void setTexts(){
-        //dailyWeight.setText("Your weight is 1000 Kg");
         dailyClimate.setText("You produce 2 coals");
         bmiTextbox.setText("Your bodymassindex is 2 ");
         changeInWeight.setText("+2kg");
         changeInClimate.setText("+5t");
         emission = getIntent().getStringExtra("Total");
-        if (emission == null){
-            emission = "___";
-        }
-        //totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
+
 
 
     }

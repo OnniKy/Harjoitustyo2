@@ -100,8 +100,9 @@ public class ClimateControl extends AppCompatActivity {
             String rice = cutString(riceView.getText().toString());
             String egg = cutString(eggView.getText().toString());
             String salad = cutString(vegetableView.getText().toString());
+            String username = getIntent().getStringExtra("Username");
 
-            jsonObject = jsonRequest.readJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
+            jsonObject = jsonRequest.readJSON(username ,diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
 
             try {
                 dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg");
@@ -116,11 +117,6 @@ public class ClimateControl extends AppCompatActivity {
 
         cancel.setOnClickListener(v -> {
             Intent intent = new Intent(ClimateControl.this, MainPage.class);
-            try {
-                intent.putExtra("Total", modifyJSON(jsonObject.getString("Total")));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
             startActivity(intent);
 
         });

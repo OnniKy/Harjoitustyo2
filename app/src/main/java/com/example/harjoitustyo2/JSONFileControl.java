@@ -1,6 +1,8 @@
 package com.example.harjoitustyo2;
 
 import android.content.Context;
+import android.os.Message;
+import android.util.JsonWriter;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
@@ -13,11 +15,15 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class JSONFileControl {
@@ -30,23 +36,21 @@ public class JSONFileControl {
     private JSONObject messageDetails;
     private Boolean isUserExisting;
     JSONObject jsonObject;
-    JSONObject jsn, jn, jsnObject;
-    Map<String, Map<String, String>> map = new HashMap<>();
 
 
-    public void writeLogWeight(String weight, Context context, String name){
+    public void writeLogWeight(String weight, Context context, String name) {
 
         String FILE_NAME = name + ".json";
         File file = new File(context.getFilesDir(), FILE_NAME);
 
-        if(!file.exists()){
-            try{
+        if (!file.exists()) {
+            try {
                 file.createNewFile();
                 fileWriter = new FileWriter(file.getAbsoluteFile());
                 bufferedWriter = new BufferedWriter(fileWriter);
                 bufferedWriter.write("{}");
                 bufferedWriter.close();
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -76,18 +80,23 @@ public class JSONFileControl {
             BufferedWriter bw = new BufferedWriter(fileWriter);
             bw.write(messageDetails.toString());
             bw.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }catch (JSONException e) {
+        } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-    public String readLogWeight(Context context, String name) throws Exception {
+    public String readLog(Context context, String name, String Value) throws Exception {
         StringBuffer output = new StringBuffer();
         String result = null;
-        String FILE_NAME = name + ".json";
+        String FILE_NAME;
+        if (Value.equals("Weight")) {
+            FILE_NAME = name + ".json";
+        } else {
+            FILE_NAME = name + "Climate.json";
+        }
 
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
@@ -101,23 +110,19 @@ public class JSONFileControl {
         response = output.toString();
         bufferedReader.close();
         messageDetails = new JSONObject(response);
-        isUserExisting = messageDetails.has("Weight");
-        JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
-        result = userMessages.get(userMessages.length()-1).toString();
+        isUserExisting = messageDetails.has(Value);
+        JSONArray userMessages = (JSONArray) messageDetails.get(Value);
+        result = userMessages.get(userMessages.length() - 1).toString();
 
         return result;
     }
 
 
-
     /////////////////////////// CLIMATE DIET  ///////////////////////////
 
 
-
-    public void writeLogClimate(Context context, String name, JSONObject jsonObject){
-
-        String dairy = null, meat = null, plant = null, total = null;
-
+    public void writeLogClimate(Context context, String name, JSONObject jsonObject) {
+        String dairy = null, meat = null, plant, total = null;
         String fileName = name + "Climate.json";
 
 
@@ -131,132 +136,99 @@ public class JSONFileControl {
         }
 
 
-
+        File file = new File(context.getFilesDir(), fileName);
 
         try {
-            File file = new File(context.getFilesDir(), fileName);
-
             // FILE DOES NOT EXIST
-            if (!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
                 bufferedWriter = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
                 bufferedWriter.write("{}");
                 bufferedWriter.close();
-
             }
             StringBuffer output = new StringBuffer();
 
+
             bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
             String line = "";
-            System.out.println("MOROROR");
 
             int i = 0;
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println("LINE: " + line);
-                Map<String, String> map1 = new HashMap<>();
-                i++;
-
-                try {
-                    jsn = new JSONObject(line);
-                    System.out.println("JSN: " + jsn);
-                    jn = new JSONObject(jsn.getString("map"));
-                    jsnObject = new JSONObject(jn.getString("Data1"));
-
-                    map1.put("Dairy", jsnObject.getString("Dairy"));
-                    map1.put("Meat", jsnObject.getString("Meat"));
-                    map1.put("Plant", jsnObject.getString("Plant"));
-                    map1.put("Total", jsnObject.getString("Plant"));
-
-                    System.out.println(map1);
-
-                    map.put("De", map1);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                System.out.println(map1);
+                output.append(line + "\n");
 
             }
+            response = output.toString();
+            bufferedReader.close();
 
-            Map<String, String> clMap = new HashMap<>();
+            messageDetails = new JSONObject(response);
+            isUserExisting = messageDetails.has("Total");
+            if (!isUserExisting) {
+                JSONArray newUserMessages = new JSONArray();
+                newUserMessages.put(total);
+                messageDetails.put("Total", newUserMessages);
+            } else {
+                JSONArray userMessages = (JSONArray) messageDetails.get("Total");
+                userMessages.put(total);
+            }
 
-            clMap.put("Dairy",dairy);
-            clMap.put("Meat",meat);
-            clMap.put("Plant",plant);
-            clMap.put("Total",total);
-
-            System.out.println("clMAP: " + clMap);
-
-            map.put("Data1", clMap );
-
-
-            Data data = new Data(map);
-
-            Gson gson = new Gson();
-            String json = gson.toJson(data);
-
-
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
-            bw.write(json + "\n");
+            fileWriter = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fileWriter);
+            bw.write(messageDetails.toString());
             bw.close();
-
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (JSONException jsonException) {
+            jsonException.printStackTrace();
         }
+
     }
 
 
-    public JSONObject readLogClimate(Context context, String name) throws JSONException {
-        String result = null;
+        public JSONObject readLogClimate (Context context, String name) throws JSONException {
+            String result = null;
 
-        try{
-        File file = new File(context.getFilesDir(), name + "Climate.json");
-        FileReader fileReader = new FileReader(file);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        StringBuilder stringBuilder = new StringBuilder();
-        String line = bufferedReader.readLine();
-        while (line != null){
-            stringBuilder.append(line).append("\n");
-            line = bufferedReader.readLine();
+            try {
+                File file = new File(context.getFilesDir(), name + "Climate.json");
+                FileReader fileReader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                String line = bufferedReader.readLine();
+                while (line != null) {
+                    stringBuilder.append(line).append("\n");
+                    line = bufferedReader.readLine();
+                }
+                result = stringBuilder.toString();
+                bufferedReader.close();
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            jsonObject = new JSONObject(result);
+
+            return jsonObject;
         }
-        result = stringBuilder.toString();
-        bufferedReader.close();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        public int round ( double d){
+            double dAbs = Math.abs(d);
+            int i = (int) dAbs;
+            double result = dAbs - (double) i;
+            if (result < 0.5) {
+                return d < 0 ? -i : i;
+            } else {
+                return d < 0 ? -(i + 1) : i + 1;
+            }
         }
-        jsonObject = new JSONObject(result);
-
-        return jsonObject;
-    }
 
 
-    public int round(double d){
-        double dAbs = Math.abs(d);
-        int i = (int) dAbs;
-        double result = dAbs - (double) i;
-        if(result<0.5){
-            return d<0 ? -i : i;
-        }else{
-            return d<0 ? -(i+1) : i+1;
+        public String modifyJSON (String value){
+            double d = Double.parseDouble(value);
+            int v = round(d);
+
+            return String.valueOf(v);
         }
-    }
-
-
-
-
-    public String modifyJSON(String value) {
-        double d = Double.parseDouble(value);
-        int v = round(d);
-
-        return String.valueOf(v);
-    }
-
 
 }
 
