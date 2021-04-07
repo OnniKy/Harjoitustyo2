@@ -116,6 +116,7 @@ public class JSONFileControl {
 
         String dairy = null, meat = null, plant = null, total = null;
         Map<String, String> ClimateDiet = new HashMap<>();
+        JSONObject jsonObject1 = null;
 
         String fileName = name + "Climate.json";
         try {
@@ -130,12 +131,14 @@ public class JSONFileControl {
         try {
             Writer output = null;
             File file = new File(context.getFilesDir(), fileName);
-            output = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+
 
             // FILE DOES NOT EXIST
             if (!file.exists()){
                 file.createNewFile();
-                output.write("{}");
+                bufferedWriter = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+                bufferedWriter.write("{}");
+                bufferedWriter.close();
 
             }
             StringBuffer oput = new StringBuffer();
@@ -144,12 +147,29 @@ public class JSONFileControl {
             while ((line = bufferedReader.readLine()) != null) {
                 oput.append(line + "\n");
             }
+            System.out.println(oput);
             response = oput.toString();
+            System.out.println("RESPONSE: " + response);
+            try {
+                jsonObject1 = new JSONObject(response);
+                System.out.println("JSONOBJECT: " + jsonObject1.getString("map"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            String jsn = null;
+
+            try {
+                jsn = jsonObject1.getString("map");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             ClimateDiet.put("Dairy",dairy);
             ClimateDiet.put("Meat",meat);
             ClimateDiet.put("Plant",plant);
             ClimateDiet.put("Total",total);
+            ClimateDiet.put("map", jsn);
 
             System.out.println(ClimateDiet);
 
@@ -157,11 +177,10 @@ public class JSONFileControl {
 
             Gson gson = new Gson();
             String json = gson.toJson(data);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+            bw.write(json);
+            bw.close();
 
-
-
-            output.write(json + "\n");
-            output.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
