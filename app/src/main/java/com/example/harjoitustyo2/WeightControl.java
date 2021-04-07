@@ -40,22 +40,16 @@ public class WeightControl extends AppCompatActivity {
         JSONObject json = new JSONObject();
 
 
-        dailyWeightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        dailyWeightButton.setOnClickListener(v -> {
 
-                jsonRequest.writeLog(addWeight, context, user);
-                //jsonFileControl.writeJSONWeightFile(json, addWeight, context, "Timo");
-            }
+            jsonRequest.writeLog(addWeight, context, user);
+            //jsonFileControl.writeJSONWeightFile(json, addWeight, context, "Timo");
         });
 
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WeightControl.this, MainPage.class);
-                startActivity(intent);
-            }
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(WeightControl.this, MainPage.class);
+            startActivity(intent);
         });
 
 
