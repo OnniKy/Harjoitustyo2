@@ -24,8 +24,7 @@ public class MainPage extends AppCompatActivity {
     String emission = null;
     String weight;
     Context context;
-    final public static String username = "tomi";
-    JSONObject jsonObjectClimate;
+    String username;
 
 
 
@@ -47,6 +46,8 @@ public class MainPage extends AppCompatActivity {
 
         jsonRequest = new JSONRequest();
         jsonFileControl = new JSONFileControl();
+
+        username = getIntent().getStringExtra("Username");
 
 
         try {
@@ -94,7 +95,7 @@ public class MainPage extends AppCompatActivity {
         bmiTextbox.setText("Your bodymassindex is 2 ");
         changeInWeight.setText("+2kg");
         changeInClimate.setText("+5t");
-        emission = getIntent().getStringExtra("Total");
+
 
 
 

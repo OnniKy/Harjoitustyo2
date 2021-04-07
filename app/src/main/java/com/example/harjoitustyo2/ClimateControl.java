@@ -28,6 +28,7 @@ public class ClimateControl extends AppCompatActivity {
     TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
     TextView dairyEmissionView, meatEmissionView, plantEmissionView, totalEmissionView;
     Spinner spinner;
+    String username;
 
     static int MIN = 0;
     int beefAVG = 40;
@@ -100,7 +101,7 @@ public class ClimateControl extends AppCompatActivity {
             String rice = cutString(riceView.getText().toString());
             String egg = cutString(eggView.getText().toString());
             String salad = cutString(vegetableView.getText().toString());
-            String username = getIntent().getStringExtra("Username");
+            username = getIntent().getStringExtra("Username");
 
             jsonObject = jsonRequest.readJSON(username ,diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
 
@@ -117,6 +118,7 @@ public class ClimateControl extends AppCompatActivity {
 
         cancel.setOnClickListener(v -> {
             Intent intent = new Intent(ClimateControl.this, MainPage.class);
+            intent.putExtra("Username", username);
             startActivity(intent);
 
         });
