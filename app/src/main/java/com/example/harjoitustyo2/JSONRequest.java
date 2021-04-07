@@ -32,7 +32,6 @@ public class JSONRequest {
 
 
     public void JSONRequest(){
-
         jsonArray = new JSONArray();
 
     }
@@ -46,7 +45,7 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                jsonFileControl.writeLog(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
+                jsonFileControl.writeJSONFile(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
 
             } catch (JSONException e) {
                 e.printStackTrace();

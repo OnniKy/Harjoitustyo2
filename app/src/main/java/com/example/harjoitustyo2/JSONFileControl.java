@@ -29,8 +29,9 @@ public class JSONFileControl {
     String response;
     private JSONObject messageDetails;
     private Boolean isUserExisting;
+    JSONObject jsonObject;
 
-    public void writeLog(EditText addWeight, Context context, String name){
+    public void writeLogWeight(EditText addWeight, Context context, String name){
 
         String FILE_NAME = name + ".json";
         String weight = addWeight.getText().toString();
@@ -86,7 +87,7 @@ public class JSONFileControl {
     }
 
 
-    public String readLog(Context context, String name) throws Exception
+    public String readLogWeight(Context context, String name) throws Exception
     {
         StringBuffer output = new StringBuffer();
         String splitcut2 = null;
@@ -110,13 +111,17 @@ public class JSONFileControl {
         return splitcut2;
     }
 
+
+
+
+
 /*
     public JSONFileControl(){
         Map<String, Map<String, String>> map = new HashMap<>();
         data = new Data(map);
         gson = new Gson();
     }
-
+*/
     public void writeJSONFile(Context context, String name, JSONObject jsonObject){
        try {
             Writer output = null;
@@ -162,6 +167,8 @@ public class JSONFileControl {
 
     public void writeJSONWeightFile(EditText addweight, Context context, String name){
 
+        Data data;
+
         System.out.println(data.getMap());
         Map<String, String> config = new HashMap<>();
         config.put("Weight", addweight.getText().toString());
@@ -185,11 +192,7 @@ public class JSONFileControl {
 
     }
 /*
-    public void addNew(EditText addweight, Data data){
-        Map<String, String> config2 = new HashMap<>();
-        config2.put("Weight", addweight.getText().toString());
-        data.getMap().put("config3", config2);
-    }
+
 
  */
 /*
