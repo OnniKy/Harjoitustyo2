@@ -118,7 +118,7 @@ public class ClimateControl extends AppCompatActivity {
 
         cancel.setOnClickListener(v -> {
             Intent intent = new Intent(ClimateControl.this, MainPage.class);
-            intent.putExtra("Username", username);
+            intent.putExtra("Username", getIntent().getStringExtra("Username"));
             startActivity(intent);
 
         });

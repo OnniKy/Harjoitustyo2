@@ -56,15 +56,15 @@ public class MainPage extends AppCompatActivity {
             dailyWeight.setText("Your weight is: " + weight + "at the moment");
             emission = jsonFileControl.readLog(context, username, "Total");
             System.out.println("EMISSION: " + emission);
-            if (emission != null){
-                totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
-            } else {
-                totalEmission.setText("Calculate your emission on Climate \nControl page!");
-            }
 
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        if (emission != null){
+            totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
+        } else {
+            totalEmission.setText("Calculate your emission on Climate \nControl page!");
         }
 
         setTexts();
@@ -78,7 +78,7 @@ public class MainPage extends AppCompatActivity {
 
         button2.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, WeightControl.class);
-            intent.putExtra("Username", username);
+            intent.putExtra("Username", getIntent().getStringExtra("Username"));
             startActivity(intent);
         });
 
