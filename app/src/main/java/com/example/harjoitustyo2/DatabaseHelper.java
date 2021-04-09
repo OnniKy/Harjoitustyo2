@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Adding first weight to Weight Data File
         String weightValue = String.valueOf(user.getWeight());
-        jsonFileControl.writeLogWeight(weightValue, context, user.getUsername());
+        jsonFileControl.writeLogWeight(weightValue, context, user.getName());
 
     }
 
