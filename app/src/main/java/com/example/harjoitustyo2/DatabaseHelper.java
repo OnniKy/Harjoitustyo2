@@ -62,15 +62,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
-    public void getHeight(String username1){
+    public String getHeight(String username1){
 
-        SQLiteDatabase myDB = this.getWritableDatabase();
+
         System.out.println(username1);
-        //String sql = "Select height FROM user WHERE username = '"+ username1 + "'";
-        Cursor cursor = myDB.rawQuery("SELECT * FROM user WHERE username= '" + username1 + "'", null);
-        System.out.println("CURSOR:" + cursor.getCount());
+        String sql = "Select height FROM user WHERE username = '"+ username1 + "'";
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        cursor.moveToFirst();
         String height = cursor.getString(0);
-        System.out.println("Pituus"+height);
+        return height;
     }
 
 
