@@ -59,7 +59,7 @@ public class WeightControl extends AppCompatActivity {
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
             jsonFileControl.writeLogWeight(addWeight1, context, name);
-            WeightGraph();
+            weightGraph();
 
             Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
         });
@@ -71,7 +71,7 @@ public class WeightControl extends AppCompatActivity {
             startActivity(intent);
         });
     }
-    public int GetQuantity(){
+    public int getQuantity(){
         int q = 0;
         try{
             q = jsonFileControl.getQuantity(context, name, "Weight");
@@ -81,8 +81,8 @@ public class WeightControl extends AppCompatActivity {
         return q;
     }
 
-    public void WeightGraph(){
-        int length=GetQuantity();
+    public void weightGraph(){
+        int length=getQuantity();
         double y,x;
         String p = "";
         x = 0;

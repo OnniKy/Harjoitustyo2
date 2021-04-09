@@ -129,7 +129,7 @@ public class JSONFileControl {
         String result = null;
         String FILE_NAME;
         if (Value.equals("Weight")) {
-            FILE_NAME = name + ".json";
+            FILE_NAME = name + "Weight.json";
         } else {
             FILE_NAME = name + "Climate.json";
         }
@@ -149,6 +149,7 @@ public class JSONFileControl {
         isUserExisting = messageDetails.has(Value);
         JSONArray userMessages = (JSONArray) messageDetails.get(Value);
         result = userMessages.get(i).toString();
+        System.out.println("RESULT JSONFILE: " + result);
 
         return result;
     }
@@ -158,7 +159,7 @@ public class JSONFileControl {
         String result = null;
         String FILE_NAME;
         if (Value.equals("Weight")) {
-            FILE_NAME = name + ".json";
+            FILE_NAME = name + "Weight.json";
         } else {
             FILE_NAME = name + "Climate.json";
         }
