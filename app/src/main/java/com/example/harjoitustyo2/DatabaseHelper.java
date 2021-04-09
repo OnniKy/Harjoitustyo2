@@ -13,6 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static String name = "database";
     static int version = 1;
 
+
     String createTableUser = "CREATE TABLE if not exists \"user\" (\n" +
             "\t\"id\"\tINTEGER,\n" +
             "\t\"name\"\tTEXT,\n" +
@@ -62,16 +63,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
-    public int setHeight(String username){
-        int height = 0;
+    public void getHeight(String username1){
         SQLiteDatabase myDB = this.getWritableDatabase();
-        try (Cursor cursor = myDB.rawQuery("Select height from user where username = ?", new String[]{username})) {
-
-            return height;
-        }
-
-
+        Cursor cursor = myDB.rawQuery("SELECT height FROM user WHERE username= ?",null);
+        System.out.println("Pituus"+cursor);
     }
+
+
+
+
+
+
+
 
 
 }

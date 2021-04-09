@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class MainPage extends AppCompatActivity {
     String weight;
     Context context;
     String username;
+    DatabaseHelper databaseHelper;
 
 
 
@@ -47,7 +49,9 @@ public class MainPage extends AppCompatActivity {
         jsonRequest = new JSONRequest();
         jsonFileControl = new JSONFileControl();
 
+
         username = getIntent().getStringExtra("Username");
+        databaseHelper = new DatabaseHelper(this);
 
 
         try {
@@ -68,6 +72,7 @@ public class MainPage extends AppCompatActivity {
         }
 
         setTexts();
+        bmiCalculator();
 
         // Buttons OnClickListeners
         button.setOnClickListener(v -> {
@@ -97,6 +102,11 @@ public class MainPage extends AppCompatActivity {
         //changeInClimate.setText("+5t");
 
 
+
+
+    }
+    public void bmiCalculator(){
+        databaseHelper.getHeight(username);
 
 
     }
