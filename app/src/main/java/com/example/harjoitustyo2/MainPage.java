@@ -114,6 +114,7 @@ public class MainPage extends AppCompatActivity {
         double BMI = weightDouble / (heightDouble * heightDouble);
         System.out.println(BMI);
 
+
     }
 
 
