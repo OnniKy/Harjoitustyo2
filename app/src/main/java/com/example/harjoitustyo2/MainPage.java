@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainPage extends AppCompatActivity {
 
     JSONRequest jsonRequest;
@@ -93,6 +95,18 @@ public class MainPage extends AppCompatActivity {
 
     public void setBMI(){
         bmiCalculator();
+        DecimalFormat df = new DecimalFormat("0.00");
+
+
+        if (BMI < 18.5){
+            bmiTextbox.setText("BMI: " + df.format(BMI) + " - Underweight");
+        } else if (BMI >= 18.5 && BMI < 24.9){
+            bmiTextbox.setText("BMI: " + df.format(BMI) + " - Normal weight");
+        } else if (BMI >= 24.9 && BMI < 29.9){
+            bmiTextbox.setText("BMI: " + df.format(BMI) + " - Overweight");
+        } else if (BMI >= 29.9){
+            bmiTextbox.setText("BMI: " + df.format(BMI) + " - Obese");
+        }
 
 
 
@@ -106,7 +120,6 @@ public class MainPage extends AppCompatActivity {
         double heightDouble = Double.parseDouble(height)/100;
         double weightDouble = Double.parseDouble(weight);
         BMI = weightDouble / (heightDouble * heightDouble);
-        System.out.println(BMI);
     }
 
 
