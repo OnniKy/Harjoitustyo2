@@ -110,7 +110,9 @@ public class MainPage extends AppCompatActivity {
 
         String height = databaseHelper.getHeight(username);
         int heightInt = Integer.parseInt(height);
-        double BMI = weight / (heightInt * heightInt);
+        int weightInt = Integer.parseInt((weight))
+        double BMI = weightInt / (heightInt * heightInt);
+        System.out.println(BMI);
 
 
 
