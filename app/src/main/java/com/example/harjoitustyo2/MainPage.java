@@ -93,8 +93,8 @@ public class MainPage extends AppCompatActivity {
     public void setTexts(){
         dailyClimate.setText("You produce 2 coals");
         bmiTextbox.setText("Your bodymassindex is 2 ");
-        changeInWeight.setText("+2kg");
-        changeInClimate.setText("+5t");
+        //changeInWeight.setText("+2kg");
+        //changeInClimate.setText("+5t");
 
 
 

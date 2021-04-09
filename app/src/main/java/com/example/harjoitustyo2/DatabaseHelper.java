@@ -63,7 +63,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
     public int setHeight(String username){
-        return height;
+        int height = 0;
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        try (Cursor cursor = myDB.rawQuery("Select height from user where username = ?", new String[]{username})) {
+
+            return height;
+        }
+
 
     }
 
