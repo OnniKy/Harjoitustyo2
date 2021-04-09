@@ -37,7 +37,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteStatement statement = getReadableDatabase().compileStatement(sql);
         long l = statement.simpleQueryForLong();
         statement.close();
-
         return l == 1;
     }
 
@@ -64,9 +63,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
     public void getHeight(String username1){
+
         SQLiteDatabase myDB = this.getWritableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT height FROM user WHERE username= ?",null);
-        System.out.println("Pituus"+cursor);
+        System.out.println(username1);
+        //String sql = "Select height FROM user WHERE username = '"+ username1 + "'";
+        Cursor cursor = myDB.rawQuery("SELECT * FROM user WHERE username= '" + username1 + "'", null);
+        System.out.println("CURSOR:" + cursor.getCount());
+        String height = cursor.getString(0);
+        System.out.println("Pituus"+height);
     }
 
 
