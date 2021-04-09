@@ -17,8 +17,8 @@ public class MainPage extends AppCompatActivity {
 
     JSONRequest jsonRequest;
     JSONFileControl jsonFileControl;
-    EditText dailyWeight, dailyClimate, changeInWeight, changeInClimate;
-    TextView totalEmission, bmiTextbox;
+    EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
+    TextView totalEmission;
     Button button, button2;
     ImageButton logOut;
     String emission = null;
@@ -34,9 +34,9 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         dailyWeight = findViewById(R.id.dailyWeight);
         dailyClimate = findViewById(R.id.dailyClimate);
-        bmiTextbox = findViewById(R.id.bmiText);
-        changeInWeight = findViewById(R.id.changeInWeight);
-        changeInClimate = findViewById(R.id.changeInClimate);
+        bmiTextbox = findViewById(R.id.bmiTextbox);
+        /*changeInWeight = findViewById(R.id.changeInWeight);
+        changeInClimate = findViewById(R.id.changeInClimate);*/
         button = findViewById(R.id.toClimateControl);
         button2 = findViewById(R.id.button);
         logOut = findViewById(R.id.imageButton);
@@ -53,7 +53,7 @@ public class MainPage extends AppCompatActivity {
         try {
             weight = jsonFileControl.readLog(context, username, "Weight"); //TODO
             System.out.println(weight);
-            dailyWeight.setText("Your weight is: " + weight);
+            dailyWeight.setText("Your weight is: " + weight + "at the moment");
             emission = jsonFileControl.readLog(context, username, "Total");
             System.out.println("EMISSION: " + emission);
 
@@ -98,9 +98,6 @@ public class MainPage extends AppCompatActivity {
 
 
 
-
-    }
-    public void bmiCalculator(){
 
     }
 
