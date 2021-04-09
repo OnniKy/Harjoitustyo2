@@ -26,6 +26,9 @@ public class WeightControl extends AppCompatActivity {
     JSONFileControl jsonFileControl;
     LineGraphSeries<DataPoint> series;
     GraphView graph;
+    double x,y;
+
+
 
 
     @Override
@@ -59,7 +62,6 @@ public class WeightControl extends AppCompatActivity {
             String addWeight1 = addWeight.getText().toString();
             jsonFileControl.writeLogWeight(addWeight1, context, name);
             weightGraph();
-
             Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
         });
 
@@ -69,6 +71,7 @@ public class WeightControl extends AppCompatActivity {
             intent.putExtra("Username", username);
             startActivity(intent);
         });
+
     }
     public int getQuantity(){
         int q = 0;
@@ -81,10 +84,9 @@ public class WeightControl extends AppCompatActivity {
     }
 
     public void weightGraph(){
-        int length = getQuantity();
-        double y,x;
+        int length=getQuantity();
         String p = "";
-        x = 0;
+        x=0.0;
         for(int i = 0; i<length-1; i++){
             x = x+1;
             try{
@@ -94,12 +96,9 @@ public class WeightControl extends AppCompatActivity {
             }
             y = Integer.parseInt(p);
 
-            series.appendData(new DataPoint(x, y), true, length-1);
-
+            series.appendData(new DataPoint(x, y), false, length-1);
         }
         graph.addSeries(series);
-
-
     }
 
 
