@@ -28,8 +28,6 @@ public class WeightControl extends AppCompatActivity {
     GraphView graph;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +81,7 @@ public class WeightControl extends AppCompatActivity {
     }
 
     public void weightGraph(){
-        int length=getQuantity();
+        int length = getQuantity();
         double y,x;
         String p = "";
         x = 0;
