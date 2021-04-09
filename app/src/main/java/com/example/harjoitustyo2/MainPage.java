@@ -106,7 +106,12 @@ public class MainPage extends AppCompatActivity {
 
     }
     public void bmiCalculator(){
-        databaseHelper.getHeight(username);
+        System.out.println(username);
+
+        String height = databaseHelper.getHeight(username);
+        int heightInt = Integer.parseInt(height);
+        double BMI = weight / (heightInt * heightInt);
+
 
 
     }
