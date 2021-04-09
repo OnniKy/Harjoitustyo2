@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -42,11 +43,14 @@ public class WeightControl extends AppCompatActivity {
 
 
             jsonFileControl.writeLogWeight(addWeight1, context, user);
+
+            Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
         });
 
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(WeightControl.this, MainPage.class);
+            intent.putExtra("Username", user);
             startActivity(intent);
         });
 

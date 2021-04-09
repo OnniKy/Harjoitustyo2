@@ -57,7 +57,61 @@ public class RegisterActivity extends AppCompatActivity{
 
 
         // Registeration
-        register.setOnClickListener(this::onClick);
+        register.setOnClickListener(v ->{
+            RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
+
+            if (email.length() > 0 && name.length() > 0 && password.length() > 0 && municipality.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
+                String nameValue = name.getText().toString();
+                String usernameValue = email.getText().toString();
+                String passwordValue = password.getText().toString();
+                String municipalityValue = municipality.getText().toString();
+                int heightValue = Integer.parseInt(height.getText().toString());
+                int weightValue = Integer.parseInt(weight.getText().toString());
+                String genderValue = checkedBtn.getText().toString();
+                int birthyearValue = Integer.parseInt(birthyear.getText().toString());
+
+                if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
+
+                    boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
+                    if (!usercheckResult) {
+
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put("username", usernameValue);
+                        contentValues.put("name", nameValue);
+                        contentValues.put("password", passwordValue);
+                        contentValues.put("municipality", municipalityValue);
+                        contentValues.put("height", heightValue);
+                        contentValues.put("weight", weightValue);
+                        contentValues.put("gender", genderValue);
+                        contentValues.put("birthyear", birthyearValue);
+
+                        //Adding first weight to Weight Data File
+                        String weightValue1 = String.valueOf(weightValue);
+                        jsonFileControl.writeLogWeight(weightValue1, context, usernameValue);
+
+
+                        databaseHelper.insertUser(contentValues);
+                        Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(RegisterActivity.this, MainPage.class);
+                        intent.putExtra("Username", usernameValue);
+                        startActivity(intent);
+
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Username already exists. \nPlease sign in.", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Invalid password. Password must contain at least 12 letters including big letter, small letter and special character.", Toast.LENGTH_SHORT).show();
+                }
+
+            } else {
+                Toast.makeText(RegisterActivity.this, "Fill all the fields!", Toast.LENGTH_SHORT).show();
+            }
+
+
+        });
 
     }
 
@@ -76,61 +130,4 @@ public class RegisterActivity extends AppCompatActivity{
 
     }
 
-    private void onClick(View v) {
-
-        RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
-
-        if (email.length() > 0 && name.length() > 0 && password.length() > 0 && municipality.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
-            String nameValue = name.getText().toString();
-            String usernameValue = email.getText().toString();
-            String passwordValue = password.getText().toString();
-            String municipalityValue = municipality.getText().toString();
-            int heightValue = Integer.parseInt(height.getText().toString());
-            int weightValue = Integer.parseInt(weight.getText().toString());
-            String genderValue = checkedBtn.getText().toString();
-            int birthyearValue = Integer.parseInt(birthyear.getText().toString());
-
-
-
-            if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
-
-                boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
-                if (!usercheckResult) {
-
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put("username", usernameValue);
-                    contentValues.put("name", nameValue);
-                    contentValues.put("password", passwordValue);
-                    contentValues.put("municipality", municipalityValue);
-                    contentValues.put("height", heightValue);
-                    contentValues.put("weight", weightValue);
-                    contentValues.put("gender", genderValue);
-                    contentValues.put("birthyear", birthyearValue);
-
-                    //Adding first weight to Weight Data File
-                    String weightValue1 = String.valueOf(weightValue);
-                    jsonFileControl.writeLogWeight(weightValue1, context, usernameValue);
-
-                    //TEE SE TÄHÄN
-
-                    databaseHelper.insertUser(contentValues);
-                    Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(RegisterActivity.this, MainPage.class);
-                    startActivity(intent);
-
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Username already exists. \nPlease sign in.", Toast.LENGTH_SHORT).show();
-                }
-
-
-            } else {
-                Toast.makeText(RegisterActivity.this, "Invalid password. Password must contain at least 12 letters including big letter, small letter and special character.", Toast.LENGTH_SHORT).show();
-            }
-
-        } else {
-            Toast.makeText(RegisterActivity.this, "Fill all the fields!", Toast.LENGTH_SHORT).show();
-        }
-
-    }
 }

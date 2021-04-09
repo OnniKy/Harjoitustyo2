@@ -37,7 +37,7 @@ public class JSONRequest {
     }
 
 
-    public JSONObject readJSON(String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
+    public JSONObject readJSON(String username, String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         JSONObject jsonObject = null;
         jsonFileControl = new JSONFileControl();
@@ -45,7 +45,7 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                jsonFileControl.writeLogClimate(context,"tomitomi", jsonObject); //TODO Oikea nimi tähän
+                jsonFileControl.writeLogClimate(context,username, jsonObject);
 
             } catch (JSONException e) {
                 e.printStackTrace();
