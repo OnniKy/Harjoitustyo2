@@ -28,7 +28,8 @@ public class ClimateControl extends AppCompatActivity {
     TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
     TextView dairyEmissionView, meatEmissionView, plantEmissionView, totalEmissionView;
     Spinner spinner;
-    String username;
+    String name, username;
+    DatabaseHelper databaseHelper;
 
     static int MIN = 0;
     int beefAVG = 40;
@@ -88,8 +89,17 @@ public class ClimateControl extends AppCompatActivity {
         this.seekbarUtilize(riceBar, riceAVG, riceView);
         this.seekbarUtilize(vegetableBar, vegetableAVG, vegetableView);
         this.seekbarUtilize(eggBar, eggAVG, eggView);
-
         this.spinnerUtilize();
+
+        username = getIntent().getStringExtra("Username");
+        databaseHelper = new DatabaseHelper(this);
+
+
+        try {
+            name = databaseHelper.getName(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         submit.setOnClickListener(v -> {
             String diet = spinner.getSelectedItem().toString();
@@ -101,9 +111,8 @@ public class ClimateControl extends AppCompatActivity {
             String rice = cutString(riceView.getText().toString());
             String egg = cutString(eggView.getText().toString());
             String salad = cutString(vegetableView.getText().toString());
-            username = getIntent().getStringExtra("Username");
 
-            jsonObject = jsonRequest.readJSON(username ,diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
+            jsonObject = jsonRequest.readJSON(name ,diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
 
             try {
                 dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg");
@@ -118,11 +127,12 @@ public class ClimateControl extends AppCompatActivity {
 
         cancel.setOnClickListener(v -> {
             Intent intent = new Intent(ClimateControl.this, MainPage.class);
-            intent.putExtra("Username", getIntent().getStringExtra("Username"));
+            intent.putExtra("Username", username);
             startActivity(intent);
 
         });
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void seekbarUtilize(SeekBar seekbar, int AVG, TextView view){

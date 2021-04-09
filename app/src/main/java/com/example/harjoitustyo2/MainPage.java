@@ -23,7 +23,7 @@ public class MainPage extends AppCompatActivity {
     String emission = null;
     String weight;
     Context context;
-    String username;
+    String username, name;
     DatabaseHelper databaseHelper;
     double BMI;
 
@@ -47,17 +47,20 @@ public class MainPage extends AppCompatActivity {
         jsonRequest = new JSONRequest();
         jsonFileControl = new JSONFileControl();
 
-
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);
+        System.out.println("USERNAME VALUE: " + username);
+        try {
+            name = databaseHelper.getName(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         try {
-            weight = jsonFileControl.readLog(context, username, "Weight"); //TODO
-            System.out.println(weight);
+            weight = jsonFileControl.readLog(context, name, "Weight"); //TODO
             dailyWeight.setText("Your weight is: " + weight + "kg");
-            emission = jsonFileControl.readLog(context, username, "Total");
-            System.out.println("EMISSION: " + emission);
+            emission = jsonFileControl.readLog(context, name, "Total");
 
 
         } catch (Exception e) {
@@ -75,13 +78,13 @@ public class MainPage extends AppCompatActivity {
         // Buttons OnClickListeners
         button.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, ClimateControl.class);
-            intent.putExtra("Username",getIntent().getStringExtra("Username"));
+            intent.putExtra("Username", username);
             startActivity(intent);
         });
 
         button2.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, WeightControl.class);
-            intent.putExtra("Username", getIntent().getStringExtra("Username"));
+            intent.putExtra("Username", username);
             startActivity(intent);
         });
 
@@ -90,13 +93,11 @@ public class MainPage extends AppCompatActivity {
             startActivity(intent);
         });
 
-
     }
 
     public void setBMI(){
         bmiCalculator();
         DecimalFormat df = new DecimalFormat("0.00");
-
 
         if (BMI < 18.5){
             bmiTextbox.setText("BMI: " + df.format(BMI) + " - Underweight");
@@ -107,19 +108,18 @@ public class MainPage extends AppCompatActivity {
         } else if (BMI >= 29.9){
             bmiTextbox.setText("BMI: " + df.format(BMI) + " - Obese");
         }
-
-
-
-
-
     }
 
     public void bmiCalculator(){
         String height = databaseHelper.getHeight(username);
 
         double heightDouble = Double.parseDouble(height)/100;
-        double weightDouble = Double.parseDouble(weight);
-        BMI = weightDouble / (heightDouble * heightDouble);
+        try {
+            double weightDouble = Double.parseDouble(weight);
+            BMI = weightDouble / (heightDouble * heightDouble);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

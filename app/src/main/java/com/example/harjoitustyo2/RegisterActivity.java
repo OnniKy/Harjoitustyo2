@@ -25,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity{
     RadioGroup gender;
     DatabaseHelper databaseHelper;
     JSONFileControl jsonFileControl;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,23 +75,8 @@ public class RegisterActivity extends AppCompatActivity{
 
                     boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
                     if (!usercheckResult) {
-
-                        ContentValues contentValues = new ContentValues();
-                        contentValues.put("username", usernameValue);
-                        contentValues.put("name", nameValue);
-                        contentValues.put("password", passwordValue);
-                        contentValues.put("municipality", municipalityValue);
-                        contentValues.put("height", heightValue);
-                        contentValues.put("weight", weightValue);
-                        contentValues.put("gender", genderValue);
-                        contentValues.put("birthyear", birthyearValue);
-
-                        //Adding first weight to Weight Data File
-                        String weightValue1 = String.valueOf(weightValue);
-                        jsonFileControl.writeLogWeight(weightValue1, context, usernameValue);
-
-
-                        databaseHelper.insertUser(contentValues);
+                        user = new User(nameValue, usernameValue, passwordValue, municipalityValue, genderValue, heightValue, weightValue, birthyearValue);
+                        databaseHelper.insertUser(user, context);
                         Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(RegisterActivity.this, MainPage.class);

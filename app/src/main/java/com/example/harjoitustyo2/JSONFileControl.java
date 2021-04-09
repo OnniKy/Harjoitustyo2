@@ -28,19 +28,24 @@ import java.util.Map;
 
 public class JSONFileControl {
 
+    Context context;
     FileWriter fileWriter;
     BufferedWriter bufferedWriter;
     BufferedReader bufferedReader;
     FileReader fileReader;
-    String response;
+    String response, name;
     private JSONObject messageDetails;
     private Boolean isUserExisting;
-    JSONObject jsonObject;
+    DatabaseHelper databaseHelper;
+
+    public JSONFileControl(){
+
+    }
 
 
     public void writeLogWeight(String weight, Context context, String name) {
 
-        String FILE_NAME = name + ".json";
+        String FILE_NAME = name + "Weight.json";
         File file = new File(context.getFilesDir(), FILE_NAME);
 
         if (!file.exists()) {
@@ -89,11 +94,12 @@ public class JSONFileControl {
 
 
     public String readLog(Context context, String name, String Value) throws Exception {
+
         StringBuffer output = new StringBuffer();
         String result = null;
         String FILE_NAME;
         if (Value.equals("Weight")) {
-            FILE_NAME = name + ".json";
+            FILE_NAME = name + "Weight.json";
         } else {
             FILE_NAME = name + "Climate.json";
         }
@@ -122,14 +128,11 @@ public class JSONFileControl {
 
 
     public void writeLogClimate(Context context, String name, JSONObject jsonObject) {
-        String dairy = null, meat = null, plant, total = null;
+        String total = null;
         String fileName = name + "Climate.json";
 
 
         try {
-            dairy = modifyJSON(jsonObject.getString("Dairy"));
-            meat = modifyJSON(jsonObject.getString("Meat"));
-            plant = modifyJSON(jsonObject.getString("Plant"));
             total = modifyJSON(jsonObject.getString("Total"));
         } catch (JSONException e) {
             e.printStackTrace();
@@ -183,6 +186,7 @@ public class JSONFileControl {
 
     }
 
+    /*
 
         public JSONObject readLogClimate (Context context, String name) throws JSONException {
             String result = null;
@@ -209,6 +213,7 @@ public class JSONFileControl {
 
             return jsonObject;
         }
+        */
 
 
         public int round ( double d){
@@ -229,6 +234,7 @@ public class JSONFileControl {
 
             return String.valueOf(v);
         }
+
 
 }
 

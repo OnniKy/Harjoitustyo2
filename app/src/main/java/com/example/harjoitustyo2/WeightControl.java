@@ -15,8 +15,9 @@ public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
     Context context;
-    String user;
+    String username, name;
     Button dailyWeightButton, back;
+    DatabaseHelper databaseHelper;
 
     JSONFileControl jsonFileControl;
 
@@ -33,16 +34,23 @@ public class WeightControl extends AppCompatActivity {
         back = findViewById(R.id.back);
 
         context = WeightControl.this;
-        user = getIntent().getStringExtra("Username");
+        username = getIntent().getStringExtra("Username");
+        databaseHelper = new DatabaseHelper(this);
+
+
+        try {
+            name = databaseHelper.getName(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         jsonFileControl = new JSONFileControl();
 
 
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
-
-
-            jsonFileControl.writeLogWeight(addWeight1, context, user);
+            jsonFileControl.writeLogWeight(addWeight1, context, name);
 
             Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
         });
@@ -50,7 +58,7 @@ public class WeightControl extends AppCompatActivity {
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(WeightControl.this, MainPage.class);
-            intent.putExtra("Username", user);
+            intent.putExtra("Username", username);
             startActivity(intent);
         });
 

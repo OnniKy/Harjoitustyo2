@@ -29,15 +29,13 @@ public class JSONRequest {
     JSONFileControl jsonFileControl;
 
 
-
-
     public void JSONRequest(){
         jsonArray = new JSONArray();
 
     }
 
 
-    public JSONObject readJSON(String username, String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
+    public JSONObject readJSON(String name, String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         JSONObject jsonObject = null;
         jsonFileControl = new JSONFileControl();
@@ -45,7 +43,7 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                jsonFileControl.writeLogClimate(context,username, jsonObject);
+                jsonFileControl.writeLogClimate(context, name, jsonObject);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -76,8 +74,6 @@ public class JSONRequest {
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
-
-            System.out.println("SB: " + sb);
             response = sb.toString();
             in.close();
             br.close();

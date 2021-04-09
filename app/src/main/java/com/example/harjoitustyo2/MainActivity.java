@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 String passwordValue = password.getText().toString();
 
                 if (databaseHelper.isLoginValid(usernameValue, passwordValue)){
-                    User user = new User(usernameValue);
                     Intent intent = new Intent(MainActivity.this, MainPage.class);
                     intent.putExtra("Username",usernameValue);
                     startActivity(intent);
