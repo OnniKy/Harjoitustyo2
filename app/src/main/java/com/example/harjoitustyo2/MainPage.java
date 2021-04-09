@@ -35,8 +35,8 @@ public class MainPage extends AppCompatActivity {
         dailyWeight = findViewById(R.id.dailyWeight);
         dailyClimate = findViewById(R.id.dailyClimate);
         bmiTextbox = findViewById(R.id.bmiTextbox);
-        changeInWeight = findViewById(R.id.changeInWeight);
-        changeInClimate = findViewById(R.id.changeInClimate);
+        /*changeInWeight = findViewById(R.id.changeInWeight);
+        changeInClimate = findViewById(R.id.changeInClimate);*/
         button = findViewById(R.id.toClimateControl);
         button2 = findViewById(R.id.button);
         logOut = findViewById(R.id.imageButton);
