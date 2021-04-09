@@ -53,7 +53,7 @@ public class MainPage extends AppCompatActivity {
         try {
             weight = jsonFileControl.readLog(context, username, "Weight"); //TODO
             System.out.println(weight);
-            dailyWeight.setText("Your weight is: " + weight + "at the moment");
+            dailyWeight.setText("Your weight is: " + weight + " at the moment");
             emission = jsonFileControl.readLog(context, username, "Total");
             System.out.println("EMISSION: " + emission);
 
