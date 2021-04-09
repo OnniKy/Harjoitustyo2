@@ -4,21 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.json.JSONObject;
-
 public class MainPage extends AppCompatActivity {
 
     JSONRequest jsonRequest;
     JSONFileControl jsonFileControl;
-    EditText dailyWeight, dailyClimate, bmiTextbox, changeInWeight, changeInClimate;
+    EditText dailyWeight, bmiTextbox, changeInWeight, changeInClimate;
     TextView totalEmission;
     Button button, button2;
     ImageButton logOut;
@@ -27,6 +23,7 @@ public class MainPage extends AppCompatActivity {
     Context context;
     String username;
     DatabaseHelper databaseHelper;
+    double BMI;
 
 
 
@@ -35,12 +32,11 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         dailyWeight = findViewById(R.id.dailyWeight);
-        dailyClimate = findViewById(R.id.dailyClimate);
         bmiTextbox = findViewById(R.id.bmiTextbox);
         /*changeInWeight = findViewById(R.id.changeInWeight);
         changeInClimate = findViewById(R.id.changeInClimate);*/
         button = findViewById(R.id.toClimateControl);
-        button2 = findViewById(R.id.button);
+        button2 = findViewById(R.id.toWeightControl);
         logOut = findViewById(R.id.imageButton);
 
         totalEmission = findViewById(R.id.textView14);
@@ -71,8 +67,8 @@ public class MainPage extends AppCompatActivity {
             totalEmission.setText("Calculate your emission on Climate \nControl page!");
         }
 
-        setTexts();
-        bmiCalculator();
+        setBMI();
+
 
         // Buttons OnClickListeners
         button.setOnClickListener(v -> {
@@ -95,22 +91,21 @@ public class MainPage extends AppCompatActivity {
 
     }
 
-    public void setTexts(){
-        dailyClimate.setText("You produce 2 coals");
-        bmiTextbox.setText("Your bodymassindex is 2 ");
-        //changeInWeight.setText("+2kg");
-        //changeInClimate.setText("+5t");
+    public void setBMI(){
+        bmiCalculator();
+
 
 
 
 
     }
+
     public void bmiCalculator(){
         String height = databaseHelper.getHeight(username);
 
         double heightDouble = Double.parseDouble(height)/100;
         double weightDouble = Double.parseDouble(weight);
-        double BMI = weightDouble / (heightDouble * heightDouble);
+        BMI = weightDouble / (heightDouble * heightDouble);
         System.out.println(BMI);
     }
 
