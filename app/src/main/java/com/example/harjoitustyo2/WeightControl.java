@@ -56,6 +56,7 @@ public class WeightControl extends AppCompatActivity {
         series = new LineGraphSeries<DataPoint>();
 
 
+
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
             jsonFileControl.writeLogWeight(addWeight1, context, name);
