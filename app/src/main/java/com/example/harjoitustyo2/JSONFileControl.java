@@ -93,6 +93,8 @@ public class JSONFileControl {
     }
 
 
+
+
     public String readLog(Context context, String name, String Value) throws Exception {
 
         StringBuffer output = new StringBuffer();
@@ -122,6 +124,63 @@ public class JSONFileControl {
 
         return result;
     }
+    public String getGraphWeight(Context context, String name, String Value, int i) throws Exception {
+        StringBuffer output = new StringBuffer();
+        String result = null;
+        String FILE_NAME;
+        if (Value.equals("Weight")) {
+            FILE_NAME = name + ".json";
+        } else {
+            FILE_NAME = name + "Climate.json";
+        }
+
+        File file = new File(context.getFilesDir(), FILE_NAME);
+        fileReader = new FileReader(file.getAbsoluteFile());
+        bufferedReader = new BufferedReader(fileReader);
+        String line = "";
+
+        while ((line = bufferedReader.readLine()) != null) {
+            output.append(line + "\n");
+
+        }
+        response = output.toString();
+        bufferedReader.close();
+        messageDetails = new JSONObject(response);
+        isUserExisting = messageDetails.has(Value);
+        JSONArray userMessages = (JSONArray) messageDetails.get(Value);
+        result = userMessages.get(i).toString();
+
+        return result;
+    }
+
+    public int getQuantity(Context context, String name, String Value) throws Exception {
+        StringBuffer output = new StringBuffer();
+        String result = null;
+        String FILE_NAME;
+        if (Value.equals("Weight")) {
+            FILE_NAME = name + ".json";
+        } else {
+            FILE_NAME = name + "Climate.json";
+        }
+
+        File file = new File(context.getFilesDir(), FILE_NAME);
+        fileReader = new FileReader(file.getAbsoluteFile());
+        bufferedReader = new BufferedReader(fileReader);
+        String line = "";
+
+        while ((line = bufferedReader.readLine()) != null) {
+            output.append(line + "\n");
+
+        }
+        response = output.toString();
+        bufferedReader.close();
+        messageDetails = new JSONObject(response);
+        isUserExisting = messageDetails.has(Value);
+        JSONArray userMessages = (JSONArray) messageDetails.get(Value);
+
+        return userMessages.length();
+    }
+
 
 
     /////////////////////////// CLIMATE DIET  ///////////////////////////

@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import org.json.JSONObject;
 
 public class WeightControl extends AppCompatActivity {
@@ -20,6 +23,9 @@ public class WeightControl extends AppCompatActivity {
     DatabaseHelper databaseHelper;
 
     JSONFileControl jsonFileControl;
+    JSONFileControl jsonFileControl, jsonFileControl1;
+    LineGraphSeries<DataPoint> series;
+    GraphView graph;
 
 
 
@@ -46,6 +52,9 @@ public class WeightControl extends AppCompatActivity {
 
 
         jsonFileControl = new JSONFileControl();
+        jsonFileControl1 = new JSONFileControl();
+        graph = findViewById(R.id.graph);
+        series = new LineGraphSeries<DataPoint>();
 
 
         dailyWeightButton.setOnClickListener(v -> {
@@ -61,12 +70,38 @@ public class WeightControl extends AppCompatActivity {
             intent.putExtra("Username", username);
             startActivity(intent);
         });
+    }
+    public int GetQuantity(){
+        int q = 0;
+        try{
+            q = jsonFileControl1.getQuantity(context, user, "Weight");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return q;
+    }
 
+    public void WeightGraph(){
+        int length=GetQuantity();
+        double y,x;
+        String p = "";
+        x = 0;
+        for(int i = 0; i<length-1; i++){
+            x = x+1;
+            try{
+                p = jsonFileControl1.getGraphWeight(context, user, "Weight", i);
+            }  catch (Exception e) {
+                e.printStackTrace();
+            }
+            y = Integer.parseInt(p);
 
+            series.appendData(new DataPoint(x, y), true, length-1);
 
-
+        }
+        graph.addSeries(series);
 
 
     }
+
 
 }
