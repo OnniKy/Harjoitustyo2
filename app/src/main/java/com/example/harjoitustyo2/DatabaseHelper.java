@@ -62,6 +62,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+    public int setHeight(String username){
+        return height;
+
+    }
 
 
 }
