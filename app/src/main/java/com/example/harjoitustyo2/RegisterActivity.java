@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity{
                 String usernameValue = email.getText().toString();
                 String passwordValue = password.getText().toString();
                 String municipalityValue = municipality.getText().toString();
-                int heightValue = Integer.parseInt(height.getText().toString());
+                String heightValue = height.getText().toString();
                 int weightValue = Integer.parseInt(weight.getText().toString());
                 String genderValue = checkedBtn.getText().toString();
                 int birthyearValue = Integer.parseInt(birthyear.getText().toString());
@@ -81,15 +81,16 @@ public class RegisterActivity extends AppCompatActivity{
 
                     boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
                     if (!usercheckResult) {
+                        byte[] salt = new byte[0];
+                        String password_ = null;
                         try {
-                            byte[] salt = hashing.getSalt();
-                            String password = hashing.getSecurePassword(passwordValue, salt);
-                            System.out.println("Salt: " + salt + " Password: " + password);
-                        } catch (NoSuchAlgorithmException e){
+                            salt = hashing.getSalt();
+                            password_ = hashing.getSecurePassword(passwordValue, salt);
+                        } catch (NoSuchAlgorithmException e) {
                             e.printStackTrace();
                         }
 
-                        user = new User(nameValue, usernameValue, passwordValue, municipalityValue, genderValue, heightValue, weightValue, birthyearValue);
+                        user = new User(salt, nameValue, usernameValue, password_, municipalityValue, genderValue, heightValue, weightValue, birthyearValue);
                         databaseHelper.insertUser(user, context);
                         Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();
 

@@ -45,6 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         jsonFileControl = new JSONFileControl();
 
         ContentValues contentValues = new ContentValues();
+        contentValues.put("id", user.getSaltId());
         contentValues.put("username", user.getUsername());
         contentValues.put("name", user.getName());
         contentValues.put("password", user.getPassword());
@@ -114,13 +115,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public byte[] getId(String username){
         String sql = "Select id FROM user WHERE username = '"+ username + "'";
-        String id;
+        byte[] id;
         try (Cursor cursor = getReadableDatabase().rawQuery(sql, null)) {
             cursor.moveToFirst();
-            id = cursor.getString(0);
+            id = cursor.getBlob(0);
         }
 
-        return id.getBytes();
+        return id;
     }
 
     public String getPassword(String username){
@@ -157,7 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public int getBirthyear(String username){
-        String sql = "Select municipality FROM user WHERE username = '"+ username + "'";
+        String sql = "Select birthyear FROM user WHERE username = '"+ username + "'";
         String byear;
         try (Cursor cursor = getReadableDatabase().rawQuery(sql, null)) {
             cursor.moveToFirst();
