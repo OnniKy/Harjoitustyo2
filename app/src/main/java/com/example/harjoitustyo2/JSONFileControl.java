@@ -148,7 +148,7 @@ public class JSONFileControl {
         messageDetails = new JSONObject(response);
         isUserExisting = messageDetails.has(Value);
         JSONArray userMessages = (JSONArray) messageDetails.get(Value);
-        result = userMessages.get(i).toString();
+        result = userMessages.get(userMessages.length()-i+1).toString();
         System.out.println("RESULT JSONFILE: " + result);
 
         return result;

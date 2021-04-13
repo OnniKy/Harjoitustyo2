@@ -56,6 +56,8 @@ public class WeightControl extends AppCompatActivity {
         jsonFileControl = new JSONFileControl();
         graph = findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
+        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+        weightGraph();
 
 
 
@@ -88,15 +90,17 @@ public class WeightControl extends AppCompatActivity {
         int length=getQuantity();
         String p = "";
         for(int i = 0; i<length-1; i++){
+            int left = length-i;
+
             x = x+1;
             try{
-                p = jsonFileControl.getGraphWeight(context, name, "Weight", i);
+                p = jsonFileControl.getGraphWeight(context, name, "Weight", left);
             }  catch (Exception e) {
                 e.printStackTrace();
             }
             y = Integer.parseInt(p);
 
-            series.appendData(new DataPoint(x, y), false, length-1);
+            series.appendData(new DataPoint(x, y), true, length-1);
         }
         graph.addSeries(series);
     }
