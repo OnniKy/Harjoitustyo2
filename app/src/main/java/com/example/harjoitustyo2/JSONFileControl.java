@@ -124,6 +124,8 @@ public class JSONFileControl {
 
         return result;
     }
+
+    //Get values from Json file to graph
     public String getGraphWeight(Context context, String name, String Value, int i) throws Exception {
         StringBuffer output = new StringBuffer();
         String result = null;
@@ -154,6 +156,7 @@ public class JSONFileControl {
         return result;
     }
 
+    //Return quantity of weight values to create right size graph
     public int getQuantity(Context context, String name, String Value) throws Exception {
         StringBuffer output = new StringBuffer();
         String result = null;

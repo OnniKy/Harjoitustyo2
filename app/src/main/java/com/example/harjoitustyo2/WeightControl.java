@@ -76,6 +76,7 @@ public class WeightControl extends AppCompatActivity {
         });
 
     }
+    //Get quantity to create right size weight graph
     public int getQuantity(){
         int q = 0;
         try{
@@ -85,7 +86,7 @@ public class WeightControl extends AppCompatActivity {
         }
         return q;
     }
-
+    //Create graph of weight values
     public void weightGraph(){
         int length=getQuantity();
         String p = "";
