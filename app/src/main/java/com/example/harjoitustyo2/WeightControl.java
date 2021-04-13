@@ -59,8 +59,8 @@ public class WeightControl extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        series = graphs.createGraph(x, series, context, name, "Weight");
-        weightGraph.addSeries(series);
+        //series = graphs.createGraph(x, series, context, name, "Weight");
+        //weightGraph.addSeries(series);
 
 
 
