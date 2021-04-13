@@ -24,6 +24,7 @@ public class User {
         this.weight = dbHelper.getWeight(user);
         this.birthyear = dbHelper.getBirthyear(user);
 
+
     }
 
     public User(byte[] saltId, String name, String username, String password, String municipality, String gender, String height, int weight, int birthyear){
