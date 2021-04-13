@@ -126,7 +126,7 @@ public class JSONFileControl {
     }
 
     //Get values from Json file to graph
-    public String getGraphWeight(Context context, String name, String Value, int i) throws Exception {
+    public String getGraphData(Context context, String name, String Value, int i) throws Exception {
         StringBuffer output = new StringBuffer();
         String result = null;
         String FILE_NAME;
@@ -184,31 +184,6 @@ public class JSONFileControl {
 
         return userMessages.length();
     }
-
-    public String climateGraphData(Context context, String name, int i) throws Exception {
-
-        StringBuffer output = new StringBuffer();
-        String result = null;
-        String FILE_NAME;
-        FILE_NAME = name + "Climate.json";
-        File file = new File(context.getFilesDir(), FILE_NAME);
-        fileReader = new FileReader(file.getAbsoluteFile());
-        bufferedReader = new BufferedReader(fileReader);
-        String line = "";
-        while ((line = bufferedReader.readLine()) != null) {
-            output.append(line + "\n");
-        }
-        response = output.toString();
-        bufferedReader.close();
-        messageDetails = new JSONObject(response);
-        isUserExisting = messageDetails.has("Total");
-        JSONArray userMessages = (JSONArray) messageDetails.get("Total");
-        result = userMessages.get(userMessages.length()-i+1).toString();
-
-        return result;
-    }
-
-
 
     /////////////////////////// CLIMATE DIET  ///////////////////////////
 
@@ -271,36 +246,6 @@ public class JSONFileControl {
         }
 
     }
-
-    /*
-
-        public JSONObject readLogClimate (Context context, String name) throws JSONException {
-            String result = null;
-
-            try {
-                File file = new File(context.getFilesDir(), name + "Climate.json");
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                StringBuilder stringBuilder = new StringBuilder();
-                String line = bufferedReader.readLine();
-                while (line != null) {
-                    stringBuilder.append(line).append("\n");
-                    line = bufferedReader.readLine();
-                }
-                result = stringBuilder.toString();
-                bufferedReader.close();
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            jsonObject = new JSONObject(result);
-
-            return jsonObject;
-        }
-        */
-
 
         public int round ( double d){
             double dAbs = Math.abs(d);

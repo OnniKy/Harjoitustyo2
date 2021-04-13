@@ -22,6 +22,7 @@ public class WeightControl extends AppCompatActivity {
     DatabaseHelper databaseHelper;
 
     JSONFileControl jsonFileControl;
+    Graphs graphs;
     LineGraphSeries<DataPoint> series;
     GraphView weightGraph;
     double x,y;
@@ -41,7 +42,15 @@ public class WeightControl extends AppCompatActivity {
         context = WeightControl.this;
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);
+        graphs = new Graphs();
         x = 0.0;
+
+
+
+        jsonFileControl = new JSONFileControl();
+        weightGraph = findViewById(R.id.graph);
+        series = new LineGraphSeries<DataPoint>();
+        weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
 
         try {
@@ -50,19 +59,18 @@ public class WeightControl extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        series = graphs.createGraph(x, series, context, name, "Weight");
+        weightGraph.addSeries(series);
 
-        jsonFileControl = new JSONFileControl();
-        weightGraph = findViewById(R.id.weightGraph);
-        series = new LineGraphSeries<DataPoint>();
-        weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
-        weightGraph();
+
 
 
 
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
             jsonFileControl.writeLogWeight(addWeight1, context, name);
-            weightGraph();
+            series = graphs.createGraph(x,series, context, name, "Weight");
+            weightGraph.addSeries(series);
             Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
         });
 
@@ -74,35 +82,5 @@ public class WeightControl extends AppCompatActivity {
         });
 
     }
-    //Get quantity to create right size weight graph
-    public int getQuantity(){
-        int q = 0;
-        try{
-            q = jsonFileControl.getQuantity(context, name, "Weight");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return q;
-    }
-    //Create graph of weight values
-    public void weightGraph(){
-        int length=getQuantity();
-        String p = "";
-        for(int i = 0; i<length-1; i++){
-            int left = length-i;
-
-            x = x+1;
-            try{
-                p = jsonFileControl.getGraphWeight(context, name, "Weight", left);
-            }  catch (Exception e) {
-                e.printStackTrace();
-            }
-            y = Integer.parseInt(p);
-
-            series.appendData(new DataPoint(x, y), true, length-1);
-        }
-        weightGraph.addSeries(series);
-    }
-
 
 }
