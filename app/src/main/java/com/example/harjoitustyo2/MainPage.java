@@ -48,12 +48,9 @@ public class MainPage extends AppCompatActivity {
 
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);
-        System.out.println("USERNAME VALUE: " + username);
-        try {
-            name = databaseHelper.getName(username);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        user = new User(context, username);
+        name = user.getName();
 
 
         try {
