@@ -43,6 +43,7 @@ public class WeightControl extends AppCompatActivity {
         context = WeightControl.this;
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);
+        x = 0.0;
 
 
         try {
@@ -86,7 +87,6 @@ public class WeightControl extends AppCompatActivity {
     public void weightGraph(){
         int length=getQuantity();
         String p = "";
-        x=0.0;
         for(int i = 0; i<length-1; i++){
             x = x+1;
             try{
