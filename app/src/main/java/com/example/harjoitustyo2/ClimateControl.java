@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class ClimateControl extends AppCompatActivity {
     JSONRequest jsonRequest;
     JSONObject jsonObject;
-    Button submit, cancel;
+    Button submit, cancel, graphButton;
     Context context;
     SeekBar beefBar, porkBar, fishBar, cheeseBar, dairyBar, riceBar, vegetableBar, eggBar;
     TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
@@ -79,6 +79,7 @@ public class ClimateControl extends AppCompatActivity {
         jsonRequest = new JSONRequest();
         submit = findViewById(R.id.submit);
         cancel = findViewById(R.id.cancel1);
+        graphButton = findViewById(R.id.graphButton);
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         this.seekbarUtilize(beefBar, beefAVG, beefView);
@@ -130,6 +131,12 @@ public class ClimateControl extends AppCompatActivity {
             intent.putExtra("Username", username);
             startActivity(intent);
 
+        });
+
+        graphButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ClimateControl.this, ClimateGraph.class);
+            intent.putExtra("Username", username);
+            startActivity(intent);
         });
     }
 
