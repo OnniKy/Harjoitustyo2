@@ -1,14 +1,33 @@
 package com.example.harjoitustyo2;
 
+import android.content.Context;
 import android.media.Image;
 
 import java.util.Date;
 
 public class User {
-    String name, username, password, municipality, gender;
-    int height, weight, birthyear;
+    byte[] saltId;
+    String name, username, password, municipality, gender, height;
+    int weight, birthyear;
+    DatabaseHelper dbHelper;
 
-    public User(String name, String username, String password, String municipality, String gender, int height, int weight, int birthyear){
+    public User(Context context, String user){
+        dbHelper = new DatabaseHelper(context);
+
+        this.saltId = dbHelper.getId(user);
+        this.name = dbHelper.getName(user);
+        this.username = user;
+        this.password = dbHelper.getPassword(user);
+        this.municipality = dbHelper.getMunicipality(user);
+        this.gender = dbHelper.getGender(user);
+        this.height = dbHelper.getHeight(user);
+        this.weight = dbHelper.getWeight(user);
+        this.birthyear = dbHelper.getBirthyear(user);
+
+    }
+
+    public User(byte[] saltId, String name, String username, String password, String municipality, String gender, String height, int weight, int birthyear){
+        this.saltId = saltId;
         this.name = name;
         this.username = username;
         this.password = password;
@@ -18,6 +37,10 @@ public class User {
         this.weight = weight;
         this.birthyear = birthyear;
 
+    }
+
+    public byte[] getSaltId() {
+        return saltId;
     }
 
     public String getName() {
@@ -40,7 +63,7 @@ public class User {
         return gender;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 

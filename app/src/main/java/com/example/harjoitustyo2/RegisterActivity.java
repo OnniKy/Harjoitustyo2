@@ -1,10 +1,12 @@
 package com.example.harjoitustyo2;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,7 +29,9 @@ public class RegisterActivity extends AppCompatActivity{
     DatabaseHelper databaseHelper;
     JSONFileControl jsonFileControl;
     User user;
+    Hashing hashing;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity{
         gender = findViewById(R.id.gender);
         register = findViewById(R.id.register);
         cancel = findViewById(R.id.cancel);
+        hashing = new Hashing();
 
         jsonFileControl = new JSONFileControl();
 
@@ -75,6 +81,14 @@ public class RegisterActivity extends AppCompatActivity{
 
                     boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
                     if (!usercheckResult) {
+                        try {
+                            byte[] salt = hashing.getSalt();
+                            String password = hashing.getSecurePassword(passwordValue, salt);
+                            System.out.println("Salt: " + salt + " Password: " + password);
+                        } catch (NoSuchAlgorithmException e){
+                            e.printStackTrace();
+                        }
+
                         user = new User(nameValue, usernameValue, passwordValue, municipalityValue, genderValue, heightValue, weightValue, birthyearValue);
                         databaseHelper.insertUser(user, context);
                         Toast.makeText(RegisterActivity.this, "User registered!", Toast.LENGTH_SHORT).show();

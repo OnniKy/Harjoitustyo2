@@ -26,6 +26,7 @@ public class MainPage extends AppCompatActivity {
     String username, name;
     DatabaseHelper databaseHelper;
     double BMI;
+    User user;
 
 
 
@@ -35,8 +36,6 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         dailyWeight = findViewById(R.id.dailyWeight);
         bmiTextbox = findViewById(R.id.bmiTextbox);
-        /*changeInWeight = findViewById(R.id.changeInWeight);
-        changeInClimate = findViewById(R.id.changeInClimate);*/
         button = findViewById(R.id.toClimateControl);
         button2 = findViewById(R.id.toWeightControl);
         logOut = findViewById(R.id.imageButton);
