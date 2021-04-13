@@ -94,7 +94,7 @@ public class JSONFileControl {
 
 
 
-
+// Method for reading weight and climate log
     public String readLog(Context context, String name, String Value) throws Exception {
 
         StringBuffer output = new StringBuffer();
