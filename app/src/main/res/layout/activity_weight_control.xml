@@ -61,7 +61,7 @@
         app:srcCompat="@drawable/olio_harkkaty__apinlogo" />
 
     <com.jjoe64.graphview.GraphView
-        android:id="@+id/climateGraph"
+        android:id="@+id/weightGraph"
         android:layout_width="match_parent"
         android:layout_height="200dip"
         app:layout_constraintBottom_toTopOf="@+id/addWeight"

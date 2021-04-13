@@ -23,7 +23,7 @@ public class ClimateGraph extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_graph);
-        climateGraph = findViewById(R.id.climateGraph);
+        climateGraph = findViewById(R.id.weightGraph);
         series = new LineGraphSeries<DataPoint>();
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);

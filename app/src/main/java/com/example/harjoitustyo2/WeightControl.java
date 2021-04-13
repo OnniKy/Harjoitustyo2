@@ -13,8 +13,6 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import org.json.JSONObject;
-
 public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
@@ -25,7 +23,7 @@ public class WeightControl extends AppCompatActivity {
 
     JSONFileControl jsonFileControl;
     LineGraphSeries<DataPoint> series;
-    GraphView graph;
+    GraphView weightGraph;
     double x,y;
 
 
@@ -54,9 +52,9 @@ public class WeightControl extends AppCompatActivity {
 
 
         jsonFileControl = new JSONFileControl();
-        graph = findViewById(R.id.graph);
+        weightGraph = findViewById(R.id.weightGraph);
         series = new LineGraphSeries<DataPoint>();
-        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+        weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         weightGraph();
 
 
@@ -103,7 +101,7 @@ public class WeightControl extends AppCompatActivity {
 
             series.appendData(new DataPoint(x, y), true, length-1);
         }
-        graph.addSeries(series);
+        weightGraph.addSeries(series);
     }
 
 
