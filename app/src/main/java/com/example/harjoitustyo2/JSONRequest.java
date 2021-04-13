@@ -29,7 +29,7 @@ public class JSONRequest {
     JSONFileControl jsonFileControl;
 
 
-    public void JSONRequest(){
+    public JSONRequest(){
         jsonArray = new JSONArray();
 
     }
@@ -147,29 +147,7 @@ public class JSONRequest {
     }
 
 
-    public String readLog(Context context, String name) throws Exception
-    {
-        StringBuffer output = new StringBuffer();
-        String splitcut2 = null;
-        String FILE_NAME = name + ".json";
 
-        File file = new File(context.getFilesDir(), FILE_NAME);
-        fileReader = new FileReader(file.getAbsoluteFile());
-        bufferedReader = new BufferedReader(fileReader);
-        String line = "";
-        while ((line = bufferedReader.readLine()) != null) {
-            output.append(line + "\n");
-
-        }
-        response = output.toString();
-        bufferedReader.close();
-        messageDetails = new JSONObject(response);
-        isUserExisting = messageDetails.has("Weight");
-        JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
-        System.out.println(userMessages.get(userMessages.length()-1));
-        splitcut2 = userMessages.get(userMessages.length()-1).toString();
-        return splitcut2;
-    }
 
 
 

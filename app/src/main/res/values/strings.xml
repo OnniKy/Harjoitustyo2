@@ -26,4 +26,6 @@
     <string name="dairy_2">Dairy:</string>
     <string name="food_consumption_habits_calculates_estimated_co2_emission_per_year">Food consumption habits - calculates estimated CO2 emission per year</string>
     <string name="back">Back</string>
+    <string name="to_weight_control">To weight control</string>
+    <string name="to_climate_control">To climate control</string>
 </resources>

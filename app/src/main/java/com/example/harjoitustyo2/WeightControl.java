@@ -55,7 +55,7 @@ public class WeightControl extends AppCompatActivity {
 
         jsonFileControl = new JSONFileControl();
         graph = findViewById(R.id.graph);
-        series = new LineGraphSeries<DataPoint>();
+        series = new LineGraphSeries<>();
         graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         weightGraph();
 
@@ -76,6 +76,7 @@ public class WeightControl extends AppCompatActivity {
         });
 
     }
+
     //Get quantity to create right size weight graph
     public int getQuantity(){
         int q = 0;
@@ -86,6 +87,7 @@ public class WeightControl extends AppCompatActivity {
         }
         return q;
     }
+
     //Create graph of weight values
     public void weightGraph(){
         int length=getQuantity();

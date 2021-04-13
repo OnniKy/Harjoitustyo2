@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,8 +15,7 @@ public class MainPage extends AppCompatActivity {
 
     JSONRequest jsonRequest;
     JSONFileControl jsonFileControl;
-    EditText dailyWeight, bmiTextbox, changeInWeight, changeInClimate;
-    TextView totalEmission;
+    TextView totalEmission, dailyWeight, bmiTextbox;
     Button button, button2;
     ImageButton logOut;
     String emission = null;
@@ -38,7 +36,7 @@ public class MainPage extends AppCompatActivity {
         bmiTextbox = findViewById(R.id.bmiTextbox);
         button = findViewById(R.id.toClimateControl);
         button2 = findViewById(R.id.toWeightControl);
-        logOut = findViewById(R.id.imageButton);
+        logOut = findViewById(R.id.logOutButton);
 
         totalEmission = findViewById(R.id.textView14);
         context = MainPage.this;

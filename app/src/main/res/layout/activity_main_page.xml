@@ -7,25 +7,13 @@
     android:background="#D8D2D2"
     tools:context=".MainPage">
 
-    <EditText
-        android:id="@+id/dailyWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:background="#00000000"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
     <Button
         android:id="@+id/toWeightControl"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:background="#8BE1BF"
-        android:text="To weight control"
+        android:text="@string/to_weight_control"
         app:backgroundTint="#8BE1BF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +24,7 @@
         android:layout_width="220dp"
         android:layout_height="60dp"
         android:layout_marginTop="150dp"
-        android:text="To climate control"
+        android:text="@string/to_climate_control"
         app:backgroundTint="#8BE1BF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,27 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/olio_harkkaty__apinlogo" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_power_off" />
-
-    <EditText
-        android:id="@+id/bmiTextbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#00000000"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyWeight" />
+        app:srcCompat="@drawable/olio_harkkaty__apinlogo"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView14"
@@ -82,5 +51,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toClimateControl" />
+
+    <TextView
+        android:id="@+id/dailyWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/bmiTextbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyWeight" />
+
+    <ImageButton
+        android:id="@+id/logOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#CFC7C8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
