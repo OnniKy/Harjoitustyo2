@@ -185,6 +185,29 @@ public class JSONFileControl {
         return userMessages.length();
     }
 
+    public String climateGraphData(Context context, String name, int i) throws Exception {
+
+        StringBuffer output = new StringBuffer();
+        String result = null;
+        String FILE_NAME;
+        FILE_NAME = name + "Climate.json";
+        File file = new File(context.getFilesDir(), FILE_NAME);
+        fileReader = new FileReader(file.getAbsoluteFile());
+        bufferedReader = new BufferedReader(fileReader);
+        String line = "";
+        while ((line = bufferedReader.readLine()) != null) {
+            output.append(line + "\n");
+        }
+        response = output.toString();
+        bufferedReader.close();
+        messageDetails = new JSONObject(response);
+        isUserExisting = messageDetails.has("Total");
+        JSONArray userMessages = (JSONArray) messageDetails.get("Total");
+        result = userMessages.get(userMessages.length()-i+1).toString();
+
+        return result;
+    }
+
 
 
     /////////////////////////// CLIMATE DIET  ///////////////////////////

@@ -388,5 +388,16 @@
         app:layout_constraintStart_toEndOf="@+id/meatEmission"
         app:layout_constraintTop_toBottomOf="@+id/eggView" />
 
+    <Button
+        android:id="@+id/graphButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create graph"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalEmission"
+        app:layout_constraintVertical_bias="0.24000001" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
