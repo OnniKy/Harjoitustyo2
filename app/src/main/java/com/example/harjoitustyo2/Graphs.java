@@ -39,6 +39,7 @@ public class Graphs {
             y = Integer.parseInt(p);
             System.out.println("X2: " + x);
             series.appendData(new DataPoint(x, y), false, length - 1);
+
         }
 
         return series;
