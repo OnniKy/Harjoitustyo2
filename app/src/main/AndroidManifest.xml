@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.harjoitustyo2">
 
+
+
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -13,7 +15,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Harjoitustyo2">
+        android:theme="@style/Theme.Harjoitustyo2"
+        android:allowBackup="true">
         <activity android:name=".RiskControl" />
         <activity android:name=".ClimateGraph" />
         <activity android:name=".ClimateControl" />

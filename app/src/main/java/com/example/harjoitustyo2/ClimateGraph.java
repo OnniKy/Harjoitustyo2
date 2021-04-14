@@ -34,7 +34,7 @@ public class ClimateGraph extends AppCompatActivity {
         context = ClimateGraph.this;
         back = findViewById(R.id.backButton);
 
-        climateGraph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
+        climateGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         climateGraph.getViewport().setXAxisBoundsManual(true);
         climateGraph.getViewport().setMinX(0);
 
@@ -48,10 +48,13 @@ public class ClimateGraph extends AppCompatActivity {
         }
 
         series = graphs.createGraph(context, name, "Total");
+        series.setColor(getResources().getColor(R.color.green));
         climateGraph.addSeries(series);
 
         d = series.getHighestValueX();
         climateGraph.getViewport().setMaxX(d.intValue());
+
+        series.setColor(getResources().getColor(R.color.green));
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(ClimateGraph.this, ClimateControl.class);

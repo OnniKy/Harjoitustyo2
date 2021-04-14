@@ -50,7 +50,7 @@ public class WeightControl extends AppCompatActivity {
 
         jsonFileControl = new JSONFileControl();
         weightGraph = findViewById(R.id.graph);
-        weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
+        weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         weightGraph.getViewport().setXAxisBoundsManual(true);
         weightGraph.getViewport().setMinX(0);
 
@@ -66,6 +66,8 @@ public class WeightControl extends AppCompatActivity {
         //series = graphs.createGraph(series, context, name, "Weight");
         series = graphs.createGraph(context, name, "Weight");
         weightGraph.addSeries(series);
+        series.setColor(getResources().getColor(R.color.green));
+        //weightGraph.setBackgroundColor(getResources().getColor(R.color.primary));
 
         d = series.getHighestValueX();
         weightGraph.getViewport().setMaxX(d.intValue());
@@ -89,6 +91,7 @@ public class WeightControl extends AppCompatActivity {
                     d = series.getHighestValueX();
                     weightGraph.getViewport().setMaxX(d.intValue());
                     weightGraph.addSeries(series);
+                    series.setColor(getResources().getColor(R.color.green));
                     Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
                 }
             }
