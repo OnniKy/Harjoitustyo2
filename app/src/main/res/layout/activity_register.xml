@@ -108,7 +108,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#004a00"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editWeight" />
 
