@@ -35,6 +35,7 @@ public class Graphs {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            System.out.println("P: " + p);
             y = Integer.parseInt(p);
             System.out.println("X2: " + x);
             series.appendData(new DataPoint(x, y), false, length - 1);

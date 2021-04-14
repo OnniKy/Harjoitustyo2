@@ -75,8 +75,9 @@ public class RegisterActivity extends AppCompatActivity{
         // Registeration
         register.setOnClickListener(v ->{
             RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
+            System.out.println(municipality.isSelected());
 
-            if (email.length() > 0 && name.length() > 0 && password.length() > 0 && municipality.isSelected() && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
+            if (email.length() > 0 && name.length() > 0 && password.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
                 String nameValue = name.getText().toString();
                 String usernameValue = email.getText().toString();
                 String passwordValue = password.getText().toString();

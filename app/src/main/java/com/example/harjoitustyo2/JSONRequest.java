@@ -36,6 +36,7 @@ public class JSONRequest {
     }
 
 
+
     public JSONObject readJSON(String name, String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         JSONObject jsonObject = null;

@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Hashing hashing;
     User user;
+    
 
 
     @Override
@@ -46,26 +47,30 @@ public class MainActivity extends AppCompatActivity {
                 final String usernameCheck = username.getText().toString();
                 final String passwordCheck = password.getText().toString();
 
+                String finalCheckPassword = null;
+                
                 if (usernameCheck.isEmpty() || passwordCheck.isEmpty()){
                     Toast.makeText(MainActivity.this, "Enter username and password!", Toast.LENGTH_SHORT).show();
                 } else {
-                    user = new User(context, usernameCheck);
-                    byte[] byteConverter = user.getSaltId();
+                    if (databaseHelper.checkUsername(usernameCheck)) {
+                        user = new User(context, usernameCheck);
+                        byte[] byteConverter = user.getSaltId();
 
-                    String finalCheckPassword = hashing.getSecurePassword(passwordCheck, byteConverter);
-                    System.out.println(finalCheckPassword);
+                        finalCheckPassword = hashing.getSecurePassword(passwordCheck, byteConverter);
+                        System.out.println(finalCheckPassword);
 
+                        if (databaseHelper.isLoginValid(usernameCheck, finalCheckPassword)) {
+                            Intent intent = new Intent(MainActivity.this, MainPage.class);
+                            intent.putExtra("Username", username.getText().toString());
+                            startActivity(intent);
 
+                            Toast.makeText(MainActivity.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
+                        } else {
 
-                    if (databaseHelper.isLoginValid(usernameCheck, finalCheckPassword)) {
-                        Intent intent = new Intent(MainActivity.this, MainPage.class);
-                        intent.putExtra("Username", username.getText().toString());
-                        startActivity(intent);
-
-                        Toast.makeText(MainActivity.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-
-                        Toast.makeText(MainActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "   User does not exist! \nDo you want to register?", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -82,13 +87,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    public void checkLogin(){
-
-        String usernameValue = username.getText().toString();
-        String passwordValue = password.getText().toString();
-
-    }
-
+    
 
 }
