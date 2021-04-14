@@ -60,30 +60,17 @@
         app:layout_constraintTop_toBottomOf="@+id/editEmail" />
 
     <EditText
-        android:id="@+id/editMunicipality"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Municipality"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editBirthyear" />
-
-    <EditText
         android:id="@+id/editHeight"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Height (cm)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editMunicipality" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipality" />
 
     <EditText
         android:id="@+id/editWeight"
@@ -168,5 +155,14 @@
             android:layout_height="wrap_content"
             android:text="Female" />
     </RadioGroup>
+
+    <Spinner
+        android:id="@+id/spinnerMunicipality"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editBirthyear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

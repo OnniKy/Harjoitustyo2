@@ -8,14 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +27,8 @@ import java.util.regex.Pattern;
 public class RegisterActivity extends AppCompatActivity{
 
     Context context;
-    EditText name, email, password, municipality, height, weight, birthyear;
+    EditText name, email, password, height, weight, birthyear;
+    Spinner municipality;
     Button register, cancel;
     RadioGroup gender;
     DatabaseHelper databaseHelper;
@@ -41,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity{
         name = findViewById(R.id.editName);
         email = findViewById(R.id.editEmail);
         password = findViewById(R.id.editPassword);
-        municipality = findViewById(R.id.editMunicipality);
+        municipality = (Spinner) findViewById(R.id.spinnerMunicipality);
         height = findViewById(R.id.editHeight);
         weight = findViewById(R.id.editWeight);
         birthyear = findViewById(R.id.editBirthyear);
@@ -50,10 +55,14 @@ public class RegisterActivity extends AppCompatActivity{
         cancel = findViewById(R.id.cancel);
         hashing = new Hashing();
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
         jsonFileControl = new JSONFileControl();
-
-
         databaseHelper = new DatabaseHelper(this);
+
+        utilizeSpinner();
 
 
         // Get back to login page
@@ -67,11 +76,11 @@ public class RegisterActivity extends AppCompatActivity{
         register.setOnClickListener(v ->{
             RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
 
-            if (email.length() > 0 && name.length() > 0 && password.length() > 0 && municipality.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
+            if (email.length() > 0 && name.length() > 0 && password.length() > 0 && municipality.isSelected() && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
                 String nameValue = name.getText().toString();
                 String usernameValue = email.getText().toString();
                 String passwordValue = password.getText().toString();
-                String municipalityValue = municipality.getText().toString();
+                String municipalityValue = municipality.getSelectedItem().toString();
                 String heightValue = height.getText().toString();
                 int weightValue = Integer.parseInt(weight.getText().toString());
                 String genderValue = checkedBtn.getText().toString();
@@ -129,6 +138,15 @@ public class RegisterActivity extends AppCompatActivity{
 
         return matcher.matches();
 
+    }
+
+    public void utilizeSpinner(){
+        Municipality mp = new Municipality();
+        ArrayList mlist = mp.getMunicipality();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mlist);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        municipality.setAdapter(adapter);
     }
 
 }
