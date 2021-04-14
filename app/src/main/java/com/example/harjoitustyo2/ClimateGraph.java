@@ -3,7 +3,9 @@ package com.example.harjoitustyo2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -19,6 +21,7 @@ public class ClimateGraph extends AppCompatActivity {
     String username, name;
     Graphs graphs;
     double x = 0.0;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class ClimateGraph extends AppCompatActivity {
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);
         context = ClimateGraph.this;
+        back = findViewById(R.id.backButton);
 
         jsonFileControl = new JSONFileControl();
         graphs = new Graphs();
@@ -40,6 +44,12 @@ public class ClimateGraph extends AppCompatActivity {
         }
         series = graphs.createGraph(series, context, name, "Total");
         climateGraph.addSeries(series);
+
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(ClimateGraph.this, ClimateControl.class);
+            intent.putExtra("Username", username);
+            startActivity(intent);
+        });
     }
 }
 
