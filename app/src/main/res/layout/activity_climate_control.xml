@@ -152,17 +152,27 @@
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="110dp"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
         android:layout_marginBottom="8dp"
         android:text="@string/submit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#8BE1BF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cancel1" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/graphButton"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/graph"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:backgroundTint="#8BE1BF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/submit" />
 
     <SeekBar
         android:id="@+id/seekBar1"
@@ -323,16 +333,12 @@
 
     <Button
         android:id="@+id/cancel1"
-        android:layout_width="110dp"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:text="@string/back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:backgroundTint="#5aaf8f"
+        app:backgroundTint="#8BE1BF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/submit"
         app:layout_constraintStart_toStartOf="parent" />
@@ -387,17 +393,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/meatEmission"
         app:layout_constraintTop_toBottomOf="@+id/eggView" />
-
-    <Button
-        android:id="@+id/graphButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create graph"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalEmission"
-        app:layout_constraintVertical_bias="0.24000001" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

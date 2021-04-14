@@ -30,4 +30,5 @@
     <string name="to_climate_control">To climate control</string>
     <string name="to_risk_control">To risk control</string>
     <string name="title_activity_risk_control">RiskControl</string>
+    <string name="graph">Graph</string>
 </resources>
