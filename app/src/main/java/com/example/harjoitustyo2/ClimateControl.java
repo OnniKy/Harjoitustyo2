@@ -31,6 +31,7 @@ public class ClimateControl extends AppCompatActivity {
     String name, username;
     DatabaseHelper databaseHelper;
 
+
     static int MIN = 0;
     int beefAVG = 40;
     int porkAVG = 100;
@@ -160,10 +161,10 @@ public class ClimateControl extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (eggBar.getId() == seekBar.getId()){
-                    view.setText("" + progress + " pcs/week");
+                    view.setText(progress + " pcs/week");
                 }else {
                     float value = (float) ((float)progress / 100.00);
-                    view.setText("" + value + " kg/week");
+                    view.setText(value + " kg/week");
                 }
             }
 
