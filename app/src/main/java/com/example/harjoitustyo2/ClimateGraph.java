@@ -20,7 +20,6 @@ public class ClimateGraph extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     String username, name;
     Graphs graphs;
-    double x = 0.0;
     Button back;
 
     @Override
@@ -36,6 +35,7 @@ public class ClimateGraph extends AppCompatActivity {
 
         jsonFileControl = new JSONFileControl();
         graphs = new Graphs();
+
 
         try {
             name = databaseHelper.getName(username);
