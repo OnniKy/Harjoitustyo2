@@ -22,6 +22,7 @@ public class WeightControl extends AppCompatActivity {
     String username, name;
     Button dailyWeightButton, back;
     DatabaseHelper databaseHelper;
+    Double d;
 
     JSONFileControl jsonFileControl;
     Graphs graphs;
@@ -49,8 +50,11 @@ public class WeightControl extends AppCompatActivity {
 
         jsonFileControl = new JSONFileControl();
         weightGraph = findViewById(R.id.graph);
-        series = new LineGraphSeries<DataPoint>();
-        weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+        weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
+        weightGraph.getViewport().setXAxisBoundsManual(true);
+        weightGraph.getViewport().setMinX(0);
+
+
 
 
         try {
@@ -59,16 +63,16 @@ public class WeightControl extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        series = graphs.createGraph(series, context, name, "Weight");
+        //series = graphs.createGraph(series, context, name, "Weight");
+        series = graphs.createGraph(context, name, "Weight");
         weightGraph.addSeries(series);
 
-
-
+        d = series.getHighestValueX();
+        weightGraph.getViewport().setMaxX(d.intValue());
 
 
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
-            System.out.println("KERROSE: " + Pattern.matches("[1-9]+", addWeight1));
             if (addWeight1.isEmpty() ){
                 Toast.makeText(this, "Enter your weight first!", Toast.LENGTH_SHORT).show();
             } else {
@@ -76,13 +80,19 @@ public class WeightControl extends AppCompatActivity {
                     Toast.makeText(this, "Invalid input!", Toast.LENGTH_SHORT).show();
                 } else {
                     jsonFileControl.writeLogWeight(addWeight1, context, name);
-                    series = graphs.createGraph(series, context, name, "Weight");
+                    series = graphs.createGraph(context, name, "Weight");
+                    try {
+                        weightGraph.removeAllSeries();
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    d = series.getHighestValueX();
+                    weightGraph.getViewport().setMaxX(d.intValue());
                     weightGraph.addSeries(series);
                     Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(WeightControl.this, MainPage.class);

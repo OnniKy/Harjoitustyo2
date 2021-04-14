@@ -3,13 +3,11 @@ package com.example.harjoitustyo2;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity{
         name = findViewById(R.id.editName);
         email = findViewById(R.id.editEmail);
         password = findViewById(R.id.editPassword);
-        municipality = (Spinner) findViewById(R.id.spinnerMunicipality);
+        municipality = findViewById(R.id.spinnerMunicipality);
         height = findViewById(R.id.editHeight);
         weight = findViewById(R.id.editWeight);
         birthyear = findViewById(R.id.editBirthyear);
@@ -86,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity{
                 int weightValue = Integer.parseInt(weight.getText().toString());
                 String genderValue = checkedBtn.getText().toString();
                 int birthyearValue = Integer.parseInt(birthyear.getText().toString());
+                System.out.println(municipalityValue);
 
                 if (isValidPassword(passwordValue) && passwordValue.length() >= 12) {
 
@@ -94,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity{
                         byte[] salt = new byte[0];
                         String password_ = null;
                         try {
-                            salt = hashing.getSalt();
+                            salt = Hashing.getSalt();
                             password_ = hashing.getSecurePassword(passwordValue, salt);
                         } catch (NoSuchAlgorithmException e) {
                             e.printStackTrace();
@@ -143,9 +142,9 @@ public class RegisterActivity extends AppCompatActivity{
 
     public void utilizeSpinner(){
         Municipality mp = new Municipality();
-        ArrayList mlist = mp.getMunicipality();
+        ArrayList<String> mlist = mp.getMunicipality();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mlist);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mlist);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         municipality.setAdapter(adapter);
     }

@@ -22,14 +22,14 @@ public class Graphs {
         return q;
     }
 
-    public LineGraphSeries createGraph(LineGraphSeries series, Context context, String name, String value) {
+    public LineGraphSeries<DataPoint> createGraph(Context context, String name, String value) {
+        double z = 0.0;
+        series = new LineGraphSeries<>();
         int length = getQuantity(context, name, value);
         System.out.println("LENGTH: " + length);
         String p = "";
         for (int i = 0; i < length; i++) {
-            //int left = length - i;
 
-            x = x + 1;
             try {
                 p = jsonFileControl.getGraphData(context, name, value, i);
             } catch (Exception e) {
@@ -37,9 +37,9 @@ public class Graphs {
             }
             System.out.println("P: " + p);
             y = Integer.parseInt(p);
-            System.out.println("X2: " + x);
-            series.appendData(new DataPoint(x, y), true, length);
-
+            System.out.println("X2: " + z);
+            series.appendData(new DataPoint(z, y), true, length);
+            z = z + 1;
         }
 
         return series;
