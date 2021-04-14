@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class JSONFileControl {
 
-    Context context;
+
     FileWriter fileWriter;
     BufferedWriter bufferedWriter;
     BufferedReader bufferedReader;

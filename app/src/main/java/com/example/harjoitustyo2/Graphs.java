@@ -9,8 +9,6 @@ public class Graphs {
 
     LineGraphSeries<DataPoint> series;
     double y = 0.0;
-
-
     JSONFileControl jsonFileControl = new JSONFileControl();
 
     public int getQuantity(Context context, String name, String value) {

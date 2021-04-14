@@ -16,7 +16,7 @@ public class MainPage extends AppCompatActivity {
     JSONRequest jsonRequest;
     JSONFileControl jsonFileControl;
     TextView totalEmission, dailyWeight, bmiTextbox;
-    Button button, button2;
+    Button button, button2, button3;
     ImageButton logOut;
     String emission = null;
     String weight;
@@ -36,6 +36,7 @@ public class MainPage extends AppCompatActivity {
         bmiTextbox = findViewById(R.id.bmiTextbox);
         button = findViewById(R.id.toClimateControl);
         button2 = findViewById(R.id.toWeightControl);
+        button3 = findViewById(R.id.toRiskControl);
         logOut = findViewById(R.id.logOutButton);
 
         totalEmission = findViewById(R.id.textView14);
@@ -79,6 +80,11 @@ public class MainPage extends AppCompatActivity {
         button2.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, WeightControl.class);
             intent.putExtra("Username", username);
+            startActivity(intent);
+        });
+
+        button3.setOnClickListener(v -> {
+            Intent intent = new Intent(MainPage.this, RiskControl.class);
             startActivity(intent);
         });
 

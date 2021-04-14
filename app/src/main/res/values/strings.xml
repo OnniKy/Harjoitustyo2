@@ -28,4 +28,6 @@
     <string name="back">Back</string>
     <string name="to_weight_control">To weight control</string>
     <string name="to_climate_control">To climate control</string>
+    <string name="to_risk_control">To risk control</string>
+    <string name="title_activity_risk_control">RiskControl</string>
 </resources>

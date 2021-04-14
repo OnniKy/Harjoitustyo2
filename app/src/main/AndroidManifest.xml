@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Harjoitustyo2">
-        <activity android:name=".ClimateGraph"></activity>
+        <activity android:name=".RiskControl" />
+        <activity android:name=".ClimateGraph" />
         <activity android:name=".ClimateControl" />
         <activity android:name=".WeightControl" />
         <activity android:name=".MainPage" />
