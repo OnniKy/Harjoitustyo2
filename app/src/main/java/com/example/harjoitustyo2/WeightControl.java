@@ -43,7 +43,6 @@ public class WeightControl extends AppCompatActivity {
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);
         graphs = new Graphs();
-        x = 0.0;
 
 
 
@@ -59,8 +58,8 @@ public class WeightControl extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        series = graphs.createGraph(x, series, context, name, "Weight");
-        weightGraph.addSeries(series);
+        //series = graphs.createGraph(x, series, context, name, "Weight");
+        //weightGraph.addSeries(series);
 
 
 
@@ -72,7 +71,7 @@ public class WeightControl extends AppCompatActivity {
                 Toast.makeText(this, "Enter your weight first!", Toast.LENGTH_SHORT).show();
             } else {
                 jsonFileControl.writeLogWeight(addWeight1, context, name);
-                series = graphs.createGraph(x, series, context, name, "Weight");
+                series = graphs.createGraph(series, context, name, "Weight");
                 weightGraph.addSeries(series);
                 Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
             }

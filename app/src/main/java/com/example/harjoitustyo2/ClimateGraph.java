@@ -38,7 +38,7 @@ public class ClimateGraph extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        series = graphs.createGraph(x, series, context, name, "Total");
+        series = graphs.createGraph(series, context, name, "Total");
         climateGraph.addSeries(series);
     }
 }
