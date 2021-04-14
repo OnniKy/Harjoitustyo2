@@ -13,6 +13,8 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.regex.Pattern;
+
 public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
@@ -66,13 +68,18 @@ public class WeightControl extends AppCompatActivity {
 
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
-            if (addWeight1.isEmpty()){
+            System.out.println("KERROSE: " + Pattern.matches("[a-zA-Z]+", addWeight1));
+            if (addWeight1.isEmpty() ){
                 Toast.makeText(this, "Enter your weight first!", Toast.LENGTH_SHORT).show();
             } else {
-                jsonFileControl.writeLogWeight(addWeight1, context, name);
-                series = graphs.createGraph(series, context, name, "Weight");
-                weightGraph.addSeries(series);
-                Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
+                if (Pattern.matches("[a-zA-Z]+", addWeight1)){
+                    Toast.makeText(this, "Invalid input!", Toast.LENGTH_SHORT).show();
+                } else {
+                    jsonFileControl.writeLogWeight(addWeight1, context, name);
+                    series = graphs.createGraph(series, context, name, "Weight");
+                    weightGraph.addSeries(series);
+                    Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
