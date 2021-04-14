@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c4d1d6"
+    android:background="#c0c1c0"
     tools:context=".MainPage">
 
     <Button
         android:id="@+id/toWeightControl"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="#8BE1BF"
+        android:layout_marginTop="48dp"
+        android:background="#297720 "
         android:text="@string/to_weight_control"
-        app:backgroundTint="#8BE1BF"
+        app:backgroundTint="#297720"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bmiTextbox" />
 
@@ -23,9 +24,9 @@
         android:id="@+id/toRiskControl"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:background="#8BE1BF"
+        android:background="#297720"
         android:text="@string/to_risk_control"
-        app:backgroundTint="#8BE1BF"
+        app:backgroundTint="#297720"
         app:layout_constraintBottom_toTopOf="@+id/toClimateControl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -38,21 +39,10 @@
         android:layout_height="60dp"
         android:layout_marginTop="150dp"
         android:text="@string/to_climate_control"
-        app:backgroundTint="#8BE1BF"
+        app:backgroundTint="#297720"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toWeightControl" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="232dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="TODO"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/olio_harkkaty__apinlogo" />
 
     <TextView
         android:id="@+id/textView14"
@@ -69,29 +59,39 @@
         android:id="@+id/dailyWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        tools:layout_editor_absoluteY="249dp" />
 
     <TextView
         android:id="@+id/bmiTextbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="148dp"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageButton
         android:id="@+id/logOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#e2f1f8"
+        android:background="#c0c1c0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="243dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/olio_apinlogo_uusi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

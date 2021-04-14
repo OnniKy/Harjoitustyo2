@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c4d1d6"
+    android:background="#c0c1c0"
     tools:context=".ClimateControl">
 
     <TextView
@@ -157,7 +157,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/submit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:backgroundTint="#8BE1BF"
+        app:backgroundTint="#004a00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -169,7 +169,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/graph"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:backgroundTint="#8BE1BF"
+        app:backgroundTint="#297720 "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/submit" />
@@ -179,6 +179,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner1" />
@@ -188,6 +189,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar1" />
@@ -197,6 +199,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
@@ -206,6 +209,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
@@ -215,6 +219,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar4" />
@@ -224,6 +229,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
@@ -233,6 +239,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar6" />
@@ -242,6 +249,7 @@
         android:layout_width="127dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:thumbTint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar7" />
@@ -338,7 +346,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:backgroundTint="#8BE1BF"
+        app:backgroundTint="#297720 "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/submit"
         app:layout_constraintStart_toStartOf="parent" />
@@ -347,14 +355,14 @@
         android:id="@+id/textView3"
         android:layout_width="415dp"
         android:layout_height="51dp"
-        android:background="#8BE1BF"
+        android:background="#297720"
         android:gravity="center"
         android:text="@string/food_consumption_habits_calculates_estimated_co2_emission_per_year"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FAF7F7"
         android:textIsSelectable="false"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c4d1d6"
+    android:background="#c0c1c0"
     tools:context=".WeightControl">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="209dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/olio_apinlogo_uusi" />
 
     <EditText
         android:id="@+id/addWeight"
@@ -31,7 +41,7 @@
         android:layout_marginBottom="8dp"
         android:text="Submit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:backgroundTint="#8BE1BF"
+        app:backgroundTint="#004a00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back" />
@@ -45,20 +55,10 @@
         android:layout_marginBottom="8dp"
         android:text="Back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:backgroundTint="#5aaf8f"
+        app:backgroundTint="#297720"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dailyWeightButton"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="232dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/olio_harkkaty__apinlogo" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
@@ -67,8 +67,6 @@
         app:layout_constraintBottom_toTopOf="@+id/addWeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
