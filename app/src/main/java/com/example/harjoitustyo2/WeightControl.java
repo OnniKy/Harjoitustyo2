@@ -68,11 +68,11 @@ public class WeightControl extends AppCompatActivity {
 
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
-            System.out.println("KERROSE: " + Pattern.matches("[a-zA-Z]+", addWeight1));
+            System.out.println("KERROSE: " + Pattern.matches("[1-9]+", addWeight1));
             if (addWeight1.isEmpty() ){
                 Toast.makeText(this, "Enter your weight first!", Toast.LENGTH_SHORT).show();
             } else {
-                if (Pattern.matches("[a-zA-Z]+", addWeight1)){
+                if (!Pattern.matches("[0-9]+", addWeight1)){
                     Toast.makeText(this, "Invalid input!", Toast.LENGTH_SHORT).show();
                 } else {
                     jsonFileControl.writeLogWeight(addWeight1, context, name);
