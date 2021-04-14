@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8D2D2"
+    android:background="#e2f1f8"
     tools:context=".MainPage">
 
     <Button
@@ -48,11 +48,11 @@
         android:layout_width="232dp"
         android:layout_height="83dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/olio_harkkaty__apinlogo"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/olio_harkkaty__apinlogo" />
 
     <TextView
         android:id="@+id/textView14"
@@ -89,7 +89,7 @@
         android:id="@+id/logOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#CFC7C8"
+        android:background="#e2f1f8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_lock_power_off" />

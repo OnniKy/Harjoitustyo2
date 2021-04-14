@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8D2D2"
+    android:background="#e2f1f8"
     tools:context=".WeightControl">
 
     <EditText
@@ -45,7 +45,7 @@
         android:layout_marginBottom="8dp"
         android:text="Back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:backgroundTint="#707A76"
+        app:backgroundTint="#5aaf8f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dailyWeightButton"
         app:layout_constraintStart_toStartOf="parent" />
