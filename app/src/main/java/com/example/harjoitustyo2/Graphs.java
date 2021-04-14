@@ -26,19 +26,19 @@ public class Graphs {
         int length = getQuantity(context, name, value);
         System.out.println("LENGTH: " + length);
         String p = "";
-        for (int i = 0; i < length-1; i++) {
-            int left = length - i;
+        for (int i = 0; i < length; i++) {
+            //int left = length - i;
 
             x = x + 1;
             try {
-                p = jsonFileControl.getGraphData(context, name, value, left);
+                p = jsonFileControl.getGraphData(context, name, value, i);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             System.out.println("P: " + p);
             y = Integer.parseInt(p);
             System.out.println("X2: " + x);
-            series.appendData(new DataPoint(x, y), true, length-1);
+            series.appendData(new DataPoint(x, y), true, length);
 
         }
 
