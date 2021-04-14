@@ -68,10 +68,14 @@ public class WeightControl extends AppCompatActivity {
 
         dailyWeightButton.setOnClickListener(v -> {
             String addWeight1 = addWeight.getText().toString();
-            jsonFileControl.writeLogWeight(addWeight1, context, name);
-            series = graphs.createGraph(x,series, context, name, "Weight");
-            weightGraph.addSeries(series);
-            Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
+            if (addWeight1.isEmpty()){
+                Toast.makeText(this, "Enter your weight first!", Toast.LENGTH_SHORT).show();
+            } else {
+                jsonFileControl.writeLogWeight(addWeight1, context, name);
+                series = graphs.createGraph(x, series, context, name, "Weight");
+                weightGraph.addSeries(series);
+                Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
+            }
         });
 
 
