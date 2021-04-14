@@ -63,9 +63,9 @@ public class JSONFileControl {
             StringBuffer output = new StringBuffer();
 
             bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
-            String line = "";
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
-                output.append(line + "\n");
+                output.append(line).append("\n");
             }
             response = output.toString();
             bufferedReader.close();
@@ -98,7 +98,7 @@ public class JSONFileControl {
     public String readLog(Context context, String name, String Value) throws Exception {
 
         StringBuffer output = new StringBuffer();
-        String result = null;
+        String result;
         String FILE_NAME;
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";
@@ -109,10 +109,10 @@ public class JSONFileControl {
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);
-        String line = "";
+        String line;
 
         while ((line = bufferedReader.readLine()) != null) {
-            output.append(line + "\n");
+            output.append(line).append("\n");
 
         }
         response = output.toString();
@@ -128,7 +128,7 @@ public class JSONFileControl {
     //Get values from Json file to graph
     public String getGraphData(Context context, String name, String Value, int i) throws Exception {
         StringBuffer output = new StringBuffer();
-        String result = null;
+        String result;
         String FILE_NAME;
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";
@@ -139,10 +139,10 @@ public class JSONFileControl {
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);
-        String line = "";
+        String line;
 
         while ((line = bufferedReader.readLine()) != null) {
-            output.append(line + "\n");
+            output.append(line).append("\n");
 
         }
         response = output.toString();
@@ -170,10 +170,10 @@ public class JSONFileControl {
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);
-        String line = "";
+        String line;
 
         while ((line = bufferedReader.readLine()) != null) {
-            output.append(line + "\n");
+            output.append(line).append("\n");
 
         }
         response = output.toString();
@@ -214,11 +214,11 @@ public class JSONFileControl {
 
 
             bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
-            String line = "";
+            String line;
 
             int i = 0;
             while ((line = bufferedReader.readLine()) != null) {
-                output.append(line + "\n");
+                output.append(line).append("\n");
 
             }
             response = output.toString();
