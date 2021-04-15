@@ -3,7 +3,6 @@ package com.example.harjoitustyo2;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

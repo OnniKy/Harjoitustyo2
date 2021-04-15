@@ -21,7 +21,6 @@ public class JSONFileControl {
     String response;
     private JSONObject messageDetails;
     private Boolean isUserExisting;
-
     public JSONFileControl(){
 
     }
