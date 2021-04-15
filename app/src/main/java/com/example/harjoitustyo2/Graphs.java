@@ -8,7 +8,6 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class Graphs {
 
     LineGraphSeries<DataPoint> series;
-    double x = 0.0;
     double y = 0.0;
     JSONFileControl jsonFileControl = new JSONFileControl();
 
@@ -23,7 +22,7 @@ public class Graphs {
     }
 
     public LineGraphSeries<DataPoint> createGraph(Context context, String name, String value) {
-        double z = 0.0;
+        double x = 0.0;
         series = new LineGraphSeries<>();
         int length = getQuantity(context, name, value);
         System.out.println("LENGTH: " + length);
@@ -36,10 +35,10 @@ public class Graphs {
                 e.printStackTrace();
             }
             System.out.println("P: " + p);
-            y = Integer.parseInt(p);
-            System.out.println("X2: " + z);
-            series.appendData(new DataPoint(z, y), true, length);
-            z = z + 1;
+            y = Double.parseDouble(p);
+            System.out.println("X2: " + x);
+            series.appendData(new DataPoint(x, y), true, length);
+            x = x + 1;
         }
 
         return series;
