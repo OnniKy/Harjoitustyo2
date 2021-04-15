@@ -154,7 +154,6 @@ public class JSONFileControl {
         isUserExisting = messageDetails.has(Value);
         JSONArray userMessages = (JSONArray) messageDetails.get(Value);
         result = userMessages.get(userMessages.length()-(userMessages.length()-i)).toString();
-        System.out.println("RESULT JSONFILE: " + result);
 
         return result;
     }
@@ -162,7 +161,6 @@ public class JSONFileControl {
     //Method gets quantity of values in Json file to create right size graph. It returns quantity of values
     public int getQuantity(Context context, String name, String Value) throws Exception {
         StringBuffer output = new StringBuffer();
-        String result = null;
         String FILE_NAME = null;
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";

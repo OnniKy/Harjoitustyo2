@@ -27,7 +27,6 @@ public class Graphs {
         double x = 0.0;
         series = new LineGraphSeries<>();
         int length = getQuantity(context, name, value);
-        System.out.println("LENGTH: " + length);
         String p = "";
         for (int i = 0; i < length; i++) {
 
@@ -36,9 +35,7 @@ public class Graphs {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("P: " + p);
             y = Double.parseDouble(p);
-            System.out.println("X2: " + x);
             series.appendData(new DataPoint(x, y), true, length);
             x = x + 1;
         }
