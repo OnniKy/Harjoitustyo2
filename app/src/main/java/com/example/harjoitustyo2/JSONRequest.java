@@ -39,8 +39,6 @@ public class JSONRequest {
 
             } catch (JSONException e) {
                 e.printStackTrace();
-            } finally {
-                System.out.println("It works");
             }
         }
         return jsonObject;
@@ -55,7 +53,6 @@ public class JSONRequest {
         String response = null;
         try {
             URL url = new URL("https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=" + diet + "&query.beefLevel=" + bLevel + "&query.fishLevel=" + fLevel + "&query.porkPoultryLevel=" + pLevel + "&query.dairyLevel=" + dLevel + "&query.cheeseLevel=" + cLevel + "&query.riceLevel=" + rLevel + "&query.eggLevel=" + eLevel + "&query.winterSaladLevel=" + sLevel);
-            System.out.println("URL: " + url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             InputStream in = new BufferedInputStream(conn.getInputStream());

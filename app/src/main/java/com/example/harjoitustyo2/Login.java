@@ -2,7 +2,6 @@ package com.example.harjoitustyo2;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -28,17 +27,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         context = Login.this;
-
         username = (TextView) findViewById(R.id.address);
         password = (TextView) findViewById(R.id.password);
         register = (Button) findViewById(R.id.register);
         login  = (Button) findViewById(R.id.login);
         databaseHelper = new DatabaseHelper(this);
-
         hashing = new Hashing();
-
-
-        System.out.println("Sijainti kirjastossa: " + context.getFilesDir());
 
         login.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -57,7 +51,6 @@ public class Login extends AppCompatActivity {
                         byte[] byteConverter = user.getSaltId();
 
                         finalCheckPassword = hashing.getSecurePassword(passwordCheck, byteConverter);
-                        System.out.println(finalCheckPassword);
 
                         if (databaseHelper.isLoginValid(usernameCheck, finalCheckPassword)) {
                             Intent intent = new Intent(Login.this, MainPage.class);
