@@ -17,13 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Harjoitustyo2"
         android:allowBackup="true">
-        <activity android:name=".RiskControl" />
+        <activity android:name=".CaffeineControl" />
         <activity android:name=".ClimateGraph" />
         <activity android:name=".ClimateControl" />
         <activity android:name=".WeightControl" />
         <activity android:name=".MainPage" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

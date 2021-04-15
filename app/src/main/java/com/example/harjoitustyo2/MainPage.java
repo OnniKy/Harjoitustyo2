@@ -5,20 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class MainPage extends AppCompatActivity {
 
     JSONRequest jsonRequest;
     JSONFileControl jsonFileControl;
     TextView totalEmission, dailyWeight, bmiTextbox;
-    Button button, button2, button3;
+    Button climateButton, weightButton, caffeineButton;
     ImageButton logOut;
     String emission = null;
     String weight;
@@ -36,9 +34,9 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         dailyWeight = findViewById(R.id.dailyWeight);
         bmiTextbox = findViewById(R.id.bmiTextbox);
-        button = findViewById(R.id.toClimateControl);
-        button2 = findViewById(R.id.toWeightControl);
-        button3 = findViewById(R.id.toRiskControl);
+        climateButton = findViewById(R.id.toClimateControl);
+        weightButton = findViewById(R.id.toWeightControl);
+        caffeineButton = findViewById(R.id.toRiskControl);
         logOut = findViewById(R.id.logOutButton);
 
         totalEmission = findViewById(R.id.textView14);
@@ -73,25 +71,25 @@ public class MainPage extends AppCompatActivity {
 
 
         // Buttons OnClickListeners
-        button.setOnClickListener(v -> {
+        climateButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, ClimateControl.class);
             intent.putExtra("Username", username);
             startActivity(intent);
         });
 
-        button2.setOnClickListener(v -> {
+        weightButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, WeightControl.class);
             intent.putExtra("Username", username);
             startActivity(intent);
         });
 
-        button3.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPage.this, RiskControl.class);
+        caffeineButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainPage.this, CaffeineControl.class);
             startActivity(intent);
         });
 
         logOut.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPage.this, MainActivity.class);
+            Intent intent = new Intent(MainPage.this, Login.class);
             startActivity(intent);
         });
 

@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity{
 
         // Get back to login page
         cancel.setOnClickListener(v -> {
-            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+            Intent intent = new Intent(RegisterActivity.this, Login.class);
             startActivity(intent);
         });
 

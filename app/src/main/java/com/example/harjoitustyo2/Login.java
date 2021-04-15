@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     Context context;
     TextView password;
     TextView username;
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        context = MainActivity.this;
+        setContentView(R.layout.activity_login);
+        context = Login.this;
 
         username = (TextView) findViewById(R.id.address);
         password = (TextView) findViewById(R.id.password);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 String finalCheckPassword = null;
                 
                 if (usernameCheck.isEmpty() || passwordCheck.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Enter username and password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Enter username and password!", Toast.LENGTH_SHORT).show();
                 } else {
                     if (databaseHelper.checkUsername(usernameCheck)) {
                         user = new User(context, usernameCheck);
@@ -60,17 +60,17 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println(finalCheckPassword);
 
                         if (databaseHelper.isLoginValid(usernameCheck, finalCheckPassword)) {
-                            Intent intent = new Intent(MainActivity.this, MainPage.class);
+                            Intent intent = new Intent(Login.this, MainPage.class);
                             intent.putExtra("Username", username.getText().toString());
                             startActivity(intent);
 
-                            Toast.makeText(MainActivity.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
                         } else {
 
-                            Toast.makeText(MainActivity.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(MainActivity.this, "   User does not exist! \nDo you want to register?", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "   User does not exist! \nDo you want to register?", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(Login.this, RegisterActivity.class);
                 startActivityForResult(intent, 1);
             }
         });

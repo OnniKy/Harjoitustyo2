@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RiskControl extends AppCompatActivity {
+public class CaffeineControl extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_risk_control);
+        setContentView(R.layout.activity_caffeine_control);
     }
 }
