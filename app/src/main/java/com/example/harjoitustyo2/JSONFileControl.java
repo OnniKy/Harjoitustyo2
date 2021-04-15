@@ -42,7 +42,7 @@ public class JSONFileControl {
 
     }
 
-
+    //Method for writing weight, caffeine and climate data to Json file
     public void writeLog(String weight, Context context, String name, String Value) {
 
         String FILE_NAME = null;
@@ -50,10 +50,10 @@ public class JSONFileControl {
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";
         }
-        if (Value.equals("Caffeine")){
+        else if (Value.equals("Caffeine")){
             FILE_NAME = name + "Caffeine.json";
         }
-        if (Value.equals("Total")) {
+        else if (Value.equals("Total")) {
             FILE_NAME = name + "Climate.json";
         }
 
@@ -105,15 +105,19 @@ public class JSONFileControl {
 
 
 
-// Method for reading weight and climate log
+// Method for reading weight, caffeine and climate log
     public String readLog(Context context, String name, String Value) throws Exception {
 
         StringBuffer output = new StringBuffer();
         String result;
-        String FILE_NAME;
+        String FILE_NAME = null;
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";
-        } else {
+        }
+        else if (Value.equals("Caffeine")){
+            FILE_NAME = name + "Caffeine.json";
+        }
+        else if (Value.equals("Total")) {
             FILE_NAME = name + "Climate.json";
         }
 
@@ -140,10 +144,14 @@ public class JSONFileControl {
     public String getGraphData(Context context, String name, String Value, int i) throws Exception {
         StringBuffer output = new StringBuffer();
         String result;
-        String FILE_NAME;
+        String FILE_NAME = null;
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";
-        } else {
+        }
+        else if (Value.equals("Caffeine")){
+            FILE_NAME = name + "Caffeine.json";
+        }
+        else if (Value.equals("Total")) {
             FILE_NAME = name + "Climate.json";
         }
 
@@ -171,10 +179,14 @@ public class JSONFileControl {
     public int getQuantity(Context context, String name, String Value) throws Exception {
         StringBuffer output = new StringBuffer();
         String result = null;
-        String FILE_NAME;
+        String FILE_NAME = null;
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";
-        } else {
+        }
+        else if (Value.equals("Caffeine")){
+            FILE_NAME = name + "Caffeine.json";
+        }
+        else if (Value.equals("Total")) {
             FILE_NAME = name + "Climate.json";
         }
 
