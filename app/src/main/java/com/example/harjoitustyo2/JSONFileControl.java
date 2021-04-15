@@ -33,10 +33,9 @@ public class JSONFileControl {
     BufferedWriter bufferedWriter;
     BufferedReader bufferedReader;
     FileReader fileReader;
-    String response, name;
+    String response;
     private JSONObject messageDetails;
     private Boolean isUserExisting;
-    DatabaseHelper databaseHelper;
 
     public JSONFileControl(){
 
@@ -270,27 +269,6 @@ public class JSONFileControl {
 
     }
     */
-
-        public int round ( double d){
-            double dAbs = Math.abs(d);
-            int i = (int) dAbs;
-            double result = dAbs - (double) i;
-            if (result < 0.5) {
-                return d < 0 ? -i : i;
-            } else {
-                return d < 0 ? -(i + 1) : i + 1;
-            }
-        }
-
-
-
-        public String modifyJSON (String value){
-            double d = Double.parseDouble(value);
-            int v = round(d);
-
-            return String.valueOf(v);
-        }
-
 
 }
 
