@@ -11,7 +11,7 @@ public class Graphs {
     double y = 0.0;
     JSONFileControl jsonFileControl = new JSONFileControl();
 
-    //Returning size of Json file to graph creating method
+    //Method gets size of Json file and returns it to graph creating method
     public int getQuantity(Context context, String name, String value) {
         int q = 0;
         try {
@@ -22,7 +22,7 @@ public class Graphs {
         return q;
     }
 
-    //Create graphs
+    //Method gets data from Json file to graph series and returns graph data series
     public LineGraphSeries<DataPoint> createGraph(Context context, String name, String value) {
         double x = 0.0;
         series = new LineGraphSeries<>();
