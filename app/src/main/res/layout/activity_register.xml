@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#c0c1c0"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:background="#297720"
         android:gravity="center"
-        android:text="Registeration"
+        android:text="@string/registeration"
         android:textColor="#ffffff"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
@@ -28,11 +28,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editEmail"
@@ -40,11 +41,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Email address"
+        android:hint="@string/email_address"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editName" />
+        app:layout_constraintTop_toBottomOf="@+id/editName"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editPassword"
@@ -52,12 +54,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/editEmail"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editHeight"
@@ -65,12 +68,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Height (cm)"
+        android:hint="@string/height_cm"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipality" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipality"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editWeight"
@@ -78,12 +82,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Weight (kg)"
+        android:hint="@string/weight_kg"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editHeight" />
+        app:layout_constraintTop_toBottomOf="@+id/editHeight"
+        android:importantForAutofill="no" />
 
 
     <Button
@@ -91,7 +96,7 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:text="Register"
+        android:text="@string/register"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#004a00"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +107,7 @@
         android:id="@+id/cancel"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#297720 "
         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,11 +124,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Birth year"
+        android:hint="@string/birth_year"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editPassword"
+        android:importantForAutofill="no" />
 
     <RadioGroup
         android:id="@+id/gender"
@@ -136,24 +142,24 @@
         app:layout_constraintTop_toBottomOf="@+id/editWeight">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/nameView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
-            android:text="Gender"
+            android:text="@string/gender"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <RadioButton
             android:id="@+id/male"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:text="@string/male" />
 
         <RadioButton
             android:id="@+id/female"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="@string/female" />
     </RadioGroup>
 
     <Spinner

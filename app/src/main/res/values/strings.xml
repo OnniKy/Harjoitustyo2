@@ -30,7 +30,6 @@
     <string name="to_risk_control">To risk control</string>
     <string name="title_activity_risk_control">RiskControl</string>
     <string name="graph">Graph</string>
-    <string name="back">Back</string>
     <string name="enter_how_much_you_have_drink_caffeine_drinks_today">Enter how much you have drink caffeine drinks today</string>
     <string name="insert_below_your_caffeine_drinks_consumption">Insert below your daily caffeine \ndrinks consumption</string>
     <string name="to_caffeine_control">To caffeine control</string>
@@ -40,4 +39,16 @@
     <string name="coffee">Coffee:</string>
     <string name="energy_drink">Energy drink:</string>
     <string name="lemonade">Lemonade:</string>
+    <string name="registeration">Registeration</string>
+    <string name="name">Name</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="height_cm">Height (cm)</string>
+    <string name="weight_kg">Weight (kg)</string>
+    <string name="register">Register</string>
+    <string name="back">Back</string>
+    <string name="birth_year">Birth year</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>
