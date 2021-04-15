@@ -43,9 +43,15 @@ public class JSONFileControl {
     }
 
 
-    public void writeLogWeight(String weight, Context context, String name) {
+    public void writeLog(String weight, Context context, String name, String Value) {
 
-        String FILE_NAME = name + "Weight.json";
+        String FILE_NAME = null;
+
+        if (Value.equals("Weight")) {
+            FILE_NAME = name + "Weight.json";
+        } else {
+            FILE_NAME = name + "Climate.json";
+        }
         File file = new File(context.getFilesDir(), FILE_NAME);
 
         if (!file.exists()) {
@@ -71,13 +77,13 @@ public class JSONFileControl {
             bufferedReader.close();
 
             messageDetails = new JSONObject(response);
-            isUserExisting = messageDetails.has("Weight");
+            isUserExisting = messageDetails.has(Value);
             if (!isUserExisting) {
                 JSONArray newUserMessages = new JSONArray();
                 newUserMessages.put(weight);
-                messageDetails.put("Weight", newUserMessages);
+                messageDetails.put(Value, newUserMessages);
             } else {
-                JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
+                JSONArray userMessages = (JSONArray) messageDetails.get(Value);
                 userMessages.put(weight);
             }
 
@@ -187,7 +193,7 @@ public class JSONFileControl {
 
     /////////////////////////// CLIMATE DIET  ///////////////////////////
 
-
+/*
     public void writeLogClimate(Context context, String name, JSONObject jsonObject) {
         String total = null;
         String fileName = name + "Climate.json";
@@ -246,6 +252,7 @@ public class JSONFileControl {
         }
 
     }
+    */
 
         public int round ( double d){
             double dAbs = Math.abs(d);

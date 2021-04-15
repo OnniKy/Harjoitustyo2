@@ -82,7 +82,7 @@ public class WeightControl extends AppCompatActivity {
                 if (!addWeight1.matches("\\d+(?:\\.\\d+)?")) {
                     Toast.makeText(this, "Invalid input!", Toast.LENGTH_SHORT).show();
                 } else {
-                    jsonFileControl.writeLogWeight(addWeight1, context, name);
+                    jsonFileControl.writeLog(addWeight1, context, name, "Weight");
                     series = graphs.createGraph(context, name, "Weight");
                     try {
                         weightGraph.removeAllSeries();

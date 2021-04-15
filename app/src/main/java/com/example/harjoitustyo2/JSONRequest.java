@@ -45,7 +45,9 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                jsonFileControl.writeLogClimate(context, name, jsonObject);
+                String total = jsonObject.getString("Total");
+                System.out.println("Tämä on total "+ jsonObject.getString("Total"));
+                jsonFileControl.writeLog(total, context, name, "Total");
 
             } catch (JSONException e) {
                 e.printStackTrace();
