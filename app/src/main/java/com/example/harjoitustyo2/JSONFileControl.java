@@ -1,30 +1,15 @@
 package com.example.harjoitustyo2;
 
 import android.content.Context;
-import android.os.Message;
-import android.util.JsonWriter;
-import android.widget.EditText;
-
-import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class JSONFileControl {
 
@@ -104,7 +89,7 @@ public class JSONFileControl {
 
 
 
-// Method for reading weight, caffeine and climate log
+// Method for reading weight, caffeine and climate log. Method returns latest value
     public String readLog(Context context, String name, String Value) throws Exception {
 
         StringBuffer output = new StringBuffer();
@@ -139,7 +124,7 @@ public class JSONFileControl {
         return result;
     }
 
-    //Get values from Json file to graph
+    //Method gets values from Json file to graph. It returns all values one by one
     public String getGraphData(Context context, String name, String Value, int i) throws Exception {
         StringBuffer output = new StringBuffer();
         String result;
@@ -174,7 +159,7 @@ public class JSONFileControl {
         return result;
     }
 
-    //Return quantity of values to create right size graph
+    //Method gets quantity of values in Json file to create right size graph. It returns quantity of values
     public int getQuantity(Context context, String name, String Value) throws Exception {
         StringBuffer output = new StringBuffer();
         String result = null;
@@ -206,69 +191,5 @@ public class JSONFileControl {
 
         return userMessages.length();
     }
-
-    /////////////////////////// CLIMATE DIET  ///////////////////////////
-
-/*
-    public void writeLogClimate(Context context, String name, JSONObject jsonObject) {
-        String total = null;
-        String fileName = name + "Climate.json";
-
-
-        try {
-            total = modifyJSON(jsonObject.getString("Total"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-        File file = new File(context.getFilesDir(), fileName);
-
-        try {
-            // FILE DOES NOT EXIST
-            if (!file.exists()) {
-                file.createNewFile();
-                bufferedWriter = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
-                bufferedWriter.write("{}");
-                bufferedWriter.close();
-            }
-            StringBuffer output = new StringBuffer();
-
-
-            bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
-            String line;
-
-            int i = 0;
-            while ((line = bufferedReader.readLine()) != null) {
-                output.append(line).append("\n");
-
-            }
-            response = output.toString();
-            bufferedReader.close();
-
-            messageDetails = new JSONObject(response);
-            isUserExisting = messageDetails.has("Total");
-            if (!isUserExisting) {
-                JSONArray newUserMessages = new JSONArray();
-                newUserMessages.put(total);
-                messageDetails.put("Total", newUserMessages);
-            } else {
-                JSONArray userMessages = (JSONArray) messageDetails.get("Total");
-                userMessages.put(total);
-            }
-
-            fileWriter = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fileWriter);
-            bw.write(messageDetails.toString());
-            bw.close();
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        } catch (JSONException jsonException) {
-            jsonException.printStackTrace();
-        }
-
-    }
-    */
-
 }
 
