@@ -156,7 +156,7 @@ public class JSONFileControl {
         return result;
     }
 
-    //Return quantity of weight values to create right size graph
+    //Return quantity of values to create right size graph
     public int getQuantity(Context context, String name, String Value) throws Exception {
         StringBuffer output = new StringBuffer();
         String result = null;
