@@ -84,7 +84,7 @@ public class CaffeineControl extends AppCompatActivity {
                 caffeineGraph.getViewport().setMaxX(d.intValue());
                 caffeineGraph.addSeries(series);
                 series.setColor(getResources().getColor(R.color.green));
-                Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Daily caffeine updated!", Toast.LENGTH_SHORT).show();
             }
 
 
