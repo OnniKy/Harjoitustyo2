@@ -45,10 +45,10 @@
         app:backgroundTint="#004a00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back" />
+        app:layout_constraintStart_toEndOf="@+id/backC" />
 
     <Button
-        android:id="@+id/back"
+        android:id="@+id/backC"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"

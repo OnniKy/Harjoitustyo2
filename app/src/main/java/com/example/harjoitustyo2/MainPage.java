@@ -36,7 +36,7 @@ public class MainPage extends AppCompatActivity {
         bmiTextbox = findViewById(R.id.bmiTextbox);
         climateButton = findViewById(R.id.toClimateControl);
         weightButton = findViewById(R.id.toWeightControl);
-        caffeineButton = findViewById(R.id.toRiskControl);
+        caffeineButton = findViewById(R.id.toCaffeineControl);
         logOut = findViewById(R.id.logOutButton);
 
         totalEmission = findViewById(R.id.textView14);
@@ -85,6 +85,7 @@ public class MainPage extends AppCompatActivity {
 
         caffeineButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, CaffeineControl.class);
+            intent.putExtra("Username", username);
             startActivity(intent);
         });
 

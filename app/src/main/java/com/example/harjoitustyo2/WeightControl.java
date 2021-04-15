@@ -13,8 +13,6 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.regex.Pattern;
-
 public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
@@ -39,7 +37,7 @@ public class WeightControl extends AppCompatActivity {
 
         addWeight = findViewById(R.id.addWeight);
         dailyWeightButton = findViewById(R.id.dailyWeightButton);
-        back = findViewById(R.id.back);
+        back = findViewById(R.id.backC);
 
         context = WeightControl.this;
         username = getIntent().getStringExtra("Username");

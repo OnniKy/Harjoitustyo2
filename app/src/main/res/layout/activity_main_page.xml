@@ -21,11 +21,11 @@
         app:layout_constraintTop_toBottomOf="@+id/bmiTextbox" />
 
     <Button
-        android:id="@+id/toRiskControl"
+        android:id="@+id/toCaffeineControl"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:background="#297720"
-        android:text="@string/to_risk_control"
+        android:text="@string/to_caffeine_control"
         app:backgroundTint="#297720"
         app:layout_constraintBottom_toTopOf="@+id/toClimateControl"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,8 +78,8 @@
 
     <ImageButton
         android:id="@+id/logOutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="54dp"
+        android:layout_height="51dp"
         android:background="#c0c1c0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
