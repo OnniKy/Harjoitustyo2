@@ -168,9 +168,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return Integer.parseInt(byear);
     }
 
-
-
-
-
-
 }

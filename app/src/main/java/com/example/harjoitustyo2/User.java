@@ -1,9 +1,6 @@
 package com.example.harjoitustyo2;
 
 import android.content.Context;
-import android.media.Image;
-
-import java.util.Date;
 
 public class User {
     byte[] saltId;
@@ -23,8 +20,6 @@ public class User {
         this.height = dbHelper.getHeight(user);
         this.weight = dbHelper.getWeight(user);
         this.birthyear = dbHelper.getBirthyear(user);
-
-
     }
 
     public User(byte[] saltId, String name, String username, String password, String municipality, String gender, String height, int weight, int birthyear){
