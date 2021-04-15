@@ -45,8 +45,7 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                String total = jsonObject.getString("Total");
-                System.out.println("Tämä on total "+ jsonObject.getString("Total"));
+                String total = modifyJSON(jsonObject.getString("Total"));
                 jsonFileControl.writeLog(total, context, name, "Total");
 
             } catch (JSONException e) {
@@ -93,6 +92,24 @@ public class JSONRequest {
         }
 
         return response;
+    }
+
+    private int round(double d){
+        double dAbs = Math.abs(d);
+        int i = (int) dAbs;
+        double result = dAbs - (double) i;
+        if(result<0.5){
+            return d<0 ? -i : i;
+        }else{
+            return d<0 ? -(i+1) : i+1;
+        }
+    }
+
+
+    private String modifyJSON(String value) {
+        double d = Double.parseDouble(value);
+        int v = round(d);
+        return String.valueOf(v);
     }
 /*
     public void writeLog(EditText addWeight, Context context, String name){
