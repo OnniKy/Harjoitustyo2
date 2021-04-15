@@ -61,8 +61,9 @@ public class MainPage extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         if (emission != null){
-            totalEmission.setText("Total CO2 emission: " + emission + " kg per year");
+            totalEmission.setText("Total CO2 emission: " + modifyJSON(emission) + " kg per year");
         } else {
             totalEmission.setText("Calculate your emission on Climate \nControl page!");
         }
@@ -121,6 +122,24 @@ public class MainPage extends AppCompatActivity {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private int round(double d){
+        double dAbs = Math.abs(d);
+        int i = (int) dAbs;
+        double result = dAbs - (double) i;
+        if(result<0.5){
+            return d<0 ? -i : i;
+        }else{
+            return d<0 ? -(i+1) : i+1;
+        }
+    }
+
+
+    private String modifyJSON(String value) {
+        double d = Double.parseDouble(value);
+        int v = round(d);
+        return String.valueOf(v);
     }
 
 

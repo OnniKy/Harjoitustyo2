@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45999998" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/dailyWeightButton"
@@ -64,10 +64,11 @@
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        app:layout_constraintBottom_toTopOf="@+id/addWeight"
+        android:layout_height="250dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

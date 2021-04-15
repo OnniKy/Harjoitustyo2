@@ -35,8 +35,6 @@ public class JSONRequest {
 
     }
 
-
-
     public JSONObject readJSON(String name, String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         JSONObject jsonObject = null;
@@ -45,7 +43,7 @@ public class JSONRequest {
         if (json != null) {
             try {
                 jsonObject = new JSONObject(json);
-                String total = modifyJSON(jsonObject.getString("Total"));
+                String total = jsonObject.getString("Total");
                 jsonFileControl.writeLog(total, context, name, "Total");
 
             } catch (JSONException e) {
@@ -94,23 +92,6 @@ public class JSONRequest {
         return response;
     }
 
-    private int round(double d){
-        double dAbs = Math.abs(d);
-        int i = (int) dAbs;
-        double result = dAbs - (double) i;
-        if(result<0.5){
-            return d<0 ? -i : i;
-        }else{
-            return d<0 ? -(i+1) : i+1;
-        }
-    }
-
-
-    private String modifyJSON(String value) {
-        double d = Double.parseDouble(value);
-        int v = round(d);
-        return String.valueOf(v);
-    }
 /*
     public void writeLog(EditText addWeight, Context context, String name){
 
