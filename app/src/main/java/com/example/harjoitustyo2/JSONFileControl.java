@@ -49,9 +49,14 @@ public class JSONFileControl {
 
         if (Value.equals("Weight")) {
             FILE_NAME = name + "Weight.json";
-        } else {
+        }
+        if (Value.equals("Caffeine")){
+            FILE_NAME = name + "Caffeine.json";
+        }
+        if (Value.equals("Total")) {
             FILE_NAME = name + "Climate.json";
         }
+
         File file = new File(context.getFilesDir(), FILE_NAME);
 
         if (!file.exists()) {
