@@ -1,20 +1,11 @@
 package com.example.harjoitustyo2;
 
 import android.content.Context;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -22,7 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class JSONRequest {
     JSONArray jsonArray;
@@ -59,7 +49,7 @@ public class JSONRequest {
 
 
 
-    // Uses Climate Diet API
+    // Uses Climate Diet API. Returns values to json
     public String getJSON(String diet, String bLevel, String fLevel, String pLevel, String dLevel, String cLevel, String rLevel, String eLevel, String sLevel){
         String response = null;
         try {
@@ -86,74 +76,9 @@ public class JSONRequest {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("***GETJSON TOIMII***");
         }
 
         return response;
     }
-
-/*
-    public void writeLog(EditText addWeight, Context context, String name){
-
-        String FILE_NAME = name + ".json";
-        String weight = addWeight.getText().toString();
-        File file = new File(context.getFilesDir(), FILE_NAME);
-
-        if(!file.exists()){
-            try{
-                file.createNewFile();
-                fileWriter = new FileWriter(file.getAbsoluteFile());
-                bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write("{}");
-                bufferedWriter.close();
-
-
-            }catch (IOException e){
-                e.printStackTrace();
-
-            }
-        }
-        try {
-            StringBuffer output = new StringBuffer();
-
-            fileReader = new FileReader(file.getAbsoluteFile());
-            bufferedReader = new BufferedReader(fileReader);
-            String line = "";
-            while ((line = bufferedReader.readLine()) != null) {
-                output.append(line + "\n");
-            }
-            response = output.toString();
-            bufferedReader.close();
-
-
-            messageDetails = new JSONObject(response);
-            isUserExisting = messageDetails.has("Weight");
-            if (!isUserExisting) {
-                JSONArray newUserMessages = new JSONArray();
-                newUserMessages.put(weight);
-                messageDetails.put("Weight", newUserMessages);
-            } else {
-                JSONArray userMessages = (JSONArray) messageDetails.get("Weight");
-                userMessages.put(weight);
-            }
-
-            fileWriter = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fileWriter);
-            bw.write(messageDetails.toString());
-            bw.close();
-        } catch (IOException e){
-            e.printStackTrace();
-        }catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-
-
-
-
-
- */
 
 }
