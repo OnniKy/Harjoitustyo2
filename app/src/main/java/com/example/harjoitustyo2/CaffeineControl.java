@@ -10,11 +10,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+
 public class CaffeineControl extends AppCompatActivity {
     Button cancel, submit;
     String username;
     TextView totalConsumptionView;
     EditText coffeeConsumption, edConsumption, lemonadeConsumption;
+    GraphView caffeineGraph;
+    Graphs graphs;
     final int coffeeCaffeine = 150;
     final int edCaffeine = 320;
     final int lemonadeCaffeine = 65;
@@ -28,14 +32,18 @@ public class CaffeineControl extends AppCompatActivity {
         coffeeConsumption = findViewById(R.id.coffeeConsumption);
         edConsumption = findViewById(R.id.edConsumption);
         lemonadeConsumption = findViewById(R.id.lemonadeConsumption);
-
         totalConsumptionView = findViewById(R.id.totalConsumption);
+
+        graphs = new Graphs();
 
         submit = findViewById(R.id.submitC);
         cancel = findViewById(R.id.backC);
         username = getIntent().getStringExtra("Username");
 
-
+        caffeineGraph = findViewById(R.id.caffeineGraph);
+        caffeineGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+        caffeineGraph.getViewport().setXAxisBoundsManual(true);
+        caffeineGraph.getViewport().setMinX(0);
 
         submit.setOnClickListener(v -> {
             String coffee = coffeeConsumption.getText().toString();

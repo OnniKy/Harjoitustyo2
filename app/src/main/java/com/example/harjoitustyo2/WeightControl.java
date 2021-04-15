@@ -47,7 +47,7 @@ public class WeightControl extends AppCompatActivity {
 
 
         jsonFileControl = new JSONFileControl();
-        weightGraph = findViewById(R.id.graph);
+        weightGraph = findViewById(R.id.caffeineGraph);
         weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         weightGraph.getViewport().setXAxisBoundsManual(true);
         weightGraph.getViewport().setMinX(0);

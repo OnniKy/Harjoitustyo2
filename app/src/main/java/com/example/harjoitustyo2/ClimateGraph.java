@@ -10,7 +10,6 @@ import android.widget.Button;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.Series;
 
 public class ClimateGraph extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class ClimateGraph extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_graph);
-        climateGraph = findViewById(R.id.graph);
+        climateGraph = findViewById(R.id.caffeineGraph);
         username = getIntent().getStringExtra("Username");
         databaseHelper = new DatabaseHelper(this);
         context = ClimateGraph.this;
