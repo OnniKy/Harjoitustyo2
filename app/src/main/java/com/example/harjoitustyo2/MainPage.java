@@ -12,12 +12,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 
 public class MainPage extends AppCompatActivity {
 
     JSONRequest jsonRequest;
     JSONFileControl jsonFileControl;
-    TextView totalEmission, dailyWeight, bmiView, nameView, caffeineView, municipalityView;
+    TextView totalEmission, dailyWeight, bmiView, nameView, caffeineView, municipalityView, ageView;
     CardView climateButton, weightButton, caffeineButton;
     ImageButton logOut;
     String emission = null, caffeine = null;
@@ -27,6 +28,7 @@ public class MainPage extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     double BMI;
     User user;
+    int age;
 
 
     @Override
@@ -42,6 +44,7 @@ public class MainPage extends AppCompatActivity {
         nameView = findViewById(R.id.nameView);
         caffeineView = findViewById(R.id.caffeineView);
         municipalityView = findViewById(R.id.municipalityView);
+        ageView = findViewById(R.id.ageView);
 
         totalEmission = findViewById(R.id.coEmission);
         context = MainPage.this;
@@ -73,15 +76,16 @@ public class MainPage extends AppCompatActivity {
         if (emission != null){
             totalEmission.setText("Total CO2 emission: " + modifyJSON(emission) + " kg per year");
         } else {
-            totalEmission.setText("Calculate your emission on Climate \nControl page!");
+            totalEmission.setText("Calculate your CO2 emission!");
         }
 
         if (caffeine != null){
             caffeineView.setText("Today's caffeine consumption: " + modifyJSON(caffeine) + " mg!");
         } else {
-            caffeineView.setText("Calculate your caffeine consumption on caffeine control!");
+            caffeineView.setText("Calculate your caffeine consumption!");
         }
-
+        calculateAge();
+        ageView.setText("Age: " + age);
         setBMI();
 
 
@@ -154,6 +158,12 @@ public class MainPage extends AppCompatActivity {
         double d = Double.parseDouble(value);
         int v = round(d);
         return String.valueOf(v);
+    }
+
+    private void calculateAge(){
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int birthyear = databaseHelper.getBirthyear(username);
+        age = year - birthyear;
     }
 
 
