@@ -148,6 +148,7 @@ public class MainPage extends AppCompatActivity {
         bmiView.setText(text);
     }
 
+
     public void bmiCalculator(){
         String height = databaseHelper.getHeight(username);
 
