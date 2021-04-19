@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/primarylight"
-    tools:context=".RegisterActivity">
+    tools:context=".UpdatePassword">
 
 
     <TextView
@@ -16,48 +15,73 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="@string/registration"
+        android:text="@string/change"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/greendark"
-        android:textSize="40sp"
+        android:textColor="#297720"
+        android:textSize="30sp"
         android:textStyle="bold"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp" />
 
-    <EditText
-        android:id="@+id/editName"
+    <TextView
+        android:id="@+id/nameView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/name"
+        android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:padding="15dp"
-        android:inputType="textPersonName"
         android:background="@drawable/custom"
-        android:textSize="15sp"
-        android:importantForAutofill="no" />
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/editEmail"
+    <TextView
+        android:id="@+id/emailView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email_address"
+        android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="100dp"
         android:padding="15dp"
-        android:inputType="textEmailAddress"
+        android:textStyle="bold"
         android:background="@drawable/custom"
-        android:textSize="15sp"
-        android:importantForAutofill="no" />
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="@string/password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="15dp"
+        android:inputType="textPassword"
+        android:background="@drawable/custom"
+        android:textSize="15sp"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/newPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/newpassword"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="15dp"
+        android:inputType="textPassword"
+        android:background="@drawable/custom"
+        android:textSize="15sp"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/newPassword2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/newpassworda"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="25dp"
@@ -68,94 +92,19 @@
         android:importantForAutofill="no" />
 
 
-    <EditText
-        android:id="@+id/editBirthyear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:padding="15dp"
-        android:hint="@string/birth_year"
-        android:inputType="number"
-        android:background="@drawable/custom"
-        android:textSize="15sp"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/editHeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:hint="@string/height_cm"
-        android:padding="15dp"
-        android:inputType="numberDecimal"
-        android:background="@drawable/custom"
-        android:textSize="15sp"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/editWeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:hint="@string/weight_kg"
-        android:padding="15dp"
-        android:inputType="numberDecimal"
-        android:background="@drawable/custom"
-        android:textSize="15sp"
-        android:importantForAutofill="no" />
-
-    <Spinner
-        android:id="@+id/spinnerMunicipality"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/custom"
-        android:textSize="15sp" />
-
-    <RadioGroup
-        android:id="@+id/gender"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/custom"
-        android:layout_marginBottom="20dp">
-
-        <RadioButton
-            android:id="@+id/male"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text="@string/male" />
-
-        <RadioButton
-            android:id="@+id/female"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text="@string/female" />
-    </RadioGroup>
-
     <Button
-        android:id="@+id/register"
+        android:id="@+id/update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/btn_custom"
-        android:text="@string/register"
+        android:text="@string/update"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="@color/greendark" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/backButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -166,5 +115,6 @@
         android:text="@string/back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="@color/green" />
+
 
 </LinearLayout>

@@ -12,6 +12,7 @@
         android:layout_width="209dp"
         android:layout_height="89dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,15 +22,18 @@
         android:id="@+id/addWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="#00000000"
         android:ems="10"
-        android:hint="Add your daily weight:"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="@string/enter_your_weight"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/graph" />
 
     <Button
         android:id="@+id/dailyWeightButton"
@@ -40,7 +44,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="8dp"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#004a00"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,7 +58,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="8dp"
-        android:text="Back"
+        android:text="@string/back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:backgroundTint="#297720"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,5 +74,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/current_weight"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

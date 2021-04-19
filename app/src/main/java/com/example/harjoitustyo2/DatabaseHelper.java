@@ -13,9 +13,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static String dbname = "database";
     static int version = 1;
     JSONFileControl jsonFileControl;
+    final String table = "user";
 
 
-    String createTableUser = "CREATE TABLE if not exists \"user\" (\n" +
+    String createTableUser = "CREATE TABLE if not exists \table (\n" +
             "\t\"id\"\tTEXT,\n" +
             "\t\"name\"\tTEXT,\n" +
             "\t\"username\"\tTEXT,\n" +
@@ -60,6 +61,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Adding first weight to Weight Data File
         String weightValue = String.valueOf(user.getWeight());
         jsonFileControl.writeLog(weightValue, context, user.getName(), "Weight");
+
+    }
+
+    public void updatePassword(String newPassword, String username){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues data = new ContentValues();
+        data.put("password", newPassword);
+        myDB.update(table, data, "username = '" + username +"'",null);
+
 
     }
 

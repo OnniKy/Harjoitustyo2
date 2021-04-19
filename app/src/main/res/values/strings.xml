@@ -2,13 +2,8 @@
     <string name="app_name">Harjoitustyo2</string>
     <string name="title_activity_main_page">MainPage</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="total">Total:</string>
     <string name="the_selected_starting_value_refers_to_the_average_of_finns">The selected starting value refers to the average of Finns.</string>
     <string name="pork_and_poultry">Pork and poultry</string>
@@ -39,16 +34,26 @@
     <string name="coffee">Coffee:</string>
     <string name="energy_drink">Energy drink:</string>
     <string name="lemonade">Lemonade:</string>
-    <string name="registeration">Registeration</string>
-    <string name="name">Name</string>
-    <string name="email_address">Email address</string>
+    <string name="registration">Registration</string>
+    <string name="name">Full name</string>
+    <string name="email_address">Email</string>
     <string name="password">Password</string>
+    <string name="passwordagain">Re-type password</string>
     <string name="height_cm">Height (cm)</string>
     <string name="weight_kg">Weight (kg)</string>
     <string name="register">Register</string>
-    <string name="back">Back</string>
     <string name="birth_year">Birth year</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="change">Change your password</string>
+    <string name="newpassword">New password</string>
+    <string name="newpassworda">Re-type new password</string>
+    <string name="update">Update password</string>
+    <string name="login">Login Health X</string>
+    <string name="registernow">Not registered yet? Register now!</string>
+    <string name="current_weight">Current weight:   </string>
+    <string name="back">Back</string>
+    <string name="enter_your_weight">Enter your weight</string>
+    <string name="logo">Logo</string>
 </resources>

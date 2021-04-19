@@ -70,7 +70,24 @@ public class RegisterActivity extends AppCompatActivity{
         // Registeration
         register.setOnClickListener(v ->{
             RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
-            System.out.println(municipality.isSelected());
+            if (email.length() == 0){
+                email.setError("Enter valid email!");
+            }
+            if (name.length() == 0){
+                name.setError("Enter name!");
+            }
+            if (password.length() == 0){
+                password.setError("Enter password!");
+            }
+            if (height.length() == 0){
+                height.setError("Enter height!");
+            }
+            if (weight.length() == 0){
+                weight.setError("Enter height!");
+            }
+            if (birthyear.length() == 0){
+                birthyear.setError("Enter birth year!");
+            }
 
             if (email.length() > 0 && name.length() > 0 && password.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
                 String nameValue = name.getText().toString();

@@ -27,24 +27,26 @@ public class JSONFileControl {
 
     //Method for writing weight, caffeine and climate data to Json file
     public void writeLog(String weight, Context context, String name, String Value) {
-
         String FILE_NAME = null;
 
-        if (Value.equals("Weight")) {
-            FILE_NAME = name + "Weight.json";
-        }
-        else if (Value.equals("Caffeine")){
-            FILE_NAME = name + "Caffeine.json";
-        }
-        else if (Value.equals("Total")) {
-            FILE_NAME = name + "Climate.json";
+        switch (Value) {
+            case "Weight":
+                FILE_NAME = name + "Weight.json";
+                break;
+            case "Caffeine":
+                FILE_NAME = name + "Caffeine.json";
+                break;
+            case "Total":
+                FILE_NAME = name + "Climate.json";
+                break;
         }
 
+        if (FILE_NAME == null) throw new AssertionError();
         File file = new File(context.getFilesDir(), FILE_NAME);
 
         if (!file.exists()) {
             try {
-                file.createNewFile();
+                //file.createNewFile();
                 fileWriter = new FileWriter(file.getAbsoluteFile());
                 bufferedWriter = new BufferedWriter(fileWriter);
                 bufferedWriter.write("{}");
@@ -54,7 +56,7 @@ public class JSONFileControl {
             }
         }
         try {
-            StringBuffer output = new StringBuffer();
+            StringBuilder output = new StringBuilder();
 
             bufferedReader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
             String line;
@@ -90,20 +92,22 @@ public class JSONFileControl {
 
 // Method for reading weight, caffeine and climate log. Method returns latest value
     public String readLog(Context context, String name, String Value) throws Exception {
-
-        StringBuffer output = new StringBuffer();
+        StringBuilder output = new StringBuilder();
         String result;
         String FILE_NAME = null;
-        if (Value.equals("Weight")) {
-            FILE_NAME = name + "Weight.json";
-        }
-        else if (Value.equals("Caffeine")){
-            FILE_NAME = name + "Caffeine.json";
-        }
-        else if (Value.equals("Total")) {
-            FILE_NAME = name + "Climate.json";
+        switch (Value) {
+            case "Weight":
+                FILE_NAME = name + "Weight.json";
+                break;
+            case "Caffeine":
+                FILE_NAME = name + "Caffeine.json";
+                break;
+            case "Total":
+                FILE_NAME = name + "Climate.json";
+                break;
         }
 
+        if (FILE_NAME == null) throw new AssertionError();
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);
@@ -125,19 +129,22 @@ public class JSONFileControl {
 
     //Method gets values from Json file to graph. It returns all values one by one
     public String getGraphData(Context context, String name, String Value, int i) throws Exception {
-        StringBuffer output = new StringBuffer();
+        StringBuilder output = new StringBuilder();
         String result;
         String FILE_NAME = null;
-        if (Value.equals("Weight")) {
-            FILE_NAME = name + "Weight.json";
-        }
-        else if (Value.equals("Caffeine")){
-            FILE_NAME = name + "Caffeine.json";
-        }
-        else if (Value.equals("Total")) {
-            FILE_NAME = name + "Climate.json";
+        switch (Value) {
+            case "Weight":
+                FILE_NAME = name + "Weight.json";
+                break;
+            case "Caffeine":
+                FILE_NAME = name + "Caffeine.json";
+                break;
+            case "Total":
+                FILE_NAME = name + "Climate.json";
+                break;
         }
 
+        if (FILE_NAME == null) throw new AssertionError();
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);
@@ -159,18 +166,21 @@ public class JSONFileControl {
 
     //Method gets quantity of values in Json file to create right size graph. It returns quantity of values
     public int getQuantity(Context context, String name, String Value) throws Exception {
-        StringBuffer output = new StringBuffer();
+        StringBuilder output = new StringBuilder();
         String FILE_NAME = null;
-        if (Value.equals("Weight")) {
-            FILE_NAME = name + "Weight.json";
-        }
-        else if (Value.equals("Caffeine")){
-            FILE_NAME = name + "Caffeine.json";
-        }
-        else if (Value.equals("Total")) {
-            FILE_NAME = name + "Climate.json";
+        switch (Value) {
+            case "Weight":
+                FILE_NAME = name + "Weight.json";
+                break;
+            case "Caffeine":
+                FILE_NAME = name + "Caffeine.json";
+                break;
+            case "Total":
+                FILE_NAME = name + "Climate.json";
+                break;
         }
 
+        if (FILE_NAME == null) throw new AssertionError();
         File file = new File(context.getFilesDir(), FILE_NAME);
         fileReader = new FileReader(file.getAbsoluteFile());
         bufferedReader = new BufferedReader(fileReader);

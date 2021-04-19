@@ -21,6 +21,7 @@ public class MainPage extends AppCompatActivity {
     TextView totalEmission, dailyWeight, bmiView, nameView, caffeineView, municipalityView, ageView;
     CardView climateButton, weightButton, caffeineButton;
     ImageButton logOut;
+    Button profileBtn;
     String emission = null, caffeine = null;
     String weight;
     Context context;
@@ -31,6 +32,7 @@ public class MainPage extends AppCompatActivity {
     int age;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,7 @@ public class MainPage extends AppCompatActivity {
         caffeineView = findViewById(R.id.caffeineView);
         municipalityView = findViewById(R.id.municipalityView);
         ageView = findViewById(R.id.ageView);
+        profileBtn = findViewById(R.id.profileButton);
 
         totalEmission = findViewById(R.id.coEmission);
         context = MainPage.this;
@@ -57,21 +60,28 @@ public class MainPage extends AppCompatActivity {
 
         user = new User(context, username);
         name = user.getName();
+        System.out.println(name + "Emission: " + emission);
 
 
         nameView.setText(name);
         municipalityView.setText(user.getMunicipality());
 
         try {
-            weight = jsonFileControl.readLog(context, name, "Weight"); //TODO
+            weight = jsonFileControl.readLog(context, name, "Weight");
             dailyWeight.setText("Current weight: " + weight + "kg");
-            emission = jsonFileControl.readLog(context, name, "Total");
-            caffeine = jsonFileControl.readLog(context, name, "Caffeine");
-
-
         } catch (Exception e) {
             e.printStackTrace();
+        } try {
+            emission = jsonFileControl.readLog(context, name, "Total");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } try {
+            caffeine = jsonFileControl.readLog(context, name, "Caffeine");
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+
 
         if (emission != null){
             totalEmission.setText("Total CO2 emission: " + modifyJSON(emission) + " kg per year");
@@ -108,6 +118,12 @@ public class MainPage extends AppCompatActivity {
             startActivity(intent);
         });
 
+        profileBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainPage.this, UpdatePassword.class);
+            intent.putExtra("Username", username);
+            startActivity(intent);
+        });
+
         logOut.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, Login.class);
             startActivity(intent);
@@ -118,16 +134,18 @@ public class MainPage extends AppCompatActivity {
     public void setBMI(){
         bmiCalculator();
         DecimalFormat df = new DecimalFormat("0.00");
+        String text = null;
 
         if (BMI < 18.5){
-            bmiView.setText("BMI: " + df.format(BMI) + " - Underweight");
+            text = "BMI: " + df.format(BMI) + " - Underweight";
         } else if (BMI >= 18.5 && BMI < 24.9){
-            bmiView.setText("BMI: " + df.format(BMI) + " - Normal weight");
+            text = "BMI: " + df.format(BMI) + " - Normal weight";
         } else if (BMI >= 24.9 && BMI < 29.9){
-            bmiView.setText("BMI: " + df.format(BMI) + " - Overweight");
+            text = "BMI: " + df.format(BMI) + " - Overweight";
         } else if (BMI >= 29.9){
-            bmiView.setText("BMI: " + df.format(BMI) + " - Obese");
+            text = "BMI: " + df.format(BMI) + " - Obese";
         }
+        bmiView.setText(text);
     }
 
     public void bmiCalculator(){
