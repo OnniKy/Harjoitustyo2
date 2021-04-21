@@ -44,7 +44,7 @@ public class CaffeineControl extends AppCompatActivity {
         graphs = new Graphs();
         databaseHelper = new DatabaseHelper(this);
 
-        submit = findViewById(R.id.submitC);
+        submit = findViewById(R.id.dailyWeightButton);
         cancel = findViewById(R.id.backC);
         username = getIntent().getStringExtra("Username");
         name = databaseHelper.getName(username);
@@ -72,7 +72,8 @@ public class CaffeineControl extends AppCompatActivity {
                 caffeineEmission = calculateCaffeine(coffee, ed, lemonade);
                 jsonFileControl.writeLog(String.valueOf(caffeineEmission), context, name, "Caffeine");
                 series = graphs.createGraph(context, name, "Caffeine");
-                totalConsumptionView.setText("Your today's caffeine consumption is " + caffeineEmission + " mg!");
+                String text = "Total caffeine consumption: " + caffeineEmission + " mg/day!";
+                totalConsumptionView.setText(text);
                 try {
                     caffeineGraph.removeAllSeries();
                 } catch (Exception e){

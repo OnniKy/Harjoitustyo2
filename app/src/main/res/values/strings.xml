@@ -44,7 +44,7 @@
     <string name="register">Register</string>
     <string name="birth_year">Birth year</string>
     <string name="gender">Gender</string>
-    <string name="male">Male</string>
+    <string name="male">Male       </string>
     <string name="female">Female</string>
     <string name="change">Change your password</string>
     <string name="newpassword">New password</string>

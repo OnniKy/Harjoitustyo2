@@ -31,7 +31,6 @@ public class Municipality {
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getDocumentElement().getElementsByTagName("sotkanet:Kunta");
 
-            mlist.add("Municipality");
 
             for (int i = 0; i < nList.getLength() ; i++){
                 Node node = nList.item(i);
