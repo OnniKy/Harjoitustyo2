@@ -224,8 +224,10 @@ public class ClimateControl extends AppCompatActivity {
     }
 
     private String changeToPercentEgg(String value, int AVG){
+        String result;
         double d = Double.parseDouble(value);
-        double result = (d/AVG)*100;
-        return String.valueOf(result);
+        double r = (d/AVG)*100;
+        result = String.valueOf(round(r));
+        return result;
     }
 }
