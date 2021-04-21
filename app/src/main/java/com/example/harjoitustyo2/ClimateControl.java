@@ -215,6 +215,7 @@ public class ClimateControl extends AppCompatActivity {
         return String.valueOf(v);
     }
 
+    // Modify value to percentage of Finns average
     private String changeToPercent(String value, int AVG){
         String result;
         double d = Double.parseDouble(value)*100;
@@ -223,6 +224,7 @@ public class ClimateControl extends AppCompatActivity {
         return result;
     }
 
+    // Modify value to percentage of Finns average of Eggs
     private String changeToPercentEgg(String value, int AVG){
         String result;
         double d = Double.parseDouble(value);
