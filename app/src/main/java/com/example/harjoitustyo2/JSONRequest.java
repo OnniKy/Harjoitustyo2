@@ -4,6 +4,12 @@ import android.content.Context;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,10 +19,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class JSONRequest {
     JSONArray jsonArray;
     JSONFileControl jsonFileControl;
+    ArrayList<String> municipalitylist;
 
 
 
@@ -77,6 +90,42 @@ public class JSONRequest {
         }
 
         return response;
+    }
+
+    public ArrayList<String> getMunicipality(){
+        municipalitylist = new ArrayList<>();
+
+        try{
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            String urlString = "https://sotkanet.fi/rest/1.1/rdf/regions"; //TODO
+            Document doc = builder.parse(urlString);
+            doc.getDocumentElement().normalize();
+            System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+            NodeList nList = doc.getDocumentElement().getElementsByTagName("sotkanet:Kunta");
+
+
+            for (int i = 0; i < nList.getLength() ; i++){
+                Node node = nList.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE){
+                    Element element = (Element) node;
+                    String city = element.getElementsByTagName("dc:title").item(0).getTextContent();
+                    municipalitylist.add(city);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("##########DONE##########");
+        }
+        Collections.sort(municipalitylist);
+
+        return municipalitylist;
     }
 
 }

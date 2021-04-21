@@ -31,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity{
     JSONFileControl jsonFileControl;
     User user;
     Hashing hashing;
+    JSONRequest jsonRequest;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -150,8 +151,8 @@ public class RegisterActivity extends AppCompatActivity{
 
     // Calls method to get municipalities from API and utilizes spinner
     public void utilizeSpinner(){
-        Municipality mp = new Municipality();
-        ArrayList<String> mlist = mp.getMunicipality();
+        JSONRequest jsonRequest = new JSONRequest();
+        ArrayList<String> mlist = jsonRequest.getMunicipality();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mlist);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

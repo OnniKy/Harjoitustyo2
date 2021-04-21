@@ -25,7 +25,6 @@ public class MainPage extends AppCompatActivity {
     double BMI;
     int age;
 
-    JSONRequest jsonRequest;
     JSONFileControl jsonFileControl;
     User user;
     DatabaseHelper databaseHelper;
@@ -51,7 +50,6 @@ public class MainPage extends AppCompatActivity {
         totalEmission = findViewById(R.id.coEmission);
         context = MainPage.this;
 
-        jsonRequest = new JSONRequest();
         jsonFileControl = new JSONFileControl();
 
         username = getIntent().getStringExtra("Username");
