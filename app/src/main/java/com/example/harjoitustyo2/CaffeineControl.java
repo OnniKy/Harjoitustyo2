@@ -14,19 +14,21 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class CaffeineControl extends AppCompatActivity {
     Button cancel, submit;
-    String username, name;
     TextView totalConsumptionView;
     EditText coffeeConsumption, edConsumption, lemonadeConsumption;
     GraphView caffeineGraph;
-    Graphs graphs;
+    Context context;
+
     JSONFileControl jsonFileControl;
     DatabaseHelper databaseHelper;
+
+    String username, name;
+    Graphs graphs;
     LineGraphSeries<DataPoint> series;
     final int coffeeCaffeine = 150;
     final int edCaffeine = 320;
     final int lemonadeCaffeine = 65;
     double caffeineEmission;
-    Context context;
     Double d;
 
     @Override
@@ -61,6 +63,7 @@ public class CaffeineControl extends AppCompatActivity {
         series.setColor(getResources().getColor(R.color.green));
         caffeineGraph.getViewport().setMaxX(d.intValue());
 
+
         submit.setOnClickListener(v -> {
             String coffee = coffeeConsumption.getText().toString();
             String ed = edConsumption.getText().toString();
@@ -86,12 +89,7 @@ public class CaffeineControl extends AppCompatActivity {
                 Toast.makeText(this, "Daily caffeine updated!", Toast.LENGTH_SHORT).show();
             }
 
-
-
-
-
         });
-
 
         cancel.setOnClickListener(v -> {
             Intent intent = new Intent(CaffeineControl.this, MainPage.class);
@@ -100,6 +98,7 @@ public class CaffeineControl extends AppCompatActivity {
         });
     }
 
+    // Calculates total caffeine consumption
     public double calculateCaffeine(String coffee, String ed, String lemonade){
         double cCaffeine = Double.parseDouble(coffee)*coffeeCaffeine;
         double eCaffeine  = Double.parseDouble(ed)*edCaffeine;

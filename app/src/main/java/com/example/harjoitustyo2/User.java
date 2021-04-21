@@ -6,6 +6,7 @@ public class User {
     byte[] saltId;
     String name, username, password, municipality, gender, height;
     int weight, birthyear;
+
     DatabaseHelper dbHelper;
 
     public User(Context context, String user){

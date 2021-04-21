@@ -12,15 +12,16 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ClimateGraph extends AppCompatActivity {
+    GraphView climateGraph;
+    Button back;
+    Context context;
+
+    JSONFileControl jsonFileControl;
+    DatabaseHelper databaseHelper;
+    Graphs graphs;
 
     LineGraphSeries<DataPoint> series;
-    GraphView climateGraph;
-    JSONFileControl jsonFileControl;
-    Context context;
-    DatabaseHelper databaseHelper;
     String username, name;
-    Graphs graphs;
-    Button back;
     Double d;
 
     @Override
@@ -49,11 +50,11 @@ public class ClimateGraph extends AppCompatActivity {
         series = graphs.createGraph(context, name, "Total");
         series.setColor(getResources().getColor(R.color.green));
         climateGraph.addSeries(series);
-
         d = series.getHighestValueX();
         climateGraph.getViewport().setMaxX(d.intValue());
-
         series.setColor(getResources().getColor(R.color.green));
+
+
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(ClimateGraph.this, ClimateControl.class);

@@ -21,17 +21,19 @@ public class UpdatePassword extends AppCompatActivity {
     TextView nameView, emailView;
     EditText password, newPassword1, newPassword2;
     Button submit, back;
+    Context context;
+
+    String username;
+
     DatabaseHelper databaseHelper;
     Hashing hashing = new Hashing();
-    Context context;
-    String username;
     User user;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_profile);
+        setContentView(R.layout.activity_update_password);
 
         nameView = findViewById(R.id.nameView);
         emailView = findViewById(R.id.emailView);
@@ -91,10 +93,13 @@ public class UpdatePassword extends AppCompatActivity {
             Toast.makeText(UpdatePassword.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
         }
     }
+
+
     public boolean checkPasswords (){
          return newPassword1.getText().toString().equals(newPassword2.getText().toString());
         }
-        
+
+
     public boolean isValidPassword(final String password) {
         Pattern pattern;
         Matcher matcher;
@@ -106,7 +111,6 @@ public class UpdatePassword extends AppCompatActivity {
 
         return matcher.matches();
     }
-
 
 }
 

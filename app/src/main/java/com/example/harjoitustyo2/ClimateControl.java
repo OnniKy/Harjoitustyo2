@@ -17,17 +17,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ClimateControl extends AppCompatActivity {
-    JSONRequest jsonRequest;
-    JSONObject jsonObject;
     Button submit, cancel, graphButton;
-    Context context;
     SeekBar beefBar, porkBar, fishBar, cheeseBar, dairyBar, riceBar, vegetableBar, eggBar;
     TextView beefView, porkView,fishView, cheeseView, dairyView, riceView, vegetableView, eggView;
     TextView dairyEmissionView, meatEmissionView, plantEmissionView, totalEmissionView;
     Spinner spinner;
-    String name, username;
+    Context context;
+
+    JSONRequest jsonRequest;
+    JSONObject jsonObject;
     DatabaseHelper databaseHelper;
 
+    String name, username;
 
     static int MIN = 0;
     int beefAVG = 40;
@@ -38,7 +39,6 @@ public class ClimateControl extends AppCompatActivity {
     int riceAVG = 9;
     int vegetableAVG = 140;
     int eggAVG = 3;
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -78,7 +78,7 @@ public class ClimateControl extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         cancel = findViewById(R.id.cancel1);
         graphButton = findViewById(R.id.graphButton);
-        spinner = (Spinner) findViewById(R.id.spinner1);
+        spinner = findViewById(R.id.spinner1);
 
         this.seekbarUtilize(beefBar, beefAVG, beefView);
         this.seekbarUtilize(porkBar, porkAVG, porkView);
@@ -114,13 +114,15 @@ public class ClimateControl extends AppCompatActivity {
             jsonObject = jsonRequest.readJSON(name ,diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
 
             try {
-                dairyEmissionView.setText("Dairy: " + modifyJSON(jsonObject.getString("Dairy")) + "kg");
-                meatEmissionView.setText("Meat: " + modifyJSON(jsonObject.getString("Meat")) + "kg");
-                plantEmissionView.setText("Plant: " + modifyJSON(jsonObject.getString("Plant")) + "kg");
-                totalEmissionView.setText("Total: " + modifyJSON(jsonObject.getString("Total")) + "kg");
+                dairyEmissionView.setText("Dairy: " + modifyValue(jsonObject.getString("Dairy")) + "kg");
+                meatEmissionView.setText("Meat: " + modifyValue(jsonObject.getString("Meat")) + "kg");
+                plantEmissionView.setText("Plant: " + modifyValue(jsonObject.getString("Plant")) + "kg");
+                totalEmissionView.setText("Total: " + modifyValue(jsonObject.getString("Total")) + "kg");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
         });
 
 
@@ -186,7 +188,7 @@ public class ClimateControl extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
-
+    // Cuts values from textviews
     private String cutString(String value){
         String [] strings = value.split(" ");
         double d = Double.parseDouble(strings[0]);
@@ -194,7 +196,7 @@ public class ClimateControl extends AppCompatActivity {
         return String.valueOf(v);
     }
 
-
+    // Rounding double value to integer
     private int round(double d){
         double dAbs = Math.abs(d);
         int i = (int) dAbs;
@@ -206,8 +208,8 @@ public class ClimateControl extends AppCompatActivity {
         }
     }
 
-
-    private String modifyJSON(String value) {
+    // Modifying decimal number to integer
+    private String modifyValue(String value) {
         double d = Double.parseDouble(value);
         int v = round(d);
         return String.valueOf(v);

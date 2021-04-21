@@ -10,9 +10,10 @@ import android.database.sqlite.SQLiteStatement;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    JSONFileControl jsonFileControl;
+
     static String dbname = "database";
     static int version = 1;
-    JSONFileControl jsonFileControl;
     final String table = "user";
 
 
@@ -42,6 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return l == 1;
     }
 
+    // Insert user to database
     public void insertUser(User user, Context context){
         jsonFileControl = new JSONFileControl();
 
@@ -64,13 +66,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    // Updating user's password
     public void updatePassword(String newPassword, String username){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues data = new ContentValues();
         data.put("password", newPassword);
         myDB.update(table, data, "username = '" + username +"'",null);
-
-
     }
 
     @Override

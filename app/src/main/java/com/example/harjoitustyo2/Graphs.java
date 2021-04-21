@@ -7,9 +7,10 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class Graphs {
 
+    JSONFileControl jsonFileControl = new JSONFileControl();
+
     LineGraphSeries<DataPoint> series;
     double y = 0.0;
-    JSONFileControl jsonFileControl = new JSONFileControl();
 
     //Method gets size of Json file and returns it to graph creating method
     public int getQuantity(Context context, String name, String value) {

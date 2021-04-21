@@ -12,6 +12,7 @@ import java.security.SecureRandom;
 
 public class Hashing {
 
+    // Hashing password
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getSecurePassword(String passwordToHash, byte[] salt){
         String generatedPassword = null;
@@ -31,8 +32,8 @@ public class Hashing {
     }
 
 
-
-    public static byte[] getSalt() throws NoSuchAlgorithmException {
+    // Makes random salt
+    public static byte[] getSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
         random.nextBytes(salt);

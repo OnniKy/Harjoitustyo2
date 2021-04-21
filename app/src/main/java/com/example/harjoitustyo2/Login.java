@@ -12,71 +12,65 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
-    Context context;
     TextView password;
     TextView username;
     Button register, login;
+    Context context;
+
     DatabaseHelper databaseHelper;
     Hashing hashing;
     User user;
     
 
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         context = Login.this;
-        username = (TextView) findViewById(R.id.address);
-        password = (TextView) findViewById(R.id.password);
-        register = (Button) findViewById(R.id.register);
-        login  = (Button) findViewById(R.id.login);
+        username = findViewById(R.id.address);
+        password = findViewById(R.id.password);
+        register = findViewById(R.id.register);
+        login  = findViewById(R.id.login);
         databaseHelper = new DatabaseHelper(this);
         hashing = new Hashing();
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View v) {
-                final String usernameCheck = username.getText().toString();
-                final String passwordCheck = password.getText().toString();
+        login.setOnClickListener(v -> {
+            final String usernameCheck = username.getText().toString();
+            final String passwordCheck = password.getText().toString();
 
-                String finalCheckPassword = null;
-                
-                if (usernameCheck.isEmpty() || passwordCheck.isEmpty()){
-                    Toast.makeText(Login.this, "Enter username and password!", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (databaseHelper.checkUsername(usernameCheck)) {
-                        user = new User(context, usernameCheck);
-                        byte[] byteConverter = user.getSaltId();
+            String finalCheckPassword;
 
-                        finalCheckPassword = hashing.getSecurePassword(passwordCheck, byteConverter);
+            if (usernameCheck.isEmpty() || passwordCheck.isEmpty()){
+                Toast.makeText(Login.this, "Enter username and password!", Toast.LENGTH_SHORT).show();
+            } else {
+                if (databaseHelper.checkUsername(usernameCheck)) {
+                    user = new User(context, usernameCheck);
+                    byte[] byteConverter = user.getSaltId();
 
-                        if (databaseHelper.isLoginValid(usernameCheck, finalCheckPassword)) {
-                            Intent intent = new Intent(Login.this, MainPage.class);
-                            intent.putExtra("Username", username.getText().toString());
-                            startActivity(intent);
+                    finalCheckPassword = hashing.getSecurePassword(passwordCheck, byteConverter);
 
-                            Toast.makeText(Login.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
-                        } else {
+                    if (databaseHelper.isLoginValid(usernameCheck, finalCheckPassword)) {
+                        Intent intent = new Intent(Login.this, MainPage.class);
+                        intent.putExtra("Username", username.getText().toString());
+                        startActivity(intent);
 
-                            Toast.makeText(Login.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(Login.this, "Login is succesful!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(Login.this, "   User does not exist! \nDo you want to register?", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(Login.this, "Invalid Username or Password!", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(Login.this, "   User does not exist! \nDo you want to register?", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login.this, RegisterActivity.class);
-                startActivityForResult(intent, 1);
-            }
+        register.setOnClickListener(v -> {
+            Intent intent = new Intent(Login.this, RegisterActivity.class);
+            startActivityForResult(intent, 1);
         });
 
     }

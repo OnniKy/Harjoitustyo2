@@ -15,21 +15,20 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 
 public class MainPage extends AppCompatActivity {
-
-    JSONRequest jsonRequest;
-    JSONFileControl jsonFileControl;
     TextView totalEmission, dailyWeight, bmiView, nameView, caffeineView, municipalityView, ageView;
     CardView climateButton, weightButton, caffeineButton;
     ImageButton logOut;
     Button profileBtn;
-    String emission = null, caffeine = null;
-    String weight;
     Context context;
-    String username, name;
-    DatabaseHelper databaseHelper;
+
+    String emission = null, caffeine = null, weight, username, name;
     double BMI;
-    User user;
     int age;
+
+    JSONRequest jsonRequest;
+    JSONFileControl jsonFileControl;
+    User user;
+    DatabaseHelper databaseHelper;
 
 
     @SuppressLint("SetTextI18n")
@@ -81,21 +80,28 @@ public class MainPage extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        String emissionText;
+        String caffeineText;
+
 
 
         if (emission != null){
-            totalEmission.setText("Total CO2 emission: " + modifyJSON(emission) + " kg per year");
+            emissionText = "Total CO2 emission: " + modifyValue(emission) + " kg per year";
         } else {
-            totalEmission.setText("Calculate your CO2 emission!");
+            emissionText = "Calculate your CO2 emission!";
         }
 
         if (caffeine != null){
-            caffeineView.setText("Today's caffeine consumption: " + modifyJSON(caffeine) + " mg!");
+            caffeineText = "Today's caffeine consumption: " + modifyValue(caffeine) + " mg!";
         } else {
-            caffeineView.setText("Calculate your caffeine consumption!");
+            caffeineText = "Calculate your caffeine consumption!";
         }
+
+        totalEmission.setText(emissionText);
+        caffeineView.setText(caffeineText);
         calculateAge();
-        ageView.setText("Age: " + age);
+        String ageText = "Age: " + age;
+        ageView.setText(ageText);
         setBMI();
 
 
@@ -161,6 +167,7 @@ public class MainPage extends AppCompatActivity {
         }
     }
 
+    // Rounding double value to integer
     private int round(double d){
         double dAbs = Math.abs(d);
         int i = (int) dAbs;
@@ -172,8 +179,8 @@ public class MainPage extends AppCompatActivity {
         }
     }
 
-
-    private String modifyJSON(String value) {
+    // Modifying decimal number to integer
+    private String modifyValue(String value) {
         double d = Double.parseDouble(value);
         int v = round(d);
         return String.valueOf(v);

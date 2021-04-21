@@ -16,14 +16,15 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class WeightControl extends AppCompatActivity {
 
     EditText addWeight;
+    Button dailyWeightButton, back;
     Context context;
     String username, name;
-    Button dailyWeightButton, back;
-    DatabaseHelper databaseHelper;
     Double d;
 
+    DatabaseHelper databaseHelper;
     JSONFileControl jsonFileControl;
     Graphs graphs;
+
     LineGraphSeries<DataPoint> series;
     GraphView weightGraph;
 
@@ -41,12 +42,11 @@ public class WeightControl extends AppCompatActivity {
 
         context = WeightControl.this;
         username = getIntent().getStringExtra("Username");
+
         databaseHelper = new DatabaseHelper(this);
         graphs = new Graphs();
-
-
-
         jsonFileControl = new JSONFileControl();
+
         weightGraph = findViewById(R.id.graph);
         weightGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         weightGraph.getViewport().setXAxisBoundsManual(true);
@@ -61,11 +61,9 @@ public class WeightControl extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //series = graphs.createGraph(series, context, name, "Weight");
         series = graphs.createGraph(context, name, "Weight");
         weightGraph.addSeries(series);
         series.setColor(getResources().getColor(R.color.green));
-        //weightGraph.setBackgroundColor(getResources().getColor(R.color.primary));
 
         d = series.getHighestValueX();
         weightGraph.getViewport().setMaxX(d.intValue());

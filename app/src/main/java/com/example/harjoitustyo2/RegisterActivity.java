@@ -14,7 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,11 +21,12 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity{
 
-    Context context;
     EditText name, email, password, height, weight, birthyear;
     Spinner municipality;
     Button register, cancel;
     RadioGroup gender;
+    Context context;
+
     DatabaseHelper databaseHelper;
     JSONFileControl jsonFileControl;
     User user;
@@ -104,14 +104,10 @@ public class RegisterActivity extends AppCompatActivity{
 
                     boolean usercheckResult = databaseHelper.checkUsername(usernameValue);
                     if (!usercheckResult) {
-                        byte[] salt = new byte[0];
-                        String password_ = null;
-                        try {
-                            salt = Hashing.getSalt();
-                            password_ = hashing.getSecurePassword(passwordValue, salt);
-                        } catch (NoSuchAlgorithmException e) {
-                            e.printStackTrace();
-                        }
+                        byte[] salt;
+                        String password_;
+                        salt = Hashing.getSalt();
+                        password_ = hashing.getSecurePassword(passwordValue, salt);
 
                         user = new User(salt, nameValue, usernameValue, password_, municipalityValue, genderValue, heightValue, weightValue, birthyearValue);
                         databaseHelper.insertUser(user, context);
@@ -139,9 +135,8 @@ public class RegisterActivity extends AppCompatActivity{
 
     }
 
-    // Required strong login password
+    // Ensure that the password follows the strong password requirements
     public boolean isValidPassword(final String password) {
-
         Pattern pattern;
         Matcher matcher;
 
@@ -151,9 +146,9 @@ public class RegisterActivity extends AppCompatActivity{
         matcher = pattern.matcher(password);
 
         return matcher.matches();
-
     }
 
+    // Calls method to get municipalities from API and utilizes spinner
     public void utilizeSpinner(){
         Municipality mp = new Municipality();
         ArrayList<String> mlist = mp.getMunicipality();

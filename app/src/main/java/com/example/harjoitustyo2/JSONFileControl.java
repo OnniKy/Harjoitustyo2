@@ -13,14 +13,15 @@ import java.io.IOException;
 
 public class JSONFileControl {
 
-
     FileWriter fileWriter;
     BufferedWriter bufferedWriter;
     BufferedReader bufferedReader;
     FileReader fileReader;
-    String response;
+
     private JSONObject messageDetails;
     private Boolean isUserExisting;
+    String response;
+
     public JSONFileControl(){
 
     }
