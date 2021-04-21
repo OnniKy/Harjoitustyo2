@@ -57,8 +57,6 @@ public class MainPage extends AppCompatActivity {
 
         user = new User(context, username);
         name = user.getName();
-        System.out.println(name + "Emission: " + emission);
-
 
         nameView.setText(name);
         municipalityView.setText(user.getMunicipality());

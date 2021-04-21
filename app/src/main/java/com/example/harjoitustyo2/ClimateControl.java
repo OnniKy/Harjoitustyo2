@@ -102,14 +102,14 @@ public class ClimateControl extends AppCompatActivity {
 
         submit.setOnClickListener(v -> {
             String diet = spinner.getSelectedItem().toString();
-            String beef = cutString(beefView.getText().toString());
-            String fish = cutString(fishView.getText().toString());
-            String pork = cutString(porkView.getText().toString());
-            String dairy = cutString(dairyView.getText().toString());
-            String cheese = cutString(cheeseView.getText().toString());
-            String rice = cutString(riceView.getText().toString());
-            String egg = cutString(eggView.getText().toString());
-            String salad = cutString(vegetableView.getText().toString());
+            String beef = changeToPercent(cutString(beefView.getText().toString()), beefAVG);
+            String fish = changeToPercent(cutString(fishView.getText().toString()), fishAVG);
+            String pork = changeToPercent(cutString(porkView.getText().toString()),porkAVG);
+            String dairy = changeToPercent(cutString(dairyView.getText().toString()),dairyAVG);
+            String cheese = changeToPercent(cutString(cheeseView.getText().toString()), cheeseAVG);
+            String rice = changeToPercent(cutString(riceView.getText().toString()), riceAVG);
+            String egg = changeToPercentEgg(cutString(eggView.getText().toString()), eggAVG);
+            String salad = changeToPercent(cutString(vegetableView.getText().toString()), vegetableAVG);
 
             jsonObject = jsonRequest.readJSON(name ,diet, beef, fish, pork, dairy, cheese, rice, egg, salad, context);
 
@@ -147,7 +147,7 @@ public class ClimateControl extends AppCompatActivity {
             seekbar.setMax(30);
             seekbar.setMin(MIN);
             seekbar.setProgress(AVG);
-            view.setText( AVG + " pcs/week");
+            view.setText(AVG + " pcs/week");
         } else {
             seekbar.setMax(AVG*2);
             seekbar.setMin(MIN);
@@ -191,9 +191,8 @@ public class ClimateControl extends AppCompatActivity {
     // Cuts values from textviews
     private String cutString(String value){
         String [] strings = value.split(" ");
-        double d = Double.parseDouble(strings[0]);
-        int v = round(d);
-        return String.valueOf(v);
+        System.out.println(strings[0]);
+        return strings[0];
     }
 
     // Rounding double value to integer
@@ -208,10 +207,25 @@ public class ClimateControl extends AppCompatActivity {
         }
     }
 
+
     // Modifying decimal number to integer
     private String modifyValue(String value) {
         double d = Double.parseDouble(value);
         int v = round(d);
         return String.valueOf(v);
+    }
+
+    private String changeToPercent(String value, int AVG){
+        String result;
+        double d = Double.parseDouble(value)*100;
+        double r = (d/AVG)*100;
+        result = String.valueOf(round(r));
+        return result;
+    }
+
+    private String changeToPercentEgg(String value, int AVG){
+        double d = Double.parseDouble(value);
+        double result = (d/AVG)*100;
+        return String.valueOf(result);
     }
 }

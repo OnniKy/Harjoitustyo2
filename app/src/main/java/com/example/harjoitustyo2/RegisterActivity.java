@@ -31,7 +31,6 @@ public class RegisterActivity extends AppCompatActivity{
     JSONFileControl jsonFileControl;
     User user;
     Hashing hashing;
-    JSONRequest jsonRequest;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override

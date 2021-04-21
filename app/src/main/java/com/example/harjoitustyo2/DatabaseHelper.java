@@ -14,10 +14,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     static String dbname = "database";
     static int version = 1;
-    final String table = "user";
 
 
-    String createTableUser = "CREATE TABLE if not exists \table (\n" +
+    String createTable = "CREATE TABLE if not exists user (\n" +
             "\t\"id\"\tTEXT,\n" +
             "\t\"name\"\tTEXT,\n" +
             "\t\"username\"\tTEXT,\n" +
@@ -32,7 +31,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, dbname, null, version);
-        getWritableDatabase().execSQL(createTableUser);
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(createTable);
+
     }
 
     public boolean isLoginValid(String username, String password){
@@ -58,6 +59,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("gender", user.getGender());
         contentValues.put("birthyear", user.getBirthyear());
 
+        System.out.println(getWritableDatabase());
+
         getWritableDatabase().insert("user", "", contentValues);
 
         //Adding first weight to Weight Data File
@@ -71,7 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues data = new ContentValues();
         data.put("password", newPassword);
-        myDB.update(table, data, "username = '" + username +"'",null);
+        myDB.update("user", data, "username = '" + username +"'",null);
     }
 
     @Override
