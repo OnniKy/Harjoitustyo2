@@ -104,7 +104,6 @@ public class CaffeineControl extends AppCompatActivity {
         double eCaffeine  = Double.parseDouble(ed)*edCaffeine;
         double eLemonade = Double.parseDouble(lemonade)*lemonadeCaffeine;
         double total = cCaffeine + eCaffeine + eLemonade;
-        System.out.println(total);
         return total;
     }
 }

@@ -354,8 +354,8 @@
 
     <TextView
         android:id="@+id/municipalityView"
-        android:layout_width="415dp"
-        android:layout_height="51dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:background="#297720"
         android:gravity="center"
         android:text="@string/food_consumption_habits_calculates_estimated_co2_emission_per_year"

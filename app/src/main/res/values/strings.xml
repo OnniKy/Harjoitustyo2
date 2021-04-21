@@ -56,4 +56,5 @@
     <string name="back">Back</string>
     <string name="enter_your_weight">Enter your weight</string>
     <string name="logo">Logo</string>
+    <string name="username">Username</string>
 </resources>

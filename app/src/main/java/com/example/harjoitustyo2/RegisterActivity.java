@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity{
 
-    EditText name, email, password, height, weight, birthyear;
+    EditText name, username, password, height, weight, birthyear;
     Spinner municipality;
     Button register, cancel;
     RadioGroup gender;
@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity{
         setContentView(R.layout.activity_register);
         context = RegisterActivity.this;
         name = findViewById(R.id.editName);
-        email = findViewById(R.id.editEmail);
+        username = findViewById(R.id.editUsername);
         password = findViewById(R.id.editPassword);
         municipality = findViewById(R.id.spinnerMunicipality);
         height = findViewById(R.id.editHeight);
@@ -70,8 +70,8 @@ public class RegisterActivity extends AppCompatActivity{
         // Registeration
         register.setOnClickListener(v ->{
             RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
-            if (email.length() == 0){
-                email.setError("Enter valid email!");
+            if (username.length() == 0){
+                username.setError("Enter username!");
             }
             if (name.length() == 0){
                 name.setError("Enter name!");
@@ -89,9 +89,9 @@ public class RegisterActivity extends AppCompatActivity{
                 birthyear.setError("Enter birth year!");
             }
 
-            if (email.length() > 0 && name.length() > 0 && password.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
+            if (username.length() > 0 && name.length() > 0 && password.length() > 0 && height.length() > 0 && weight.length() > 0 && checkedBtn != null && birthyear.length() > 0) {
                 String nameValue = name.getText().toString();
-                String usernameValue = email.getText().toString();
+                String usernameValue = username.getText().toString();
                 String passwordValue = password.getText().toString();
                 String municipalityValue = municipality.getSelectedItem().toString();
                 String heightValue = height.getText().toString();
