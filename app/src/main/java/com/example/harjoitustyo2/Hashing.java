@@ -12,7 +12,9 @@ import java.security.SecureRandom;
 
 public class Hashing {
 
-    // Hashing password
+    /* Method takes password to hash and salt,
+    method hash password and returns hashed password
+     */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getSecurePassword(String passwordToHash, byte[] salt){
         String generatedPassword = null;
@@ -32,7 +34,7 @@ public class Hashing {
     }
 
 
-    // Makes random salt
+    // Makes random salt and returns it
     public static byte[] getSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];

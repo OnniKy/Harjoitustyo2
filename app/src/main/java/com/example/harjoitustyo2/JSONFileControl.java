@@ -26,11 +26,13 @@ public class JSONFileControl {
 
     }
 
-    //Method for writing weight, caffeine and climate data to Json file
-    public void writeLog(String weight, Context context, String name, String Value) {
+    /* Takes value to write, context, user's name and what data is writing
+    Method for writing weight, caffeine and climate data to Json file
+     */
+    public void writeLog(String value, Context context, String name, String data) {
         String FILE_NAME = null;
 
-        switch (Value) {
+        switch (data) {
             case "Weight":
                 FILE_NAME = name + "Weight.json";
                 break;
@@ -68,14 +70,14 @@ public class JSONFileControl {
             bufferedReader.close();
 
             messageDetails = new JSONObject(response);
-            isUserExisting = messageDetails.has(Value);
+            isUserExisting = messageDetails.has(data);
             if (!isUserExisting) {
                 JSONArray newUserMessages = new JSONArray();
-                newUserMessages.put(weight);
-                messageDetails.put(Value, newUserMessages);
+                newUserMessages.put(value);
+                messageDetails.put(data, newUserMessages);
             } else {
-                JSONArray userMessages = (JSONArray) messageDetails.get(Value);
-                userMessages.put(weight);
+                JSONArray userMessages = (JSONArray) messageDetails.get(data);
+                userMessages.put(value);
             }
 
             fileWriter = new FileWriter(file.getAbsoluteFile());
@@ -90,13 +92,14 @@ public class JSONFileControl {
     }
 
 
-
-// Method for reading weight, caffeine and climate log. Method returns latest value
-    public String readLog(Context context, String name, String Value) throws Exception {
+    /* Takes context, user's name and what data is reading
+    Method for reading weight, caffeine and climate log. Method returns latest value
+     */
+    public String readLog(Context context, String name, String data) throws Exception {
         StringBuilder output = new StringBuilder();
         String result;
         String FILE_NAME = null;
-        switch (Value) {
+        switch (data) {
             case "Weight":
                 FILE_NAME = name + "Weight.json";
                 break;
@@ -121,19 +124,21 @@ public class JSONFileControl {
         response = output.toString();
         bufferedReader.close();
         messageDetails = new JSONObject(response);
-        isUserExisting = messageDetails.has(Value);
-        JSONArray userMessages = (JSONArray) messageDetails.get(Value);
+        isUserExisting = messageDetails.has(data);
+        JSONArray userMessages = (JSONArray) messageDetails.get(data);
         result = userMessages.get(userMessages.length() - 1).toString();
 
         return result;
     }
 
-    //Method gets values from Json file to graph. It returns all values one by one
-    public String getGraphData(Context context, String name, String Value, int i) throws Exception {
+    /* Takes context, user's name, data and value i which is calculator
+    Method gets values from Json file to graph. It returns all values one by one
+     */
+    public String getGraphData(Context context, String name, String data, int i) throws Exception {
         StringBuilder output = new StringBuilder();
         String result;
         String FILE_NAME = null;
-        switch (Value) {
+        switch (data) {
             case "Weight":
                 FILE_NAME = name + "Weight.json";
                 break;
@@ -158,18 +163,20 @@ public class JSONFileControl {
         response = output.toString();
         bufferedReader.close();
         messageDetails = new JSONObject(response);
-        isUserExisting = messageDetails.has(Value);
-        JSONArray userMessages = (JSONArray) messageDetails.get(Value);
+        isUserExisting = messageDetails.has(data);
+        JSONArray userMessages = (JSONArray) messageDetails.get(data);
         result = userMessages.get(userMessages.length()-(userMessages.length()-i)).toString();
 
         return result;
     }
 
-    //Method gets quantity of values in Json file to create right size graph. It returns quantity of values
-    public int getQuantity(Context context, String name, String Value) throws Exception {
+    /*Takes context, user's name and data
+    Method gets quantity of values in Json file to create right size graph. It returns quantity of values
+     */
+    public int getQuantity(Context context, String name, String data) throws Exception {
         StringBuilder output = new StringBuilder();
         String FILE_NAME = null;
-        switch (Value) {
+        switch (data) {
             case "Weight":
                 FILE_NAME = name + "Weight.json";
                 break;
@@ -194,8 +201,8 @@ public class JSONFileControl {
         response = output.toString();
         bufferedReader.close();
         messageDetails = new JSONObject(response);
-        isUserExisting = messageDetails.has(Value);
-        JSONArray userMessages = (JSONArray) messageDetails.get(Value);
+        isUserExisting = messageDetails.has(data);
+        JSONArray userMessages = (JSONArray) messageDetails.get(data);
 
         return userMessages.length();
     }

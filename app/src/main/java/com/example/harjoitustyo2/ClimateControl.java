@@ -188,7 +188,10 @@ public class ClimateControl extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
-    // Cuts values from textviews
+    /*Takes textView value
+    cuts values from textViews,
+    returns cutted value
+     */
     private String cutString(String value){
         String [] strings = value.split(" ");
         System.out.println(strings[0]);
@@ -208,7 +211,7 @@ public class ClimateControl extends AppCompatActivity {
     }
 
 
-    // Modifying decimal number to integer
+    // Modifying decimal number as String to integer
     private String modifyValue(String value) {
         double d = Double.parseDouble(value);
         int v = round(d);

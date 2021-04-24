@@ -37,6 +37,7 @@ public class CaffeineControl extends AppCompatActivity {
         setContentView(R.layout.activity_caffeine_control);
         context = CaffeineControl.this;
 
+        // Utilizing UI elements
         coffeeConsumption = findViewById(R.id.coffeeConsumption);
         edConsumption = findViewById(R.id.edConsumption);
         lemonadeConsumption = findViewById(R.id.lemonadeConsumption);
@@ -51,17 +52,7 @@ public class CaffeineControl extends AppCompatActivity {
         username = getIntent().getStringExtra("Username");
         name = databaseHelper.getName(username);
 
-
-        caffeineGraph = findViewById(R.id.graph);
-        caffeineGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
-        caffeineGraph.getViewport().setXAxisBoundsManual(true);
-        caffeineGraph.getViewport().setMinX(0);
-
-        series = graphs.createGraph(context, name, "Caffeine");
-        caffeineGraph.addSeries(series);
-        d = series.getHighestValueX();
-        series.setColor(getResources().getColor(R.color.green));
-        caffeineGraph.getViewport().setMaxX(d.intValue());
+        utilizeGraph();
 
 
         submit.setOnClickListener(v -> {
@@ -85,7 +76,6 @@ public class CaffeineControl extends AppCompatActivity {
                 d = series.getHighestValueX();
                 caffeineGraph.getViewport().setMaxX(d.intValue());
                 caffeineGraph.addSeries(series);
-                series.setColor(getResources().getColor(R.color.green));
                 Toast.makeText(this, "Daily caffeine updated!", Toast.LENGTH_SHORT).show();
             }
 
@@ -98,12 +88,26 @@ public class CaffeineControl extends AppCompatActivity {
         });
     }
 
-    // Calculates total caffeine consumption
+    // Takes coffee, energy drink and lemonade consumption,
+    // calculates total caffeine consumption,
+    // returns total consumption
     public double calculateCaffeine(String coffee, String ed, String lemonade){
         double cCaffeine = Double.parseDouble(coffee)*coffeeCaffeine;
         double eCaffeine  = Double.parseDouble(ed)*edCaffeine;
         double eLemonade = Double.parseDouble(lemonade)*lemonadeCaffeine;
-        double total = cCaffeine + eCaffeine + eLemonade;
-        return total;
+        return cCaffeine + eCaffeine + eLemonade;
+    }
+
+    // Utilizes graph
+    public void utilizeGraph(){
+        caffeineGraph = findViewById(R.id.graph);
+        caffeineGraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+        caffeineGraph.getViewport().setXAxisBoundsManual(true);
+        caffeineGraph.getViewport().setMinX(0);
+
+        series = graphs.createGraph(context, name, "Caffeine");
+        caffeineGraph.addSeries(series);
+        d = series.getHighestValueX();
+        caffeineGraph.getViewport().setMaxX(d.intValue());
     }
 }

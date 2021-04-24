@@ -133,6 +133,7 @@ public class MainPage extends AppCompatActivity {
 
     }
 
+    // Sets BMI value to the dashboard
     public void setBMI(){
         bmiCalculator();
         DecimalFormat df = new DecimalFormat("0.00");
@@ -151,6 +152,7 @@ public class MainPage extends AppCompatActivity {
     }
 
 
+    // Calculates BMI value
     public void bmiCalculator(){
         String height = databaseHelper.getHeight(username);
 
@@ -182,6 +184,7 @@ public class MainPage extends AppCompatActivity {
         return String.valueOf(v);
     }
 
+    // Calculates age
     private void calculateAge(){
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int birthyear = databaseHelper.getBirthyear(username);

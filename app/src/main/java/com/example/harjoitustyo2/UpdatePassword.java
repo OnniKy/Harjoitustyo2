@@ -61,6 +61,8 @@ public class UpdatePassword extends AppCompatActivity {
 
     }
 
+
+    // Updates password to the database
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void updatePassword(){
         String finalCheckPassword;

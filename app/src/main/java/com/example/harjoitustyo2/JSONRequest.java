@@ -38,7 +38,10 @@ public class JSONRequest {
 
     }
 
-    //Writes climate data to Json file. Returns json object
+    /* Takes all values from climate data,
+    reads data from JSONObject and calls write method,
+    returns JSONObject
+     */
     public JSONObject readJSON(String name, String diet, String beef, String fish, String pork, String dairy, String cheese, String rice, String egg, String salad, Context context){
         String json = getJSON(diet, beef, fish, pork, dairy, cheese, rice, egg, salad);
         JSONObject jsonObject = null;
@@ -60,8 +63,9 @@ public class JSONRequest {
 
 
 
-
-    // Uses Climate Diet API. Returns values to json
+     /* Takes all values from climate control,
+     Uses Climate Diet API. Returns values to json
+      */
     public String getJSON(String diet, String bLevel, String fLevel, String pLevel, String dLevel, String cLevel, String rLevel, String eLevel, String sLevel){
         String response = null;
         try {
@@ -80,9 +84,7 @@ public class JSONRequest {
             in.close();
             br.close();
 
-        }catch (ProtocolException e){
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
+        }catch (ProtocolException | MalformedURLException e){
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -93,6 +95,7 @@ public class JSONRequest {
         return response;
     }
 
+    // Uses sotkanet API for all municipalities of Finland and returns Arraylist about municipalities
     public ArrayList<String> getMunicipality(){
         municipalitylist = new ArrayList<>();
 
@@ -115,9 +118,7 @@ public class JSONRequest {
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
+        } catch (IOException | SAXException e) {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

@@ -44,7 +44,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return l == 1;
     }
 
-    // Insert user to database
+    /* Takes user object and context,
+    inserts user to database
+     */
     public void insertUser(User user, Context context){
         jsonFileControl = new JSONFileControl();
 
@@ -69,7 +71,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    // Updating user's password
+    /* Takes new password and username,
+    updates password to database
+     */
     public void updatePassword(String newPassword, String username){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues data = new ContentValues();
@@ -87,6 +91,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /* Takes user's username,
+    check's if username exists in database
+    returns boolean
+     */
     public boolean checkUsername(String username){
         SQLiteDatabase myDB = this.getWritableDatabase();
         try (Cursor cursor = myDB.rawQuery("Select * from user where username = ?", new String[]{username})) {
@@ -95,6 +103,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
+    // Takes username and returns height
     public String getHeight(String username){
         String sql = "Select height FROM user WHERE username = '"+ username + "'";
         String height;
@@ -106,6 +116,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return height;
     }
 
+
+    // Takes username and returns name
     public String getName(String username) {
         String sql = "Select name from user where username = '" + username + "'";
         String name;
@@ -116,6 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return name;
     }
 
+    // Takes username and returns weight
     public int getWeight(String username){
         String sql = "Select weight FROM user WHERE username = '"+ username + "'";
         String weight;
@@ -127,6 +140,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return Integer.parseInt(weight);
     }
 
+    // Takes username and returns salt
     public byte[] getId(String username){
         String sql = "Select id FROM user WHERE username = '"+ username + "'";
         byte[] id;
@@ -138,6 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
+    // Takes username and returns password
     public String getPassword(String username){
         String sql = "Select password FROM user WHERE username = '"+ username + "'";
         String password;
@@ -149,6 +164,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return password;
     }
 
+    // Takes username and returns municipality
     public String getMunicipality(String username){
         String sql = "Select municipality FROM user WHERE username = '"+ username + "'";
         String municipality;
@@ -160,6 +176,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return municipality;
     }
 
+    // Takes username and returns gender
     public String getGender(String username){
         String sql = "Select municipality FROM user WHERE username = '"+ username + "'";
         String gender;
@@ -171,6 +188,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return gender;
     }
 
+    // Takes username and returns birthyear
     public int getBirthyear(String username){
         String sql = "Select birthyear FROM user WHERE username = '"+ username + "'";
         String byear;
